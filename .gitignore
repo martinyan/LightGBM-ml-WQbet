@@ -1,0 +1,35 @@
+# Secrets / local config
+.env
+*.key
+*.pem
+
+# Data / artifacts
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.jsonl
+*_backfill.log
+*_db_build.log
+*_sectionals_backfill.log
+*.log
+
+# Node
+node_modules/
+package-lock.json
+
+# Large downloaded JS bundles
+main.js
+vendors.js
+
+# Personal workspace files (avoid leaking personal context)
+MEMORY.md
+USER.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+HEARTBEAT.md
+AGENTS.md
+BOOTSTRAP.md
+
+# Misc
+.DS_Store
