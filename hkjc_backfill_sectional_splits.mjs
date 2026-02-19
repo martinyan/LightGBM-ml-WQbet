@@ -55,9 +55,10 @@ function parseSplitCell(txt){
   const parts=norm(txt).split(' ').filter(Boolean);
   if(parts.length<2) return {pos:null, split_time:null};
   const pos = /^\d+$/.test(parts[0]) ? Number(parts[0]) : null;
-  // pick last numeric time like 22.34
-  const timeMatch = parts.slice().reverse().find(p=>/^\d+\.\d{2}$/.test(p));
-  const split_time = timeMatch ? Number(timeMatch) : null;
+  // Cells may contain multiple times: total split time + sub-splits.
+  // We want the FIRST time, which is the total split time.
+  const times = parts.filter(p=>/^\d+\.\d{2}$/.test(p)).map(Number);
+  const split_time = times.length ? times[0] : null;
   return {pos, split_time};
 }
 
