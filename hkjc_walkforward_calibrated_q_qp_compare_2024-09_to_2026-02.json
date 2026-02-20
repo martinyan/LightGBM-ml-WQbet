@@ -1,0 +1,1413 @@
+{
+  "range": {
+    "start": "2024/09/01",
+    "end": "2026/02/19"
+  },
+  "blockSpec": {
+    "minTrainMeetings": 40,
+    "testMeetings": 10,
+    "stepMeetings": 10,
+    "calibFrac": 0.2,
+    "calibMethod": "platt"
+  },
+  "stake_unit": 10.0,
+  "thresholds": [
+    1.85,
+    1.9,
+    1.92
+  ],
+  "blocks": [
+    {
+      "block": 1,
+      "train_meetings": 40,
+      "fit_meetings": 32,
+      "calib_meetings": 8,
+      "test_meetings": 10,
+      "test_start": "2025/01/26",
+      "test_end": "2025/03/02",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 2,
+      "train_meetings": 50,
+      "fit_meetings": 40,
+      "calib_meetings": 10,
+      "test_meetings": 10,
+      "test_start": "2025/03/05",
+      "test_end": "2025/04/06",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 3,
+      "train_meetings": 60,
+      "fit_meetings": 48,
+      "calib_meetings": 12,
+      "test_meetings": 10,
+      "test_start": "2025/04/09",
+      "test_end": "2025/05/10",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 4,
+      "train_meetings": 70,
+      "fit_meetings": 56,
+      "calib_meetings": 14,
+      "test_meetings": 10,
+      "test_start": "2025/05/14",
+      "test_end": "2025/06/14",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 5,
+      "train_meetings": 80,
+      "fit_meetings": 64,
+      "calib_meetings": 16,
+      "test_meetings": 10,
+      "test_start": "2025/06/22",
+      "test_end": "2025/09/10",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 6,
+      "train_meetings": 90,
+      "fit_meetings": 72,
+      "calib_meetings": 18,
+      "test_meetings": 10,
+      "test_start": "2025/09/14",
+      "test_end": "2025/10/19",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 7,
+      "train_meetings": 100,
+      "fit_meetings": 80,
+      "calib_meetings": 20,
+      "test_meetings": 10,
+      "test_start": "2025/10/22",
+      "test_end": "2025/11/23",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 8,
+      "train_meetings": 110,
+      "fit_meetings": 88,
+      "calib_meetings": 22,
+      "test_meetings": 10,
+      "test_start": "2025/11/26",
+      "test_end": "2025/12/27",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "block": 9,
+      "train_meetings": 120,
+      "fit_meetings": 96,
+      "calib_meetings": 24,
+      "test_meetings": 10,
+      "test_start": "2026/01/01",
+      "test_end": "2026/02/01",
+      "thresholds": [
+        1.85,
+        1.9,
+        1.92
+      ],
+      "resultsByThreshold": {
+        "1.85": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.9": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        },
+        "1.92": {
+          "xgb": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          },
+          "logreg": {
+            "races": 0,
+            "Q": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "QP": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            },
+            "combined": {
+              "stake": 0.0,
+              "return": 0.0,
+              "profit": 0.0,
+              "roi": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "overallByThreshold": {
+    "xgb": {
+      "1.85": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      },
+      "1.9": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      },
+      "1.92": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      }
+    },
+    "logreg": {
+      "1.85": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      },
+      "1.9": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      },
+      "1.92": {
+        "races": 0,
+        "combined": {
+          "stake": 0.0,
+          "return": 0.0,
+          "profit": 0.0,
+          "roi": null
+        }
+      }
+    }
+  }
+}
