@@ -1,0 +1,28 @@
+{
+  "meetings": 40,
+  "threshold_p12": 1.8,
+  "races_bet": 361,
+  "stake_unit_per_pool": 10,
+  "Q": {
+    "stake": 3610.0,
+    "return": 23911.5,
+    "profit": 20301.5,
+    "roi": 5.623684210526315,
+    "hits": 35
+  },
+  "QP": {
+    "stake": 3610.0,
+    "return": 19709.5,
+    "profit": 16099.5,
+    "roi": 4.4596952908587255,
+    "hits": 83
+  },
+  "combined_both_pools": {
+    "stake": 7220.0,
+    "return": 43621.0,
+    "profit": 36401.0,
+    "roi": 5.0416897506925205
+  },
+  "hit_races_either_Q_or_QP": 84,
+  "note": "Last 40 meetings, NO-ODDS Top2. Bet Q and/or QP only when p1+p2>1.8. QP parsing includes continuation rows."
+}
