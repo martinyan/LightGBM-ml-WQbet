@@ -1,0 +1,67 @@
+{
+  "racedate": "2026/02/19",
+  "venue": "ST",
+  "races": [
+    8,
+    9,
+    10,
+    11
+  ],
+  "stake_unit": 10.0,
+  "per_race": [
+    {
+      "race_no": 8,
+      "pair": "1-8",
+      "q_div": null,
+      "qp_div": null,
+      "stake": 10.0,
+      "retQ": 0.0,
+      "retQP": 0.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=8"
+    },
+    {
+      "race_no": 9,
+      "pair": "8-14",
+      "q_div": null,
+      "qp_div": null,
+      "stake": 10.0,
+      "retQ": 0.0,
+      "retQP": 0.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=9"
+    },
+    {
+      "race_no": 10,
+      "pair": "9-13",
+      "q_div": 40.5,
+      "qp_div": 20.0,
+      "stake": 10.0,
+      "retQ": 40.5,
+      "retQP": 20.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=10"
+    },
+    {
+      "race_no": 11,
+      "pair": "2-4",
+      "q_div": null,
+      "qp_div": null,
+      "stake": 10.0,
+      "retQ": 0.0,
+      "retQP": 0.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=11"
+    }
+  ],
+  "total": {
+    "Q": {
+      "stake": 40.0,
+      "return": 40.5,
+      "profit": 0.5,
+      "roi": 0.0125
+    },
+    "QP": {
+      "stake": 40.0,
+      "return": 20.0,
+      "profit": -20.0,
+      "roi": -0.5
+    }
+  }
+}
