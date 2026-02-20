@@ -1,0 +1,116 @@
+{
+  "meetings": 60,
+  "thresholds": [
+    1.8,
+    1.85,
+    1.9,
+    1.92
+  ],
+  "results": [
+    {
+      "threshold": 1.8,
+      "races_bet": 527,
+      "Q_roi": 3.9841555977229604,
+      "Q_profit": 20996.5,
+      "Q_hits": 47,
+      "QP_roi": 3.6894686907020873,
+      "QP_profit": 19443.5,
+      "QP_hits": 117,
+      "combined_roi": 3.836812144212524,
+      "combined_profit": 40440.0
+    },
+    {
+      "threshold": 1.85,
+      "races_bet": 328,
+      "Q_roi": 4.5961890243902435,
+      "Q_profit": 15075.5,
+      "Q_hits": 27,
+      "QP_roi": 4.600457317073171,
+      "QP_profit": 15089.5,
+      "QP_hits": 83,
+      "combined_roi": 4.598323170731708,
+      "combined_profit": 30165.0
+    },
+    {
+      "threshold": 1.9,
+      "races_bet": 40,
+      "Q_roi": 2.6175,
+      "Q_profit": 1047.0,
+      "Q_hits": 2,
+      "QP_roi": 3.845,
+      "QP_profit": 1538.0,
+      "QP_hits": 9,
+      "combined_roi": 3.23125,
+      "combined_profit": 2585.0
+    },
+    {
+      "threshold": 1.92,
+      "races_bet": 7,
+      "Q_roi": -1.0,
+      "Q_profit": -70.0,
+      "Q_hits": 0,
+      "QP_roi": 3.9,
+      "QP_profit": 273.0,
+      "QP_hits": 3,
+      "combined_roi": 1.45,
+      "combined_profit": 203.0
+    }
+  ],
+  "results_sorted_by_combined_roi": [
+    {
+      "threshold": 1.85,
+      "races_bet": 328,
+      "Q_roi": 4.5961890243902435,
+      "Q_profit": 15075.5,
+      "Q_hits": 27,
+      "QP_roi": 4.600457317073171,
+      "QP_profit": 15089.5,
+      "QP_hits": 83,
+      "combined_roi": 4.598323170731708,
+      "combined_profit": 30165.0
+    },
+    {
+      "threshold": 1.8,
+      "races_bet": 527,
+      "Q_roi": 3.9841555977229604,
+      "Q_profit": 20996.5,
+      "Q_hits": 47,
+      "QP_roi": 3.6894686907020873,
+      "QP_profit": 19443.5,
+      "QP_hits": 117,
+      "combined_roi": 3.836812144212524,
+      "combined_profit": 40440.0
+    },
+    {
+      "threshold": 1.9,
+      "races_bet": 40,
+      "Q_roi": 2.6175,
+      "Q_profit": 1047.0,
+      "Q_hits": 2,
+      "QP_roi": 3.845,
+      "QP_profit": 1538.0,
+      "QP_hits": 9,
+      "combined_roi": 3.23125,
+      "combined_profit": 2585.0
+    },
+    {
+      "threshold": 1.92,
+      "races_bet": 7,
+      "Q_roi": -1.0,
+      "Q_profit": -70.0,
+      "Q_hits": 0,
+      "QP_roi": 3.9,
+      "QP_profit": 273.0,
+      "QP_hits": 3,
+      "combined_roi": 1.45,
+      "combined_profit": 203.0
+    }
+  ],
+  "out_files": [
+    "hkjc_q_qp_roi_last60meetings_noodds_p12gt1p8.json",
+    "hkjc_q_qp_roi_last60meetings_noodds_p12gt1p85.json",
+    "hkjc_q_qp_roi_last60meetings_noodds_p12gt1p9.json",
+    "hkjc_q_qp_roi_last60meetings_noodds_p12gt1p92.json"
+  ],
+  "note": "NO-ODDS Top2 Q/QP backtest; combined metrics assume betting both pools each qualifying race."
+}
