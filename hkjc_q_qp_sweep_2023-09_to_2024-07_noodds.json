@@ -1,0 +1,578 @@
+{
+  "range": {
+    "start": "2023/09/01",
+    "end": "2024/07/31"
+  },
+  "meetings": [
+    {
+      "racedate": "2023/09/10",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/09/13",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/09/17",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/09/20",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/09/24",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/09/27",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/10/01",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/10/04",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/10/08",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/10/11",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/10/15",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/10/18",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/10/22",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/10/25",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/10/29",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/11/01",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/11/05",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/11/08",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/11/11",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/11/15",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/11/19",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/11/22",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/11/26",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/11/29",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/12/03",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/12/06",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/12/10",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/12/13",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/12/17",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/12/20",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2023/12/23",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/12/26",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2023/12/29",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/01/01",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/04",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/01/07",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/10",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/01/13",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/17",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/01/21",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/24",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/28",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/01/31",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/02/04",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/02/07",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/02/12",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/02/15",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/02/18",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/02/21",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/02/25",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/02/28",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/03/03",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/03/06",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/03/10",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/03/13",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/03/16",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/03/20",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/03/24",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/03/27",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/03/31",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/04/03",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/04/07",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/04/10",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/04/14",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/04/17",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/04/20",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/04/24",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/04/28",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/05/01",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/05/05",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/05/08",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/05/11",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/05/15",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/05/19",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/05/22",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/05/26",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/05/29",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/06/02",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/06/05",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/06/08",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/06/12",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/06/15",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/06/23",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/06/26",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/07/01",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/07/04",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/07/06",
+      "venue": "ST"
+    },
+    {
+      "racedate": "2024/07/10",
+      "venue": "HV"
+    },
+    {
+      "racedate": "2024/07/14",
+      "venue": "ST"
+    }
+  ],
+  "races_total": 790,
+  "stake_unit": 10.0,
+  "thresholds": [
+    1.8,
+    1.85,
+    1.9,
+    1.92
+  ],
+  "results": [
+    {
+      "threshold": 1.8,
+      "races_q_bet": 750,
+      "races_qp_bet": 742,
+      "Q": {
+        "stake": 7500.0,
+        "return": 59231.0,
+        "profit": 51731.0,
+        "roi": 6.897466666666666,
+        "hits": 82
+      },
+      "QP": {
+        "stake": 7420.0,
+        "return": 46229.0,
+        "profit": 38809.0,
+        "roi": 5.230323450134771,
+        "hits": 254
+      },
+      "combined": {
+        "stake": 14920.0,
+        "return": 105460.0,
+        "profit": 90540.0,
+        "roi": 6.068364611260054
+      }
+    },
+    {
+      "threshold": 1.85,
+      "races_q_bet": 480,
+      "races_qp_bet": 475,
+      "Q": {
+        "stake": 4800.0,
+        "return": 37225.5,
+        "profit": 32425.5,
+        "roi": 6.7553125,
+        "hits": 53
+      },
+      "QP": {
+        "stake": 4750.0,
+        "return": 32208.0,
+        "profit": 27458.0,
+        "roi": 5.780631578947369,
+        "hits": 176
+      },
+      "combined": {
+        "stake": 9550.0,
+        "return": 69433.5,
+        "profit": 59883.5,
+        "roi": 6.2705235602094245
+      }
+    },
+    {
+      "threshold": 1.9,
+      "races_q_bet": 79,
+      "races_qp_bet": 77,
+      "Q": {
+        "stake": 790.0,
+        "return": 11160.5,
+        "profit": 10370.5,
+        "roi": 13.127215189873418,
+        "hits": 16
+      },
+      "QP": {
+        "stake": 770.0,
+        "return": 8194.0,
+        "profit": 7424.0,
+        "roi": 9.641558441558441,
+        "hits": 44
+      },
+      "combined": {
+        "stake": 1560.0,
+        "return": 19354.5,
+        "profit": 17794.5,
+        "roi": 11.40673076923077
+      }
+    },
+    {
+      "threshold": 1.92,
+      "races_q_bet": 18,
+      "races_qp_bet": 17,
+      "Q": {
+        "stake": 180.0,
+        "return": 2402.5,
+        "profit": 2222.5,
+        "roi": 12.347222222222221,
+        "hits": 4
+      },
+      "QP": {
+        "stake": 170.0,
+        "return": 3382.0,
+        "profit": 3212.0,
+        "roi": 18.894117647058824,
+        "hits": 11
+      },
+      "combined": {
+        "stake": 350.0,
+        "return": 5784.5,
+        "profit": 5434.5,
+        "roi": 15.527142857142858
+      }
+    }
+  ],
+  "results_sorted_by_combined_roi": [
+    {
+      "threshold": 1.92,
+      "races_q_bet": 18,
+      "races_qp_bet": 17,
+      "Q": {
+        "stake": 180.0,
+        "return": 2402.5,
+        "profit": 2222.5,
+        "roi": 12.347222222222221,
+        "hits": 4
+      },
+      "QP": {
+        "stake": 170.0,
+        "return": 3382.0,
+        "profit": 3212.0,
+        "roi": 18.894117647058824,
+        "hits": 11
+      },
+      "combined": {
+        "stake": 350.0,
+        "return": 5784.5,
+        "profit": 5434.5,
+        "roi": 15.527142857142858
+      }
+    },
+    {
+      "threshold": 1.9,
+      "races_q_bet": 79,
+      "races_qp_bet": 77,
+      "Q": {
+        "stake": 790.0,
+        "return": 11160.5,
+        "profit": 10370.5,
+        "roi": 13.127215189873418,
+        "hits": 16
+      },
+      "QP": {
+        "stake": 770.0,
+        "return": 8194.0,
+        "profit": 7424.0,
+        "roi": 9.641558441558441,
+        "hits": 44
+      },
+      "combined": {
+        "stake": 1560.0,
+        "return": 19354.5,
+        "profit": 17794.5,
+        "roi": 11.40673076923077
+      }
+    },
+    {
+      "threshold": 1.85,
+      "races_q_bet": 480,
+      "races_qp_bet": 475,
+      "Q": {
+        "stake": 4800.0,
+        "return": 37225.5,
+        "profit": 32425.5,
+        "roi": 6.7553125,
+        "hits": 53
+      },
+      "QP": {
+        "stake": 4750.0,
+        "return": 32208.0,
+        "profit": 27458.0,
+        "roi": 5.780631578947369,
+        "hits": 176
+      },
+      "combined": {
+        "stake": 9550.0,
+        "return": 69433.5,
+        "profit": 59883.5,
+        "roi": 6.2705235602094245
+      }
+    },
+    {
+      "threshold": 1.8,
+      "races_q_bet": 750,
+      "races_qp_bet": 742,
+      "Q": {
+        "stake": 7500.0,
+        "return": 59231.0,
+        "profit": 51731.0,
+        "roi": 6.897466666666666,
+        "hits": 82
+      },
+      "QP": {
+        "stake": 7420.0,
+        "return": 46229.0,
+        "profit": 38809.0,
+        "roi": 5.230323450134771,
+        "hits": 254
+      },
+      "combined": {
+        "stake": 14920.0,
+        "return": 105460.0,
+        "profit": 90540.0,
+        "roi": 6.068364611260054
+      }
+    }
+  ],
+  "generatedAt": "2026-02-20T14:25:22",
+  "note": "NO-ODDS Top2 inference; QP stake is only counted for races where QP pool is offered on HKJC dividends table."
+}
