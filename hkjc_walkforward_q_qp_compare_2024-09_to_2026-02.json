@@ -1,0 +1,499 @@
+{
+  "range": {
+    "start": "2024/09/01",
+    "end": "2026/02/19"
+  },
+  "blockSpec": {
+    "minTrainMeetings": 40,
+    "testMeetings": 10,
+    "stepMeetings": 10
+  },
+  "stake_unit": 10.0,
+  "blocks": [
+    {
+      "block": 1,
+      "train_meetings": 40,
+      "test_meetings": 10,
+      "test_start": "2025/01/26",
+      "test_end": "2025/03/02",
+      "xgb": {
+        "races": 100,
+        "Q": {
+          "stake": 1000.0,
+          "return": 183.0,
+          "profit": -817.0,
+          "roi": -0.817
+        },
+        "QP": {
+          "stake": 990.0,
+          "return": 446.5,
+          "profit": -543.5,
+          "roi": -0.548989898989899
+        },
+        "combined": {
+          "stake": 1990.0,
+          "return": 629.5,
+          "profit": -1360.5,
+          "roi": -0.6836683417085427
+        }
+      },
+      "logreg": {
+        "races": 100,
+        "Q": {
+          "stake": 1000.0,
+          "return": 797.5,
+          "profit": -202.5,
+          "roi": -0.2025
+        },
+        "QP": {
+          "stake": 990.0,
+          "return": 914.0,
+          "profit": -76.0,
+          "roi": -0.07676767676767676
+        },
+        "combined": {
+          "stake": 1990.0,
+          "return": 1711.5,
+          "profit": -278.5,
+          "roi": -0.1399497487437186
+        }
+      }
+    },
+    {
+      "block": 2,
+      "train_meetings": 50,
+      "test_meetings": 10,
+      "test_start": "2025/03/05",
+      "test_end": "2025/04/06",
+      "xgb": {
+        "races": 96,
+        "Q": {
+          "stake": 960.0,
+          "return": 675.0,
+          "profit": -285.0,
+          "roi": -0.296875
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 1016.0,
+          "profit": 66.0,
+          "roi": 0.06947368421052631
+        },
+        "combined": {
+          "stake": 1910.0,
+          "return": 1691.0,
+          "profit": -219.0,
+          "roi": -0.11465968586387434
+        }
+      },
+      "logreg": {
+        "races": 96,
+        "Q": {
+          "stake": 960.0,
+          "return": 624.5,
+          "profit": -335.5,
+          "roi": -0.3494791666666667
+        },
+        "QP": {
+          "stake": 960.0,
+          "return": 839.0,
+          "profit": -121.0,
+          "roi": -0.12604166666666666
+        },
+        "combined": {
+          "stake": 1920.0,
+          "return": 1463.5,
+          "profit": -456.5,
+          "roi": -0.23776041666666667
+        }
+      }
+    },
+    {
+      "block": 3,
+      "train_meetings": 60,
+      "test_meetings": 10,
+      "test_start": "2025/04/09",
+      "test_end": "2025/05/10",
+      "xgb": {
+        "races": 96,
+        "Q": {
+          "stake": 960.0,
+          "return": 1072.5,
+          "profit": 112.5,
+          "roi": 0.1171875
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 576.0,
+          "profit": -374.0,
+          "roi": -0.3936842105263158
+        },
+        "combined": {
+          "stake": 1910.0,
+          "return": 1648.5,
+          "profit": -261.5,
+          "roi": -0.13691099476439791
+        }
+      },
+      "logreg": {
+        "races": 96,
+        "Q": {
+          "stake": 960.0,
+          "return": 1876.5,
+          "profit": 916.5,
+          "roi": 0.9546875
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 916.5,
+          "profit": -33.5,
+          "roi": -0.035263157894736843
+        },
+        "combined": {
+          "stake": 1910.0,
+          "return": 2793.0,
+          "profit": 883.0,
+          "roi": 0.46230366492146596
+        }
+      }
+    },
+    {
+      "block": 4,
+      "train_meetings": 70,
+      "test_meetings": 10,
+      "test_start": "2025/05/14",
+      "test_end": "2025/06/14",
+      "xgb": {
+        "races": 98,
+        "Q": {
+          "stake": 980.0,
+          "return": 459.0,
+          "profit": -521.0,
+          "roi": -0.5316326530612245
+        },
+        "QP": {
+          "stake": 980.0,
+          "return": 495.0,
+          "profit": -485.0,
+          "roi": -0.49489795918367346
+        },
+        "combined": {
+          "stake": 1960.0,
+          "return": 954.0,
+          "profit": -1006.0,
+          "roi": -0.513265306122449
+        }
+      },
+      "logreg": {
+        "races": 98,
+        "Q": {
+          "stake": 980.0,
+          "return": 571.5,
+          "profit": -408.5,
+          "roi": -0.41683673469387755
+        },
+        "QP": {
+          "stake": 980.0,
+          "return": 653.0,
+          "profit": -327.0,
+          "roi": -0.3336734693877551
+        },
+        "combined": {
+          "stake": 1960.0,
+          "return": 1224.5,
+          "profit": -735.5,
+          "roi": -0.3752551020408163
+        }
+      }
+    },
+    {
+      "block": 5,
+      "train_meetings": 80,
+      "test_meetings": 10,
+      "test_start": "2025/06/22",
+      "test_end": "2025/09/10",
+      "xgb": {
+        "races": 99,
+        "Q": {
+          "stake": 990.0,
+          "return": 2396.0,
+          "profit": 1406.0,
+          "roi": 1.4202020202020202
+        },
+        "QP": {
+          "stake": 980.0,
+          "return": 833.5,
+          "profit": -146.5,
+          "roi": -0.14948979591836734
+        },
+        "combined": {
+          "stake": 1970.0,
+          "return": 3229.5,
+          "profit": 1259.5,
+          "roi": 0.6393401015228426
+        }
+      },
+      "logreg": {
+        "races": 99,
+        "Q": {
+          "stake": 990.0,
+          "return": 755.0,
+          "profit": -235.0,
+          "roi": -0.23737373737373738
+        },
+        "QP": {
+          "stake": 990.0,
+          "return": 722.0,
+          "profit": -268.0,
+          "roi": -0.27070707070707073
+        },
+        "combined": {
+          "stake": 1980.0,
+          "return": 1477.0,
+          "profit": -503.0,
+          "roi": -0.25404040404040407
+        }
+      }
+    },
+    {
+      "block": 6,
+      "train_meetings": 90,
+      "test_meetings": 10,
+      "test_start": "2025/09/14",
+      "test_end": "2025/10/19",
+      "xgb": {
+        "races": 95,
+        "Q": {
+          "stake": 950.0,
+          "return": 235.0,
+          "profit": -715.0,
+          "roi": -0.7526315789473684
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 678.0,
+          "profit": -272.0,
+          "roi": -0.2863157894736842
+        },
+        "combined": {
+          "stake": 1900.0,
+          "return": 913.0,
+          "profit": -987.0,
+          "roi": -0.5194736842105263
+        }
+      },
+      "logreg": {
+        "races": 95,
+        "Q": {
+          "stake": 950.0,
+          "return": 577.0,
+          "profit": -373.0,
+          "roi": -0.39263157894736844
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 933.5,
+          "profit": -16.5,
+          "roi": -0.017368421052631578
+        },
+        "combined": {
+          "stake": 1900.0,
+          "return": 1510.5,
+          "profit": -389.5,
+          "roi": -0.205
+        }
+      }
+    },
+    {
+      "block": 7,
+      "train_meetings": 100,
+      "test_meetings": 10,
+      "test_start": "2025/10/22",
+      "test_end": "2025/11/23",
+      "xgb": {
+        "races": 93,
+        "Q": {
+          "stake": 930.0,
+          "return": 1052.0,
+          "profit": 122.0,
+          "roi": 0.13118279569892474
+        },
+        "QP": {
+          "stake": 930.0,
+          "return": 859.5,
+          "profit": -70.5,
+          "roi": -0.07580645161290323
+        },
+        "combined": {
+          "stake": 1860.0,
+          "return": 1911.5,
+          "profit": 51.5,
+          "roi": 0.02768817204301075
+        }
+      },
+      "logreg": {
+        "races": 93,
+        "Q": {
+          "stake": 930.0,
+          "return": 627.0,
+          "profit": -303.0,
+          "roi": -0.3258064516129032
+        },
+        "QP": {
+          "stake": 930.0,
+          "return": 726.5,
+          "profit": -203.5,
+          "roi": -0.21881720430107526
+        },
+        "combined": {
+          "stake": 1860.0,
+          "return": 1353.5,
+          "profit": -506.5,
+          "roi": -0.27231182795698927
+        }
+      }
+    },
+    {
+      "block": 8,
+      "train_meetings": 110,
+      "test_meetings": 10,
+      "test_start": "2025/11/26",
+      "test_end": "2025/12/27",
+      "xgb": {
+        "races": 95,
+        "Q": {
+          "stake": 950.0,
+          "return": 731.5,
+          "profit": -218.5,
+          "roi": -0.23
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 885.5,
+          "profit": -64.5,
+          "roi": -0.06789473684210526
+        },
+        "combined": {
+          "stake": 1900.0,
+          "return": 1617.0,
+          "profit": -283.0,
+          "roi": -0.14894736842105263
+        }
+      },
+      "logreg": {
+        "races": 95,
+        "Q": {
+          "stake": 950.0,
+          "return": 1501.5,
+          "profit": 551.5,
+          "roi": 0.5805263157894737
+        },
+        "QP": {
+          "stake": 950.0,
+          "return": 704.0,
+          "profit": -246.0,
+          "roi": -0.25894736842105265
+        },
+        "combined": {
+          "stake": 1900.0,
+          "return": 2205.5,
+          "profit": 305.5,
+          "roi": 0.16078947368421054
+        }
+      }
+    },
+    {
+      "block": 9,
+      "train_meetings": 120,
+      "test_meetings": 10,
+      "test_start": "2026/01/01",
+      "test_end": "2026/02/01",
+      "xgb": {
+        "races": 102,
+        "Q": {
+          "stake": 1020.0,
+          "return": 105.0,
+          "profit": -915.0,
+          "roi": -0.8970588235294118
+        },
+        "QP": {
+          "stake": 1000.0,
+          "return": 566.0,
+          "profit": -434.0,
+          "roi": -0.434
+        },
+        "combined": {
+          "stake": 2020.0,
+          "return": 671.0,
+          "profit": -1349.0,
+          "roi": -0.6678217821782179
+        }
+      },
+      "logreg": {
+        "races": 102,
+        "Q": {
+          "stake": 1020.0,
+          "return": 253.0,
+          "profit": -767.0,
+          "roi": -0.7519607843137255
+        },
+        "QP": {
+          "stake": 1000.0,
+          "return": 368.0,
+          "profit": -632.0,
+          "roi": -0.632
+        },
+        "combined": {
+          "stake": 2020.0,
+          "return": 621.0,
+          "profit": -1399.0,
+          "roi": -0.6925742574257425
+        }
+      }
+    }
+  ],
+  "overall": {
+    "xgb": {
+      "races": 874,
+      "Q": {
+        "stake": 8740.0,
+        "return": 6909.0,
+        "profit": -1831.0,
+        "roi": -0.20949656750572082
+      },
+      "QP": {
+        "stake": 8680.0,
+        "return": 6356.0,
+        "profit": -2324.0,
+        "roi": -0.267741935483871
+      },
+      "combined": {
+        "stake": 17420.0,
+        "return": 13265.0,
+        "profit": -4155.0,
+        "roi": -0.23851894374282434
+      }
+    },
+    "logreg": {
+      "races": 874,
+      "Q": {
+        "stake": 8740.0,
+        "return": 7583.5,
+        "profit": -1156.5,
+        "roi": -0.13232265446224256
+      },
+      "QP": {
+        "stake": 8700.0,
+        "return": 6776.5,
+        "profit": -1923.5,
+        "roi": -0.2210919540229885
+      },
+      "combined": {
+        "stake": 17440.0,
+        "return": 14360.0,
+        "profit": -3080.0,
+        "roi": -0.17660550458715596
+      }
+    }
+  }
+}
