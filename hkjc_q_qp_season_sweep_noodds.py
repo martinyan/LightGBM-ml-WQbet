@@ -116,6 +116,7 @@ def main():
     ap.add_argument('--stake', type=float, default=10.0)
     ap.add_argument('--maxWorkers', type=int, default=24)
     ap.add_argument('--out', default='hkjc_q_qp_season_sweep.json')
+    ap.add_argument('--racesOut', default=None, help='optional: write fetched per-race list (with dividends) to this JSON file')
     args = ap.parse_args()
 
     thresholds = [float(x) for x in args.thresholds.split(',') if x.strip()]
@@ -202,6 +203,11 @@ def main():
             done += 1
             if done % 100 == 0:
                 print(json.dumps({'progress_fetch': done, 'of': len(futs)}))
+
+    # Optionally dump per-race fetched list (so we can generate hitlists without re-fetching)
+    if args.racesOut:
+        with open(args.racesOut, 'w', encoding='utf-8') as f:
+            json.dump({'range': {'start': args.start, 'end': args.end}, 'races': fetched}, f, indent=2)
 
     # Sweep thresholds without more network calls
     results = []
