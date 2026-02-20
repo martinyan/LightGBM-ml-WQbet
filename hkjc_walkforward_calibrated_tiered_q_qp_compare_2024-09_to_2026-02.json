@@ -1,0 +1,543 @@
+{
+  "range": {
+    "start": "2024/09/01",
+    "end": "2026/02/19"
+  },
+  "blockSpec": {
+    "minTrainMeetings": 40,
+    "testMeetings": 10,
+    "stepMeetings": 10,
+    "calibFrac": 0.2
+  },
+  "tierThresholds": {
+    "50": 0.8,
+    "100": 0.88,
+    "300": 0.92
+  },
+  "blocks": [
+    {
+      "block": 1,
+      "test_start": "2025/01/26",
+      "test_end": "2025/03/02",
+      "train_meetings": 40,
+      "fit_meetings": 32,
+      "calib_meetings": 8,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 47,
+        "Q": {
+          "stake": 7200.0,
+          "return": 2445.0,
+          "profit": -4755.0,
+          "roi": -0.6604166666666667
+        },
+        "QP": {
+          "stake": 7200.0,
+          "return": 1785.0,
+          "profit": -5415.0,
+          "roi": -0.7520833333333333
+        },
+        "combined": {
+          "stake": 14400.0,
+          "return": 4230.0,
+          "profit": -10170.0,
+          "roi": -0.70625
+        }
+      },
+      "logreg": {
+        "races_bet": 52,
+        "Q": {
+          "stake": 5900.0,
+          "return": 3975.0,
+          "profit": -1925.0,
+          "roi": -0.326271186440678
+        },
+        "QP": {
+          "stake": 5900.0,
+          "return": 4882.5,
+          "profit": -1017.5,
+          "roi": -0.17245762711864407
+        },
+        "combined": {
+          "stake": 11800.0,
+          "return": 8857.5,
+          "profit": -2942.5,
+          "roi": -0.249364406779661
+        }
+      }
+    },
+    {
+      "block": 2,
+      "test_start": "2025/03/05",
+      "test_end": "2025/04/06",
+      "train_meetings": 50,
+      "fit_meetings": 40,
+      "calib_meetings": 10,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 25,
+        "Q": {
+          "stake": 1800.0,
+          "return": 140.0,
+          "profit": -1660.0,
+          "roi": -0.9222222222222223
+        },
+        "QP": {
+          "stake": 1800.0,
+          "return": 705.0,
+          "profit": -1095.0,
+          "roi": -0.6083333333333333
+        },
+        "combined": {
+          "stake": 3600.0,
+          "return": 845.0,
+          "profit": -2755.0,
+          "roi": -0.7652777777777777
+        }
+      },
+      "logreg": {
+        "races_bet": 25,
+        "Q": {
+          "stake": 1550.0,
+          "return": 2190.0,
+          "profit": 640.0,
+          "roi": 0.4129032258064516
+        },
+        "QP": {
+          "stake": 1550.0,
+          "return": 2272.5,
+          "profit": 722.5,
+          "roi": 0.4661290322580645
+        },
+        "combined": {
+          "stake": 3100.0,
+          "return": 4462.5,
+          "profit": 1362.5,
+          "roi": 0.43951612903225806
+        }
+      }
+    },
+    {
+      "block": 3,
+      "test_start": "2025/04/09",
+      "test_end": "2025/05/10",
+      "train_meetings": 60,
+      "fit_meetings": 48,
+      "calib_meetings": 12,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 68,
+        "Q": {
+          "stake": 16350.0,
+          "return": 40270.0,
+          "profit": 23920.0,
+          "roi": 1.4629969418960245
+        },
+        "QP": {
+          "stake": 16050.0,
+          "return": 17777.5,
+          "profit": 1727.5,
+          "roi": 0.10763239875389408
+        },
+        "combined": {
+          "stake": 32400.0,
+          "return": 58047.5,
+          "profit": 25647.5,
+          "roi": 0.7915895061728395
+        }
+      },
+      "logreg": {
+        "races_bet": 64,
+        "Q": {
+          "stake": 11350.0,
+          "return": 21210.0,
+          "profit": 9860.0,
+          "roi": 0.8687224669603524
+        },
+        "QP": {
+          "stake": 11350.0,
+          "return": 10770.0,
+          "profit": -580.0,
+          "roi": -0.05110132158590308
+        },
+        "combined": {
+          "stake": 22700.0,
+          "return": 31980.0,
+          "profit": 9280.0,
+          "roi": 0.40881057268722465
+        }
+      }
+    },
+    {
+      "block": 4,
+      "test_start": "2025/05/14",
+      "test_end": "2025/06/14",
+      "train_meetings": 70,
+      "fit_meetings": 56,
+      "calib_meetings": 14,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 62,
+        "Q": {
+          "stake": 11350.0,
+          "return": 2892.5,
+          "profit": -8457.5,
+          "roi": -0.7451541850220265
+        },
+        "QP": {
+          "stake": 11350.0,
+          "return": 4920.0,
+          "profit": -6430.0,
+          "roi": -0.5665198237885463
+        },
+        "combined": {
+          "stake": 22700.0,
+          "return": 7812.5,
+          "profit": -14887.5,
+          "roi": -0.6558370044052864
+        }
+      },
+      "logreg": {
+        "races_bet": 61,
+        "Q": {
+          "stake": 10450.0,
+          "return": 2222.5,
+          "profit": -8227.5,
+          "roi": -0.7873205741626794
+        },
+        "QP": {
+          "stake": 10450.0,
+          "return": 10817.5,
+          "profit": 367.5,
+          "roi": 0.035167464114832535
+        },
+        "combined": {
+          "stake": 20900.0,
+          "return": 13040.0,
+          "profit": -7860.0,
+          "roi": -0.37607655502392345
+        }
+      }
+    },
+    {
+      "block": 5,
+      "test_start": "2025/06/22",
+      "test_end": "2025/09/10",
+      "train_meetings": 80,
+      "fit_meetings": 64,
+      "calib_meetings": 16,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 67,
+        "Q": {
+          "stake": 12250.0,
+          "return": 16005.0,
+          "profit": 3755.0,
+          "roi": 0.30653061224489797
+        },
+        "QP": {
+          "stake": 12250.0,
+          "return": 9072.5,
+          "profit": -3177.5,
+          "roi": -0.2593877551020408
+        },
+        "combined": {
+          "stake": 24500.0,
+          "return": 25077.5,
+          "profit": 577.5,
+          "roi": 0.023571428571428573
+        }
+      },
+      "logreg": {
+        "races_bet": 62,
+        "Q": {
+          "stake": 9200.0,
+          "return": 8090.0,
+          "profit": -1110.0,
+          "roi": -0.12065217391304348
+        },
+        "QP": {
+          "stake": 9200.0,
+          "return": 13312.5,
+          "profit": 4112.5,
+          "roi": 0.4470108695652174
+        },
+        "combined": {
+          "stake": 18400.0,
+          "return": 21402.5,
+          "profit": 3002.5,
+          "roi": 0.16317934782608695
+        }
+      }
+    },
+    {
+      "block": 6,
+      "test_start": "2025/09/14",
+      "test_end": "2025/10/19",
+      "train_meetings": 90,
+      "fit_meetings": 72,
+      "calib_meetings": 18,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 45,
+        "Q": {
+          "stake": 5650.0,
+          "return": 1760.0,
+          "profit": -3890.0,
+          "roi": -0.6884955752212389
+        },
+        "QP": {
+          "stake": 5650.0,
+          "return": 7222.5,
+          "profit": 1572.5,
+          "roi": 0.27831858407079646
+        },
+        "combined": {
+          "stake": 11300.0,
+          "return": 8982.5,
+          "profit": -2317.5,
+          "roi": -0.20508849557522124
+        }
+      },
+      "logreg": {
+        "races_bet": 44,
+        "Q": {
+          "stake": 4600.0,
+          "return": 890.0,
+          "profit": -3710.0,
+          "roi": -0.8065217391304348
+        },
+        "QP": {
+          "stake": 4600.0,
+          "return": 5015.0,
+          "profit": 415.0,
+          "roi": 0.09021739130434783
+        },
+        "combined": {
+          "stake": 9200.0,
+          "return": 5905.0,
+          "profit": -3295.0,
+          "roi": -0.3581521739130435
+        }
+      }
+    },
+    {
+      "block": 7,
+      "test_start": "2025/10/22",
+      "test_end": "2025/11/23",
+      "train_meetings": 100,
+      "fit_meetings": 80,
+      "calib_meetings": 20,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 50,
+        "Q": {
+          "stake": 8550.0,
+          "return": 9412.5,
+          "profit": 862.5,
+          "roi": 0.10087719298245613
+        },
+        "QP": {
+          "stake": 8550.0,
+          "return": 9910.0,
+          "profit": 1360.0,
+          "roi": 0.15906432748538013
+        },
+        "combined": {
+          "stake": 17100.0,
+          "return": 19322.5,
+          "profit": 2222.5,
+          "roi": 0.12997076023391813
+        }
+      },
+      "logreg": {
+        "races_bet": 45,
+        "Q": {
+          "stake": 5500.0,
+          "return": 3135.0,
+          "profit": -2365.0,
+          "roi": -0.43
+        },
+        "QP": {
+          "stake": 5500.0,
+          "return": 2702.5,
+          "profit": -2797.5,
+          "roi": -0.5086363636363637
+        },
+        "combined": {
+          "stake": 11000.0,
+          "return": 5837.5,
+          "profit": -5162.5,
+          "roi": -0.4693181818181818
+        }
+      }
+    },
+    {
+      "block": 8,
+      "test_start": "2025/11/26",
+      "test_end": "2025/12/27",
+      "train_meetings": 110,
+      "fit_meetings": 88,
+      "calib_meetings": 22,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 52,
+        "Q": {
+          "stake": 9500.0,
+          "return": 6152.5,
+          "profit": -3347.5,
+          "roi": -0.35236842105263155
+        },
+        "QP": {
+          "stake": 9500.0,
+          "return": 5482.5,
+          "profit": -4017.5,
+          "roi": -0.42289473684210527
+        },
+        "combined": {
+          "stake": 19000.0,
+          "return": 11635.0,
+          "profit": -7365.0,
+          "roi": -0.38763157894736844
+        }
+      },
+      "logreg": {
+        "races_bet": 29,
+        "Q": {
+          "stake": 3900.0,
+          "return": 3715.0,
+          "profit": -185.0,
+          "roi": -0.047435897435897434
+        },
+        "QP": {
+          "stake": 3900.0,
+          "return": 1927.5,
+          "profit": -1972.5,
+          "roi": -0.5057692307692307
+        },
+        "combined": {
+          "stake": 7800.0,
+          "return": 5642.5,
+          "profit": -2157.5,
+          "roi": -0.2766025641025641
+        }
+      }
+    },
+    {
+      "block": 9,
+      "test_start": "2026/01/01",
+      "test_end": "2026/02/01",
+      "train_meetings": 120,
+      "fit_meetings": 96,
+      "calib_meetings": 24,
+      "test_meetings": 10,
+      "tierThresholds": {
+        "50": 0.8,
+        "100": 0.88,
+        "300": 0.92
+      },
+      "xgb": {
+        "races_bet": 57,
+        "Q": {
+          "stake": 10050.0,
+          "return": 2720.0,
+          "profit": -7330.0,
+          "roi": -0.7293532338308458
+        },
+        "QP": {
+          "stake": 9750.0,
+          "return": 4155.0,
+          "profit": -5595.0,
+          "roi": -0.5738461538461539
+        },
+        "combined": {
+          "stake": 19800.0,
+          "return": 6875.0,
+          "profit": -12925.0,
+          "roi": -0.6527777777777778
+        }
+      },
+      "logreg": {
+        "races_bet": 47,
+        "Q": {
+          "stake": 3850.0,
+          "return": 655.0,
+          "profit": -3195.0,
+          "roi": -0.8298701298701299
+        },
+        "QP": {
+          "stake": 3750.0,
+          "return": 1102.5,
+          "profit": -2647.5,
+          "roi": -0.706
+        },
+        "combined": {
+          "stake": 7600.0,
+          "return": 1757.5,
+          "profit": -5842.5,
+          "roi": -0.76875
+        }
+      }
+    }
+  ],
+  "overall": {
+    "xgb": {
+      "races_bet": 473,
+      "combined": {
+        "stake": 164800.0,
+        "return": 142827.5,
+        "profit": -21972.5,
+        "roi": -0.13332827669902914
+      }
+    },
+    "logreg": {
+      "races_bet": 429,
+      "combined": {
+        "stake": 112500.0,
+        "return": 98885.0,
+        "profit": -13615.0,
+        "roi": -0.12102222222222223
+      }
+    }
+  }
+}
