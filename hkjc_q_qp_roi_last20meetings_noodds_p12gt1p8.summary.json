@@ -1,0 +1,27 @@
+{
+  "meetings": 20,
+  "threshold_p12": 1.8,
+  "races_bet": 185,
+  "stake_unit_per_pool": 10,
+  "Q": {
+    "stake": 1850.0,
+    "return": 18864.0,
+    "profit": 17014.0,
+    "roi": 9.196756756756757,
+    "hits": 24
+  },
+  "QP": {
+    "stake": 1850.0,
+    "return": 7430.5,
+    "profit": 5580.5,
+    "roi": 3.0164864864864867,
+    "hits": 40
+  },
+  "combined_both_pools": {
+    "stake": 3700.0,
+    "return": 26294.5,
+    "profit": 22594.5,
+    "roi": 6.106621621621621
+  },
+  "note": "Includes all races from last 20 meetings where p1+p2 > 1.8 (NO-ODDS inference). QP parsing includes continuation rows."
+}
