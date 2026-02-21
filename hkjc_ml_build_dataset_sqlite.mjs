@@ -38,6 +38,7 @@ const outPath = arg('--out', 'hkjc_ml_dataset.jsonl');
 const prevRuns = Math.max(1, Number(arg('--prevRuns', '1')));
 const minPrevRuns = Math.max(0, Number(arg('--minPrevRuns', String(prevRuns))));
 const includeNoPrev = (arg('--includeNoPrev', '0') === '1' || arg('--includeNoPrev', 'false') === 'true');
+const jtDays = Math.max(1, Number(arg('--jtDays', '365')));
 
 const db = openDb(dbPath, { readonly: true });
 
@@ -90,8 +91,8 @@ function makeRollingStatsWindow(windowDays = 365) {
   return { getRates, addEvent };
 }
 
-const jockeyStats = makeRollingStatsWindow(365);
-const trainerStats = makeRollingStatsWindow(365);
+const jockeyStats = makeRollingStatsWindow(jtDays);
+const trainerStats = makeRollingStatsWindow(jtDays);
 
 const rows = getRunnerContextRows(db);
 let outLines = 0;
@@ -165,12 +166,12 @@ for (const r of rows) {
       cur_trainer: trainer ?? null,
 
       // rolling stats as-of this start
-      jockey_365d_starts: j.starts,
-      jockey_365d_win_rate: j.win_rate,
-      jockey_365d_place_rate: j.place_rate,
-      trainer_365d_starts: t.starts,
-      trainer_365d_win_rate: t.win_rate,
-      trainer_365d_place_rate: t.place_rate,
+      [`jockey_${jtDays}d_starts`]: j.starts,
+      [`jockey_${jtDays}d_win_rate`]: j.win_rate,
+      [`jockey_${jtDays}d_place_rate`]: j.place_rate,
+      [`trainer_${jtDays}d_starts`]: t.starts,
+      [`trainer_${jtDays}d_win_rate`]: t.win_rate,
+      [`trainer_${jtDays}d_place_rate`]: t.place_rate,
 
       // debut flags
       is_debut: prev.length ? 0 : 1,

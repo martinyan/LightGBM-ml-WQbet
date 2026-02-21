@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-02-21T20:00:25",
+  "data": "hkjc_dataset_v5_code_include_debut_jt60.jsonl",
+  "ranges": {
+    "train": {
+      "start": "2023/09/01",
+      "end": "2025/07/31"
+    },
+    "test": {
+      "start": "2025/09/01",
+      "end": "2026/02/19"
+    }
+  },
+  "split": {
+    "train_meetings": 177,
+    "fit_meetings": 142,
+    "eval_meetings": 35,
+    "test_meetings": 47
+  },
+  "features": {
+    "n_features": 22,
+    "cat_cols": [
+      "cur_jockey",
+      "cur_trainer",
+      "cur_surface",
+      "venue"
+    ],
+    "feat_keys": [
+      "cur_class_num",
+      "cur_distance_m",
+      "cur_draw",
+      "cur_jockey",
+      "cur_surface",
+      "cur_trainer",
+      "cur_weight",
+      "cur_win_odds",
+      "is_debut",
+      "jockey_60d_place_rate",
+      "jockey_60d_starts",
+      "jockey_60d_win_rate",
+      "prev_days_since",
+      "prev_finish_pos",
+      "prev_margin_len",
+      "prev_rating",
+      "prev_run_count",
+      "prev_time_delta_sec",
+      "trainer_60d_place_rate",
+      "trainer_60d_starts",
+      "trainer_60d_win_rate",
+      "venue"
+    ]
+  },
+  "eval": {
+    "ndcg@5_lgb": 0.6019389595951934,
+    "ndcg@5_cb": 0.6143391110900976,
+    "blend_best": {
+      "w_lgb": 0.25,
+      "ndcg@5": 0.6153090374899166
+    }
+  },
+  "test": {
+    "ndcg@5_blend": 0.5889402201373969
+  },
+  "calibration": {
+    "method": "isotonic",
+    "target": "P(top3)",
+    "fit": "eval meetings (held-out from train)"
+  },
+  "backtest": {
+    "Q_top2pair": {
+      "stake": 2180.0,
+      "return": 1847.5,
+      "hit": 27,
+      "races": 218,
+      "missing": 235,
+      "profit": -332.5,
+      "roi": -0.15252293577981652
+    },
+    "QP_top2pair": {
+      "stake": 2180.0,
+      "return": 2148.0,
+      "hit": 66,
+      "races": 218,
+      "missing": 235,
+      "profit": -32.0,
+      "roi": -0.014678899082568808
+    }
+  },
+  "outputs": {
+    "n_test_races": 453
+  }
+}
