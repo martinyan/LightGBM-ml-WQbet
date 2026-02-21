@@ -238,6 +238,7 @@ def main():
     ap.add_argument('--db', default='hkjc.sqlite')
     ap.add_argument('--data', default='hkjc_dataset_v4_code_include_debut.jsonl', help='JSONL built from sqlite')
     ap.add_argument('--noJockey', action='store_true', help='drop cur_jockey + jockey rolling stats features')
+    ap.add_argument('--noTrainer', action='store_true', help='drop cur_trainer + trainer rolling stats features')
     ap.add_argument('--recentScale', type=float, default=1.0, help='multiply selected recent-performance features to emphasize them')
     ap.add_argument('--trainStart', default='2023/09/01')
     ap.add_argument('--trainEnd', default='2025/07/31')
@@ -289,12 +290,16 @@ def main():
     cat_cols = ['cur_jockey', 'cur_trainer', 'cur_surface', 'venue']
     if args.noJockey:
         cat_cols = [c for c in cat_cols if c != 'cur_jockey']
+    if args.noTrainer:
+        cat_cols = [c for c in cat_cols if c != 'cur_trainer']
 
     # choose feat keys: numeric + explicit categorical cols
     all_keys = set(rows[0].keys())
     feat_keys = sorted([k for k in all_keys if k not in meta and not k.startswith('y_')])
     if args.noJockey:
         feat_keys = [k for k in feat_keys if k != 'cur_jockey' and not k.startswith('jockey_')]
+    if args.noTrainer:
+        feat_keys = [k for k in feat_keys if k != 'cur_trainer' and not k.startswith('trainer_')]
     # ensure cats present
     for c in cat_cols:
         if c not in feat_keys and c in all_keys:
