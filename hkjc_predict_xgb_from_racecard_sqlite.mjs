@@ -79,6 +79,7 @@ function daysBetween(racedateA, racedateB) {
 
 const meta = JSON.parse(await fs.readFile(xgbMetaPath, 'utf8'));
 const featKeys = meta.featKeys;
+const imputeMeans = meta.imputeMeans || {};
 if (!Array.isArray(featKeys) || featKeys.length < 10) throw new Error('xgb meta missing featKeys');
 
 const card = JSON.parse(await fs.readFile(inPath, 'utf8'));
@@ -154,6 +155,8 @@ function buildFeatureRow(pick) {
   const prevRuns = (horse_code && racedate)
     ? getHorsePreviousRuns(db, horse_code, { beforeRaceDate: racedate, beforeVenue: venue, beforeRaceNo: raceNo, limit: lastN, keyType: 'code' })
     : [];
+  const is_debut = prevRuns.length ? 0 : 1;
+  const prev_run_count = prevRuns.length;
 
   const aggPack = computeAggregatedRunFeatures(db, prevRuns);
   const agg = aggPack?.agg ?? {};
@@ -182,6 +185,9 @@ function buildFeatureRow(pick) {
     trainer_365d_win_rate: trainerRates.win_rate,
     trainer_365d_place_rate: trainerRates.place_rate,
 
+    is_debut,
+    prev_run_count,
+
     ...agg,
 
     prev_days_since,
@@ -205,7 +211,11 @@ function buildFeatureRow(pick) {
   const x = featKeys.map(k => {
     const v = row[k];
     if (k === 'cur_win_odds') return 0;
-    return (v == null || !Number.isFinite(Number(v))) ? 0 : Number(v);
+    if (v == null || !Number.isFinite(Number(v))) {
+      const m = imputeMeans[k];
+      return (m == null || !Number.isFinite(Number(m))) ? 0 : Number(m);
+    }
+    return Number(v);
   });
 
   return {

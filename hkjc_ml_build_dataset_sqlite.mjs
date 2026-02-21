@@ -37,6 +37,7 @@ const dbPath = arg('--db', 'hkjc.sqlite');
 const outPath = arg('--out', 'hkjc_ml_dataset.jsonl');
 const prevRuns = Math.max(1, Number(arg('--prevRuns', '1')));
 const minPrevRuns = Math.max(0, Number(arg('--minPrevRuns', String(prevRuns))));
+const includeNoPrev = (arg('--includeNoPrev', '0') === '1' || arg('--includeNoPrev', 'false') === 'true');
 
 const db = openDb(dbPath, { readonly: true });
 
@@ -119,7 +120,7 @@ for (const r of rows) {
     keyType: r.horse_code ? 'code' : 'name'
   }) : [];
 
-  if (prev.length < minPrevRuns) {
+  if (prev.length < minPrevRuns && !includeNoPrev) {
     skippedNoPrev++;
   } else {
     const lastRun = prev[0] || null;
@@ -134,7 +135,7 @@ for (const r of rows) {
       if (lastDate) daysSinceLast = daysBetweenUtc(lastDate, raceDate);
     }
 
-    const agg = computeAggregatedRunFeatures(db, prev).agg;
+    const agg = (prev.length ? computeAggregatedRunFeatures(db, prev).agg : {});
 
     const finishPos = safeNum(r.finish_pos);
 
@@ -170,6 +171,10 @@ for (const r of rows) {
       trainer_365d_starts: t.starts,
       trainer_365d_win_rate: t.win_rate,
       trainer_365d_place_rate: t.place_rate,
+
+      // debut flags
+      is_debut: prev.length ? 0 : 1,
+      prev_run_count: prev.length,
 
       // previous run result deltas
       prev_days_since: daysSinceLast,
