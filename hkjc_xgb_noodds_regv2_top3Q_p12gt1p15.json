@@ -1,0 +1,657 @@
+{
+  "model": "HKJC-ML_XGB_NOODDS_REG_v2",
+  "trainRange": {
+    "start": "2023/09/01",
+    "end": "2025/07/31",
+    "meetings": 177
+  },
+  "testRange": {
+    "start": "2025/09/01",
+    "end": "2026/02/19",
+    "meetings": 47
+  },
+  "p12Threshold": 1.15,
+  "stakeQ": 100.0,
+  "summary": {
+    "Q_top3_pairs": {
+      "stake": 5400.0,
+      "return": 1090.0,
+      "profit": -4310.0,
+      "roi": -0.7981481481481482
+    }
+  },
+  "races_bet": 18,
+  "rows": [
+    {
+      "racedate": "2025/09/07",
+      "venue": "ST",
+      "race_no": 3,
+      "top3": [
+        1,
+        4,
+        6
+      ],
+      "p1": 0.6575227379798889,
+      "p2": 0.5103691816329956,
+      "p3": 0.44098401069641113,
+      "p12": 1.1678919196128845,
+      "pairs": [
+        "1-4",
+        "1-6",
+        "4-6"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/09/07&Racecourse=ST&RaceNo=3",
+      "per_pair": [
+        {
+          "pair": "1-4",
+          "q_div": null
+        },
+        {
+          "pair": "1-6",
+          "q_div": null
+        },
+        {
+          "pair": "4-6",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/09/28",
+      "venue": "ST",
+      "race_no": 5,
+      "top3": [
+        2,
+        6,
+        7
+      ],
+      "p1": 0.7227598428726196,
+      "p2": 0.454828679561615,
+      "p3": 0.24152545630931854,
+      "p12": 1.1775885224342346,
+      "pairs": [
+        "2-6",
+        "2-7",
+        "6-7"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/09/28&Racecourse=ST&RaceNo=5",
+      "per_pair": [
+        {
+          "pair": "2-6",
+          "q_div": null
+        },
+        {
+          "pair": "2-7",
+          "q_div": null
+        },
+        {
+          "pair": "6-7",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/10/01",
+      "venue": "ST",
+      "race_no": 2,
+      "top3": [
+        3,
+        10,
+        14
+      ],
+      "p1": 0.6934379935264587,
+      "p2": 0.4832826852798462,
+      "p3": 0.24455484747886658,
+      "p12": 1.176720678806305,
+      "pairs": [
+        "3-10",
+        "3-14",
+        "10-14"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/01&Racecourse=ST&RaceNo=2",
+      "per_pair": [
+        {
+          "pair": "3-10",
+          "q_div": 40.0
+        },
+        {
+          "pair": "3-14",
+          "q_div": null
+        },
+        {
+          "pair": "10-14",
+          "q_div": null
+        }
+      ],
+      "q_return": 400.0
+    },
+    {
+      "racedate": "2025/10/08",
+      "venue": "HV",
+      "race_no": 9,
+      "top3": [
+        5,
+        8,
+        2
+      ],
+      "p1": 0.5943375825881958,
+      "p2": 0.587546169757843,
+      "p3": 0.543725311756134,
+      "p12": 1.1818837523460388,
+      "pairs": [
+        "5-8",
+        "2-5",
+        "2-8"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/08&Racecourse=HV&RaceNo=9",
+      "per_pair": [
+        {
+          "pair": "5-8",
+          "q_div": null
+        },
+        {
+          "pair": "2-5",
+          "q_div": null
+        },
+        {
+          "pair": "2-8",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/10/19",
+      "venue": "ST",
+      "race_no": 6,
+      "top3": [
+        3,
+        11,
+        8
+      ],
+      "p1": 0.7026960849761963,
+      "p2": 0.5519534945487976,
+      "p3": 0.5459088683128357,
+      "p12": 1.254649579524994,
+      "pairs": [
+        "3-11",
+        "3-8",
+        "8-11"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/19&Racecourse=ST&RaceNo=6",
+      "per_pair": [
+        {
+          "pair": "3-11",
+          "q_div": null
+        },
+        {
+          "pair": "3-8",
+          "q_div": null
+        },
+        {
+          "pair": "8-11",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/10/26",
+      "venue": "ST",
+      "race_no": 3,
+      "top3": [
+        1,
+        13,
+        5
+      ],
+      "p1": 0.6190671920776367,
+      "p2": 0.6004782915115356,
+      "p3": 0.5424590110778809,
+      "p12": 1.2195454835891724,
+      "pairs": [
+        "1-13",
+        "1-5",
+        "5-13"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/26&Racecourse=ST&RaceNo=3",
+      "per_pair": [
+        {
+          "pair": "1-13",
+          "q_div": null
+        },
+        {
+          "pair": "1-5",
+          "q_div": null
+        },
+        {
+          "pair": "5-13",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/11/23",
+      "venue": "ST",
+      "race_no": 5,
+      "top3": [
+        7,
+        1,
+        2
+      ],
+      "p1": 0.7255024909973145,
+      "p2": 0.4543013870716095,
+      "p3": 0.43788039684295654,
+      "p12": 1.179803878068924,
+      "pairs": [
+        "1-7",
+        "2-7",
+        "1-2"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/23&Racecourse=ST&RaceNo=5",
+      "per_pair": [
+        {
+          "pair": "1-7",
+          "q_div": null
+        },
+        {
+          "pair": "2-7",
+          "q_div": null
+        },
+        {
+          "pair": "1-2",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/11/26",
+      "venue": "HV",
+      "race_no": 9,
+      "top3": [
+        4,
+        6,
+        5
+      ],
+      "p1": 0.7032121419906616,
+      "p2": 0.539316713809967,
+      "p3": 0.4575926661491394,
+      "p12": 1.2425288558006287,
+      "pairs": [
+        "4-6",
+        "4-5",
+        "5-6"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/26&Racecourse=HV&RaceNo=9",
+      "per_pair": [
+        {
+          "pair": "4-6",
+          "q_div": null
+        },
+        {
+          "pair": "4-5",
+          "q_div": null
+        },
+        {
+          "pair": "5-6",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/11/30",
+      "venue": "ST",
+      "race_no": 6,
+      "top3": [
+        6,
+        9,
+        7
+      ],
+      "p1": 0.6141406297683716,
+      "p2": 0.5621889233589172,
+      "p3": 0.5017641186714172,
+      "p12": 1.1763295531272888,
+      "pairs": [
+        "6-9",
+        "6-7",
+        "7-9"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/30&Racecourse=ST&RaceNo=6",
+      "per_pair": [
+        {
+          "pair": "6-9",
+          "q_div": null
+        },
+        {
+          "pair": "6-7",
+          "q_div": null
+        },
+        {
+          "pair": "7-9",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/11/30",
+      "venue": "ST",
+      "race_no": 9,
+      "top3": [
+        6,
+        5,
+        1
+      ],
+      "p1": 0.7216989994049072,
+      "p2": 0.5804213285446167,
+      "p3": 0.39839082956314087,
+      "p12": 1.302120327949524,
+      "pairs": [
+        "5-6",
+        "1-6",
+        "1-5"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/30&Racecourse=ST&RaceNo=9",
+      "per_pair": [
+        {
+          "pair": "5-6",
+          "q_div": null
+        },
+        {
+          "pair": "1-6",
+          "q_div": null
+        },
+        {
+          "pair": "1-5",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/12/14",
+      "venue": "ST",
+      "race_no": 5,
+      "top3": [
+        1,
+        6,
+        2
+      ],
+      "p1": 0.751074492931366,
+      "p2": 0.5089583992958069,
+      "p3": 0.4941957890987396,
+      "p12": 1.2600328922271729,
+      "pairs": [
+        "1-6",
+        "1-2",
+        "2-6"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/14&Racecourse=ST&RaceNo=5",
+      "per_pair": [
+        {
+          "pair": "1-6",
+          "q_div": null
+        },
+        {
+          "pair": "1-2",
+          "q_div": null
+        },
+        {
+          "pair": "2-6",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2025/12/20",
+      "venue": "ST",
+      "race_no": 9,
+      "top3": [
+        7,
+        3,
+        9
+      ],
+      "p1": 0.6980789303779602,
+      "p2": 0.49750837683677673,
+      "p3": 0.45675012469291687,
+      "p12": 1.195587307214737,
+      "pairs": [
+        "3-7",
+        "7-9",
+        "3-9"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/20&Racecourse=ST&RaceNo=9",
+      "per_pair": [
+        {
+          "pair": "3-7",
+          "q_div": null
+        },
+        {
+          "pair": "7-9",
+          "q_div": null
+        },
+        {
+          "pair": "3-9",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2026/01/01",
+      "venue": "ST",
+      "race_no": 11,
+      "top3": [
+        1,
+        2,
+        12
+      ],
+      "p1": 0.6606030464172363,
+      "p2": 0.5477949976921082,
+      "p3": 0.4071767032146454,
+      "p12": 1.2083980441093445,
+      "pairs": [
+        "1-2",
+        "1-12",
+        "2-12"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/01&Racecourse=ST&RaceNo=11",
+      "per_pair": [
+        {
+          "pair": "1-2",
+          "q_div": null
+        },
+        {
+          "pair": "1-12",
+          "q_div": null
+        },
+        {
+          "pair": "2-12",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2026/01/04",
+      "venue": "ST",
+      "race_no": 9,
+      "top3": [
+        5,
+        1,
+        9
+      ],
+      "p1": 0.75238436460495,
+      "p2": 0.580718457698822,
+      "p3": 0.2629314064979553,
+      "p12": 1.333102822303772,
+      "pairs": [
+        "1-5",
+        "5-9",
+        "1-9"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/04&Racecourse=ST&RaceNo=9",
+      "per_pair": [
+        {
+          "pair": "1-5",
+          "q_div": 69.0
+        },
+        {
+          "pair": "5-9",
+          "q_div": null
+        },
+        {
+          "pair": "1-9",
+          "q_div": null
+        }
+      ],
+      "q_return": 690.0
+    },
+    {
+      "racedate": "2026/01/11",
+      "venue": "ST",
+      "race_no": 7,
+      "top3": [
+        6,
+        4,
+        12
+      ],
+      "p1": 0.7838391065597534,
+      "p2": 0.5997814536094666,
+      "p3": 0.4653269052505493,
+      "p12": 1.38362056016922,
+      "pairs": [
+        "4-6",
+        "6-12",
+        "4-12"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/11&Racecourse=ST&RaceNo=7",
+      "per_pair": [
+        {
+          "pair": "4-6",
+          "q_div": null
+        },
+        {
+          "pair": "6-12",
+          "q_div": null
+        },
+        {
+          "pair": "4-12",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2026/02/08",
+      "venue": "ST",
+      "race_no": 7,
+      "top3": [
+        1,
+        7,
+        3
+      ],
+      "p1": 0.6015421152114868,
+      "p2": 0.5799930095672607,
+      "p3": 0.5400116443634033,
+      "p12": 1.1815351247787476,
+      "pairs": [
+        "1-7",
+        "1-3",
+        "3-7"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/08&Racecourse=ST&RaceNo=7",
+      "per_pair": [
+        {
+          "pair": "1-7",
+          "q_div": null
+        },
+        {
+          "pair": "1-3",
+          "q_div": null
+        },
+        {
+          "pair": "3-7",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2026/02/19",
+      "venue": "ST",
+      "race_no": 2,
+      "top3": [
+        9,
+        1,
+        2
+      ],
+      "p1": 0.6833224296569824,
+      "p2": 0.5289291143417358,
+      "p3": 0.3194843828678131,
+      "p12": 1.2122515439987183,
+      "pairs": [
+        "1-9",
+        "2-9",
+        "1-2"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=2",
+      "per_pair": [
+        {
+          "pair": "1-9",
+          "q_div": null
+        },
+        {
+          "pair": "2-9",
+          "q_div": null
+        },
+        {
+          "pair": "1-2",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    },
+    {
+      "racedate": "2026/02/19",
+      "venue": "ST",
+      "race_no": 11,
+      "top3": [
+        4,
+        2,
+        7
+      ],
+      "p1": 0.7576345801353455,
+      "p2": 0.5332223773002625,
+      "p3": 0.4470750689506531,
+      "p12": 1.290856957435608,
+      "pairs": [
+        "2-4",
+        "4-7",
+        "2-7"
+      ],
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=11",
+      "per_pair": [
+        {
+          "pair": "2-4",
+          "q_div": null
+        },
+        {
+          "pair": "4-7",
+          "q_div": null
+        },
+        {
+          "pair": "2-7",
+          "q_div": null
+        }
+      ],
+      "q_return": 0.0
+    }
+  ],
+  "generatedAt": "2026-02-21T14:33:59"
+}
