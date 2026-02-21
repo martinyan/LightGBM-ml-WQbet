@@ -112,7 +112,15 @@ def group_rows_by_race(rows):
     return by
 
 
-def build_feature_matrix(rows, feat_keys, cat_cols):
+def build_feature_matrix(rows, feat_keys, cat_cols, recent_scale=1.0):
+    # Emphasize recent performance by scaling certain "prev_*" features.
+    recent_keys = {
+        'prev_time_delta_sec','prev_margin_len','prev_finish_pos','prev_days_since',
+        'prev_split_last_time','prev_split_penult_time','prev_kick_delta',
+        'prev_pos_early','prev_pos_mid','prev_pos_late',
+        'prev_pos_change_early_to_late','prev_pos_change_mid_to_late',
+    }
+
     X = []
     for r in rows:
         row = []
@@ -122,12 +130,18 @@ def build_feature_matrix(rows, feat_keys, cat_cols):
                 # numeric hash feature for LGBM
                 row.append(stable_hash01(str(v) if v is not None else ''))
             else:
-                row.append(float(v or 0.0))
+                try:
+                    val = float(v or 0.0)
+                except Exception:
+                    val = 0.0
+                if recent_scale != 1.0 and k in recent_keys:
+                    val *= float(recent_scale)
+                row.append(val)
         X.append(row)
     return np.asarray(X, dtype=np.float32)
 
 
-def build_grouped_arrays(rows, feat_keys, cat_cols):
+def build_grouped_arrays(rows, feat_keys, cat_cols, recent_scale=1.0):
     races = group_rows_by_race(rows)
     group_sizes = []
     Xs = []
@@ -143,7 +157,7 @@ def build_grouped_arrays(rows, feat_keys, cat_cols):
         if len(runners) < 2:
             continue
         group_sizes.append(len(runners))
-        Xs.append(build_feature_matrix(runners, feat_keys, cat_cols))
+        Xs.append(build_feature_matrix(runners, feat_keys, cat_cols, recent_scale=recent_scale))
         ys.append(np.asarray(rels, dtype=np.float32))
         for rr in runners:
             metas.append({
@@ -223,6 +237,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--db', default='hkjc.sqlite')
     ap.add_argument('--data', default='hkjc_dataset_v4_code_include_debut.jsonl', help='JSONL built from sqlite')
+    ap.add_argument('--noJockey', action='store_true', help='drop cur_jockey + jockey rolling stats features')
+    ap.add_argument('--recentScale', type=float, default=1.0, help='multiply selected recent-performance features to emphasize them')
     ap.add_argument('--trainStart', default='2023/09/01')
     ap.add_argument('--trainEnd', default='2025/07/31')
     ap.add_argument('--testStart', default='2025/09/01')
@@ -271,20 +287,24 @@ def main():
     }
     # Cat features (strings) used as hashed numeric in LGBM; CatBoost will take raw strings
     cat_cols = ['cur_jockey', 'cur_trainer', 'cur_surface', 'venue']
+    if args.noJockey:
+        cat_cols = [c for c in cat_cols if c != 'cur_jockey']
 
     # choose feat keys: numeric + explicit categorical cols
     all_keys = set(rows[0].keys())
     feat_keys = sorted([k for k in all_keys if k not in meta and not k.startswith('y_')])
+    if args.noJockey:
+        feat_keys = [k for k in feat_keys if k != 'cur_jockey' and not k.startswith('jockey_')]
     # ensure cats present
     for c in cat_cols:
         if c not in feat_keys and c in all_keys:
             feat_keys.append(c)
 
     # build grouped arrays
-    fit_pack = build_grouped_arrays(fit_rows, feat_keys, cat_cols)
-    eval_pack = build_grouped_arrays(eval_rows, feat_keys, cat_cols)
-    train_pack = build_grouped_arrays(train_rows, feat_keys, cat_cols)
-    test_pack = build_grouped_arrays(test_rows, feat_keys, cat_cols)
+    fit_pack = build_grouped_arrays(fit_rows, feat_keys, cat_cols, recent_scale=args.recentScale)
+    eval_pack = build_grouped_arrays(eval_rows, feat_keys, cat_cols, recent_scale=args.recentScale)
+    train_pack = build_grouped_arrays(train_rows, feat_keys, cat_cols, recent_scale=args.recentScale)
+    test_pack = build_grouped_arrays(test_rows, feat_keys, cat_cols, recent_scale=args.recentScale)
 
     if not all([fit_pack, eval_pack, train_pack, test_pack]):
         raise SystemExit('Insufficient grouped data after filtering')
