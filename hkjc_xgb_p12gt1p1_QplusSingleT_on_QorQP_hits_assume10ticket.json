@@ -1,0 +1,117 @@
+{
+  "threshold": 1.1,
+  "qual_races": 28,
+  "q_bets": 28,
+  "hit_races_for_singleT": 7,
+  "Q": {
+    "stake": 2800,
+    "return": 3505.0,
+    "profit": 705.0,
+    "roi": 0.2517857142857143
+  },
+  "SingleT_assuming_10_ticket_even_if_stake_100": {
+    "stake": 700,
+    "return": 3056.0,
+    "profit": 2356.0,
+    "roi": 3.3657142857142857
+  },
+  "combined": {
+    "stake": 3500,
+    "return": 6561.0,
+    "profit": 3061.0,
+    "roi": 0.8745714285714286
+  },
+  "per_singleT_bet": [
+    {
+      "racedate": "2025/10/01",
+      "venue": "ST",
+      "race_no": 2,
+      "pair": "3-10",
+      "p12": 1.1083105206489563,
+      "q_div": 40.0,
+      "qp_div": 20.5,
+      "singleT_combo": "3,10,14",
+      "singleT_div_per10": 195.0,
+      "singleT_return_on_100stake_assuming10ticket": 195.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/01&Racecourse=ST&RaceNo=2"
+    },
+    {
+      "racedate": "2025/10/26",
+      "venue": "ST",
+      "race_no": 3,
+      "pair": "1-13",
+      "p12": 1.1548500657081604,
+      "q_div": null,
+      "qp_div": 40.5,
+      "singleT_combo": "1,3,13",
+      "singleT_div_per10": 566.0,
+      "singleT_return_on_100stake_assuming10ticket": 566.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/26&Racecourse=ST&RaceNo=3"
+    },
+    {
+      "racedate": "2025/11/15",
+      "venue": "ST",
+      "race_no": 7,
+      "pair": "9-11",
+      "p12": 1.1330375671386719,
+      "q_div": null,
+      "qp_div": 30.5,
+      "singleT_combo": "2,9,11",
+      "singleT_div_per10": 418.0,
+      "singleT_return_on_100stake_assuming10ticket": 418.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/15&Racecourse=ST&RaceNo=7"
+    },
+    {
+      "racedate": "2025/11/30",
+      "venue": "ST",
+      "race_no": 8,
+      "pair": "4-12",
+      "p12": 1.1108329892158508,
+      "q_div": 72.0,
+      "qp_div": 33.0,
+      "singleT_combo": "4,6,12",
+      "singleT_div_per10": 333.0,
+      "singleT_return_on_100stake_assuming10ticket": 333.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/30&Racecourse=ST&RaceNo=8"
+    },
+    {
+      "racedate": "2026/01/04",
+      "venue": "ST",
+      "race_no": 8,
+      "pair": "6-10",
+      "p12": 1.1744904518127441,
+      "q_div": 117.5,
+      "qp_div": 56.5,
+      "singleT_combo": "3,6,10",
+      "singleT_div_per10": 1217.0,
+      "singleT_return_on_100stake_assuming10ticket": 1217.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/04&Racecourse=ST&RaceNo=8"
+    },
+    {
+      "racedate": "2026/01/04",
+      "venue": "ST",
+      "race_no": 9,
+      "pair": "1-5",
+      "p12": 1.2592432498931885,
+      "q_div": 69.0,
+      "qp_div": 29.0,
+      "singleT_combo": "1,5,7",
+      "singleT_div_per10": 194.0,
+      "singleT_return_on_100stake_assuming10ticket": 194.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/04&Racecourse=ST&RaceNo=9"
+    },
+    {
+      "racedate": "2026/02/19",
+      "venue": "ST",
+      "race_no": 5,
+      "pair": "1-3",
+      "p12": 1.1484097242355347,
+      "q_div": 52.0,
+      "qp_div": 24.0,
+      "singleT_combo": "1,3,14",
+      "singleT_div_per10": 133.0,
+      "singleT_return_on_100stake_assuming10ticket": 133.0,
+      "url": "https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=5"
+    }
+  ]
+}
