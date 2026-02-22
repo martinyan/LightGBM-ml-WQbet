@@ -324,20 +324,27 @@ def main():
 
     # We'll sweep beta and threshold; overlay signal = alpha*res_win + beta*res_place
 
-    # select top1 per race by score_win (market+res)
-    def choose_top1(meta_rows, pmw, pred_res, overlay, threshold):
-        # build per race
+    # select top1 per race by score_win (market+res) and also return top2 info
+    def choose_top1(meta_rows, pmw, pred_res_win, pred_res_place, threshold, beta):
         by=defaultdict(list)
-        for m, p, r, ov in zip(meta_rows, pmw, pred_res, overlay):
-            by[(m['racedate'],m['venue'],m['race_no'])].append((m['horse_no'], float(p), float(r), float(ov)))
+        for m, p, rw, rp in zip(meta_rows, pmw, pred_res_win, pred_res_place):
+            by[(m['racedate'],m['venue'],m['race_no'])].append((m['horse_no'], float(p), float(rw), float(rp)))
+
         picks=[]
         for key, arr in sorted(by.items()):
-            # score = logit(p_mkt_win) + alpha*res_hat_win
-            arr2=[(hn, logit(pm)+args.alpha*rh, ov) for hn,pm,rh,ov in arr]
-            arr2.sort(key=lambda t:t[1], reverse=True)
-            hn,score,ov=arr2[0]
-            if ov > threshold:
-                picks.append((key, hn, ov, score))
+            # score_win = logit(p_mkt_win) + alpha*res_hat_win
+            scored=[]
+            for hn, pm, rw, rp in arr:
+                score_win = logit(pm) + args.alpha*rw
+                overlay = args.alpha*rw + beta*rp
+                scored.append((hn, score_win, overlay))
+            scored.sort(key=lambda t:t[1], reverse=True)
+
+            hn1, score1, ov1 = scored[0]
+            hn2, score2, ov2 = scored[1] if len(scored) > 1 else (None, None, None)
+
+            if ov1 > threshold:
+                picks.append((key, hn1, ov1, score1, hn2, score2, ov2))
         return picks
 
     thresholds=[float(x) for x in args.thresholdGrid.split(',') if x.strip()]
@@ -376,7 +383,7 @@ def main():
     def bt(picks):
         stakeW=args.stakeWin; stakeP=args.stakePlace
         stake=0.0; ret=0.0; n=0; missing=0
-        for (rd,venue,rn), hn, ov, score in picks:
+        for (rd,venue,rn), hn, ov, score, hn2, score2, ov2 in picks:
             url, win, place, miss = get_div(rd,venue,rn)
             if miss:
                 missing += 1
@@ -401,7 +408,7 @@ def main():
     for beta in betas:
         overlay_eval=args.alpha*pred_eval_win + beta*pred_eval_pl
         for th in thresholds:
-            picks=choose_top1(meta_eval, pmw_eval, pred_eval_win, overlay_eval, th)
+            picks=choose_top1(meta_eval, pmw_eval, pred_eval_win, pred_eval_pl, th, beta)
             s=bt(picks)
             row={**s,'threshold':th,'beta':beta}
             sweep.append(row)
@@ -413,7 +420,7 @@ def main():
     pred_test_pl=mdl_pl.predict(X_test)
     overlay_test=args.alpha*pred_test_win + best['beta']*pred_test_pl
 
-    picks_test=choose_top1(meta_test, pmw_test, pred_test_win, overlay_test, best['threshold'])
+    picks_test=choose_top1(meta_test, pmw_test, pred_test_win, pred_test_pl, best['threshold'], best['beta'])
     summary_test=bt(picks_test)
 
     # persist cache
@@ -422,7 +429,7 @@ def main():
 
     # Build a detailed test ledger for downstream strategy variants (win-only, place-only, etc.)
     test_ledger=[]
-    for (rd,venue,rn), hn, ov, score in picks_test:
+    for (rd,venue,rn), hn, ov, score, hn2, score2, ov2 in picks_test:
         url, win, place, miss = get_div(rd,venue,rn)
         def get_hdiv(mapobj, hn):
             if not isinstance(mapobj, dict):
@@ -434,9 +441,12 @@ def main():
         pdiv=get_hdiv(place, hn)
         test_ledger.append({
             'racedate': rd, 'venue': venue, 'race_no': int(rn),
-            'horse_no': int(hn),
-            'overlay': float(ov),
-            'score_win': float(score),
+            'top1_horse_no': int(hn),
+            'top1_overlay': float(ov),
+            'top1_score_win': float(score),
+            'top2_horse_no': (int(hn2) if hn2 is not None else None),
+            'top2_overlay': (float(ov2) if ov2 is not None else None),
+            'top2_score_win': (float(score2) if score2 is not None else None),
             'win_div': wdiv,
             'place_div': pdiv,
             'url': url,
