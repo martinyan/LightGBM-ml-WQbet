@@ -1,0 +1,804 @@
+{
+  "generatedAt": "2026-02-22T08:23:48",
+  "model": "OVERLAY_RESIDUAL_LGBM_v1",
+  "ranges": {
+    "train": {
+      "start": "2023/09/01",
+      "end": "2025/07/31"
+    },
+    "test": {
+      "start": "2025/09/01",
+      "end": "2026/02/19"
+    }
+  },
+  "features": {
+    "feat_keys": [
+      "cur_class_num",
+      "cur_distance_m",
+      "cur_draw",
+      "cur_surface",
+      "cur_weight",
+      "is_debut",
+      "prevN_avg_kick_delta",
+      "prevN_avg_margin_len",
+      "prevN_avg_pos_change_early_to_late",
+      "prevN_avg_pos_change_mid_to_late",
+      "prevN_avg_pos_early",
+      "prevN_avg_pos_late",
+      "prevN_avg_pos_mid",
+      "prevN_avg_split_last_time",
+      "prevN_avg_split_penult_time",
+      "prevN_avg_time_delta_sec",
+      "prev_days_since",
+      "prev_finish_pos",
+      "prev_kick_delta",
+      "prev_margin_len",
+      "prev_pos_change_early_to_late",
+      "prev_pos_change_mid_to_late",
+      "prev_pos_early",
+      "prev_pos_late",
+      "prev_pos_mid",
+      "prev_rating",
+      "prev_run_count",
+      "prev_split_count",
+      "prev_split_last_time",
+      "prev_split_penult_time",
+      "prev_time_delta_sec"
+    ],
+    "note": "odds used only in market baseline; residual models exclude odds/jockey/trainer"
+  },
+  "baseline": {
+    "p_mkt_win": "normalized 1/odds",
+    "p_mkt_place": "logistic baseline from logit(p_mkt_win)+log(field_size)"
+  },
+  "overlay": {
+    "alpha": 1.0,
+    "beta": 0.0,
+    "signal": "alpha*res_hat_win + beta*res_hat_place"
+  },
+  "tuning": {
+    "thresholdGrid": [
+      0.0,
+      0.01,
+      0.02,
+      0.03,
+      0.04,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.12,
+      0.15,
+      0.2
+    ],
+    "betaGrid": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "best": {
+      "bets": 42,
+      "missing": 0,
+      "stake": 1680.0,
+      "return": 1339.8999999999999,
+      "profit": -340.10000000000014,
+      "roi": -0.20244047619047628,
+      "threshold": 0.2,
+      "beta": 0.5
+    },
+    "sweep": [
+      {
+        "bets": 195,
+        "missing": 0,
+        "stake": 7800.0,
+        "return": 4244.0,
+        "profit": -3556.0,
+        "roi": -0.4558974358974359,
+        "threshold": 0.0,
+        "beta": 0.0
+      },
+      {
+        "bets": 176,
+        "missing": 0,
+        "stake": 7040.0,
+        "return": 3691.7,
+        "profit": -3348.3,
+        "roi": -0.4756107954545455,
+        "threshold": 0.01,
+        "beta": 0.0
+      },
+      {
+        "bets": 161,
+        "missing": 0,
+        "stake": 6440.0,
+        "return": 3328.2,
+        "profit": -3111.8,
+        "roi": -0.4831987577639752,
+        "threshold": 0.02,
+        "beta": 0.0
+      },
+      {
+        "bets": 141,
+        "missing": 0,
+        "stake": 5640.0,
+        "return": 3157.5,
+        "profit": -2482.5,
+        "roi": -0.4401595744680851,
+        "threshold": 0.03,
+        "beta": 0.0
+      },
+      {
+        "bets": 128,
+        "missing": 0,
+        "stake": 5120.0,
+        "return": 2796.7,
+        "profit": -2323.3,
+        "roi": -0.45376953125,
+        "threshold": 0.04,
+        "beta": 0.0
+      },
+      {
+        "bets": 115,
+        "missing": 0,
+        "stake": 4600.0,
+        "return": 2654.7,
+        "profit": -1945.3000000000002,
+        "roi": -0.4228913043478261,
+        "threshold": 0.05,
+        "beta": 0.0
+      },
+      {
+        "bets": 106,
+        "missing": 0,
+        "stake": 4240.0,
+        "return": 2423.7,
+        "profit": -1816.3000000000002,
+        "roi": -0.428372641509434,
+        "threshold": 0.06,
+        "beta": 0.0
+      },
+      {
+        "bets": 97,
+        "missing": 0,
+        "stake": 3880.0,
+        "return": 2281.7,
+        "profit": -1598.3000000000002,
+        "roi": -0.4119329896907217,
+        "threshold": 0.07,
+        "beta": 0.0
+      },
+      {
+        "bets": 88,
+        "missing": 0,
+        "stake": 3520.0,
+        "return": 1997.6999999999998,
+        "profit": -1522.3000000000002,
+        "roi": -0.432471590909091,
+        "threshold": 0.08,
+        "beta": 0.0
+      },
+      {
+        "bets": 80,
+        "missing": 0,
+        "stake": 3200.0,
+        "return": 1953.1999999999998,
+        "profit": -1246.8000000000002,
+        "roi": -0.38962500000000005,
+        "threshold": 0.09,
+        "beta": 0.0
+      },
+      {
+        "bets": 73,
+        "missing": 0,
+        "stake": 2920.0,
+        "return": 1848.3999999999999,
+        "profit": -1071.6000000000001,
+        "roi": -0.36698630136986304,
+        "threshold": 0.1,
+        "beta": 0.0
+      },
+      {
+        "bets": 55,
+        "missing": 0,
+        "stake": 2200.0,
+        "return": 1539.6,
+        "profit": -660.4000000000001,
+        "roi": -0.3001818181818182,
+        "threshold": 0.12,
+        "beta": 0.0
+      },
+      {
+        "bets": 41,
+        "missing": 0,
+        "stake": 1640.0,
+        "return": 1043.3,
+        "profit": -596.7,
+        "roi": -0.3638414634146342,
+        "threshold": 0.15,
+        "beta": 0.0
+      },
+      {
+        "bets": 23,
+        "missing": 0,
+        "stake": 920.0,
+        "return": 583.5,
+        "profit": -336.5,
+        "roi": -0.3657608695652174,
+        "threshold": 0.2,
+        "beta": 0.0
+      },
+      {
+        "bets": 194,
+        "missing": 0,
+        "stake": 7760.0,
+        "return": 4316.400000000001,
+        "profit": -3443.5999999999995,
+        "roi": -0.44376288659793806,
+        "threshold": 0.0,
+        "beta": 0.25
+      },
+      {
+        "bets": 181,
+        "missing": 0,
+        "stake": 7240.0,
+        "return": 4011.4000000000005,
+        "profit": -3228.5999999999995,
+        "roi": -0.44593922651933693,
+        "threshold": 0.01,
+        "beta": 0.25
+      },
+      {
+        "bets": 171,
+        "missing": 0,
+        "stake": 6840.0,
+        "return": 3560.8999999999996,
+        "profit": -3279.1000000000004,
+        "roi": -0.4794005847953217,
+        "threshold": 0.02,
+        "beta": 0.25
+      },
+      {
+        "bets": 164,
+        "missing": 0,
+        "stake": 6560.0,
+        "return": 3446.3999999999996,
+        "profit": -3113.6000000000004,
+        "roi": -0.47463414634146345,
+        "threshold": 0.03,
+        "beta": 0.25
+      },
+      {
+        "bets": 153,
+        "missing": 0,
+        "stake": 6120.0,
+        "return": 3245.6,
+        "profit": -2874.4,
+        "roi": -0.4696732026143791,
+        "threshold": 0.04,
+        "beta": 0.25
+      },
+      {
+        "bets": 141,
+        "missing": 0,
+        "stake": 5640.0,
+        "return": 3066.8,
+        "profit": -2573.2,
+        "roi": -0.456241134751773,
+        "threshold": 0.05,
+        "beta": 0.25
+      },
+      {
+        "bets": 125,
+        "missing": 0,
+        "stake": 5000.0,
+        "return": 2696.5,
+        "profit": -2303.5,
+        "roi": -0.4607,
+        "threshold": 0.06,
+        "beta": 0.25
+      },
+      {
+        "bets": 109,
+        "missing": 0,
+        "stake": 4360.0,
+        "return": 2557.0,
+        "profit": -1803.0,
+        "roi": -0.4135321100917431,
+        "threshold": 0.07,
+        "beta": 0.25
+      },
+      {
+        "bets": 103,
+        "missing": 0,
+        "stake": 4120.0,
+        "return": 2324.0,
+        "profit": -1796.0,
+        "roi": -0.43592233009708736,
+        "threshold": 0.08,
+        "beta": 0.25
+      },
+      {
+        "bets": 91,
+        "missing": 0,
+        "stake": 3640.0,
+        "return": 2003.1999999999998,
+        "profit": -1636.8000000000002,
+        "roi": -0.4496703296703297,
+        "threshold": 0.09,
+        "beta": 0.25
+      },
+      {
+        "bets": 83,
+        "missing": 0,
+        "stake": 3320.0,
+        "return": 2003.1999999999998,
+        "profit": -1316.8000000000002,
+        "roi": -0.39662650602409644,
+        "threshold": 0.1,
+        "beta": 0.25
+      },
+      {
+        "bets": 74,
+        "missing": 0,
+        "stake": 2960.0,
+        "return": 1789.6999999999998,
+        "profit": -1170.3000000000002,
+        "roi": -0.3953716216216217,
+        "threshold": 0.12,
+        "beta": 0.25
+      },
+      {
+        "bets": 56,
+        "missing": 0,
+        "stake": 2240.0,
+        "return": 1521.3999999999999,
+        "profit": -718.6000000000001,
+        "roi": -0.32080357142857147,
+        "threshold": 0.15,
+        "beta": 0.25
+      },
+      {
+        "bets": 33,
+        "missing": 0,
+        "stake": 1320.0,
+        "return": 923.8,
+        "profit": -396.20000000000005,
+        "roi": -0.30015151515151517,
+        "threshold": 0.2,
+        "beta": 0.25
+      },
+      {
+        "bets": 197,
+        "missing": 0,
+        "stake": 7880.0,
+        "return": 4434.400000000001,
+        "profit": -3445.5999999999995,
+        "roi": -0.4372588832487309,
+        "threshold": 0.0,
+        "beta": 0.5
+      },
+      {
+        "bets": 181,
+        "missing": 0,
+        "stake": 7240.0,
+        "return": 3770.3999999999996,
+        "profit": -3469.6000000000004,
+        "roi": -0.4792265193370166,
+        "threshold": 0.01,
+        "beta": 0.5
+      },
+      {
+        "bets": 173,
+        "missing": 0,
+        "stake": 6920.0,
+        "return": 3770.3999999999996,
+        "profit": -3149.6000000000004,
+        "roi": -0.4551445086705203,
+        "threshold": 0.02,
+        "beta": 0.5
+      },
+      {
+        "bets": 168,
+        "missing": 0,
+        "stake": 6720.0,
+        "return": 3523.3999999999996,
+        "profit": -3196.6000000000004,
+        "roi": -0.47568452380952386,
+        "threshold": 0.03,
+        "beta": 0.5
+      },
+      {
+        "bets": 160,
+        "missing": 0,
+        "stake": 6400.0,
+        "return": 3419.6,
+        "profit": -2980.4,
+        "roi": -0.46568750000000003,
+        "threshold": 0.04,
+        "beta": 0.5
+      },
+      {
+        "bets": 156,
+        "missing": 0,
+        "stake": 6240.0,
+        "return": 3366.1,
+        "profit": -2873.9,
+        "roi": -0.46056089743589745,
+        "threshold": 0.05,
+        "beta": 0.5
+      },
+      {
+        "bets": 148,
+        "missing": 0,
+        "stake": 5920.0,
+        "return": 3320.8,
+        "profit": -2599.2,
+        "roi": -0.439054054054054,
+        "threshold": 0.06,
+        "beta": 0.5
+      },
+      {
+        "bets": 138,
+        "missing": 0,
+        "stake": 5520.0,
+        "return": 3139.3,
+        "profit": -2380.7,
+        "roi": -0.43128623188405796,
+        "threshold": 0.07,
+        "beta": 0.5
+      },
+      {
+        "bets": 124,
+        "missing": 0,
+        "stake": 4960.0,
+        "return": 2904.5,
+        "profit": -2055.5,
+        "roi": -0.4144153225806452,
+        "threshold": 0.08,
+        "beta": 0.5
+      },
+      {
+        "bets": 115,
+        "missing": 0,
+        "stake": 4600.0,
+        "return": 2626.5,
+        "profit": -1973.5,
+        "roi": -0.4290217391304348,
+        "threshold": 0.09,
+        "beta": 0.5
+      },
+      {
+        "bets": 105,
+        "missing": 0,
+        "stake": 4200.0,
+        "return": 2393.0,
+        "profit": -1807.0,
+        "roi": -0.43023809523809525,
+        "threshold": 0.1,
+        "beta": 0.5
+      },
+      {
+        "bets": 88,
+        "missing": 0,
+        "stake": 3520.0,
+        "return": 2062.0,
+        "profit": -1458.0,
+        "roi": -0.41420454545454544,
+        "threshold": 0.12,
+        "beta": 0.5
+      },
+      {
+        "bets": 73,
+        "missing": 0,
+        "stake": 2920.0,
+        "return": 1947.6999999999998,
+        "profit": -972.3000000000002,
+        "roi": -0.33297945205479457,
+        "threshold": 0.15,
+        "beta": 0.5
+      },
+      {
+        "bets": 42,
+        "missing": 0,
+        "stake": 1680.0,
+        "return": 1339.8999999999999,
+        "profit": -340.10000000000014,
+        "roi": -0.20244047619047628,
+        "threshold": 0.2,
+        "beta": 0.5
+      },
+      {
+        "bets": 198,
+        "missing": 0,
+        "stake": 7920.0,
+        "return": 4485.900000000001,
+        "profit": -3434.0999999999995,
+        "roi": -0.4335984848484848,
+        "threshold": 0.0,
+        "beta": 0.75
+      },
+      {
+        "bets": 186,
+        "missing": 0,
+        "stake": 7440.0,
+        "return": 4338.400000000001,
+        "profit": -3101.5999999999995,
+        "roi": -0.41688172043010746,
+        "threshold": 0.01,
+        "beta": 0.75
+      },
+      {
+        "bets": 179,
+        "missing": 0,
+        "stake": 7160.0,
+        "return": 4044.9,
+        "profit": -3115.1,
+        "roi": -0.4350698324022346,
+        "threshold": 0.02,
+        "beta": 0.75
+      },
+      {
+        "bets": 171,
+        "missing": 0,
+        "stake": 6840.0,
+        "return": 3783.6,
+        "profit": -3056.4,
+        "roi": -0.44684210526315793,
+        "threshold": 0.03,
+        "beta": 0.75
+      },
+      {
+        "bets": 164,
+        "missing": 0,
+        "stake": 6560.0,
+        "return": 3478.6,
+        "profit": -3081.4,
+        "roi": -0.46972560975609756,
+        "threshold": 0.04,
+        "beta": 0.75
+      },
+      {
+        "bets": 161,
+        "missing": 0,
+        "stake": 6440.0,
+        "return": 3478.6,
+        "profit": -2961.4,
+        "roi": -0.4598447204968944,
+        "threshold": 0.05,
+        "beta": 0.75
+      },
+      {
+        "bets": 154,
+        "missing": 0,
+        "stake": 6160.0,
+        "return": 3424.1,
+        "profit": -2735.9,
+        "roi": -0.4441396103896104,
+        "threshold": 0.06,
+        "beta": 0.75
+      },
+      {
+        "bets": 147,
+        "missing": 0,
+        "stake": 5880.0,
+        "return": 3188.3,
+        "profit": -2691.7,
+        "roi": -0.45777210884353736,
+        "threshold": 0.07,
+        "beta": 0.75
+      },
+      {
+        "bets": 144,
+        "missing": 0,
+        "stake": 5760.0,
+        "return": 3188.3,
+        "profit": -2571.7,
+        "roi": -0.4464756944444444,
+        "threshold": 0.08,
+        "beta": 0.75
+      },
+      {
+        "bets": 135,
+        "missing": 0,
+        "stake": 5400.0,
+        "return": 3119.3,
+        "profit": -2280.7,
+        "roi": -0.4223518518518518,
+        "threshold": 0.09,
+        "beta": 0.75
+      },
+      {
+        "bets": 127,
+        "missing": 0,
+        "stake": 5080.0,
+        "return": 2957.5,
+        "profit": -2122.5,
+        "roi": -0.41781496062992124,
+        "threshold": 0.1,
+        "beta": 0.75
+      },
+      {
+        "bets": 108,
+        "missing": 0,
+        "stake": 4320.0,
+        "return": 2534.5,
+        "profit": -1785.5,
+        "roi": -0.4133101851851852,
+        "threshold": 0.12,
+        "beta": 0.75
+      },
+      {
+        "bets": 88,
+        "missing": 0,
+        "stake": 3520.0,
+        "return": 2187.5,
+        "profit": -1332.5,
+        "roi": -0.37855113636363635,
+        "threshold": 0.15,
+        "beta": 0.75
+      },
+      {
+        "bets": 65,
+        "missing": 0,
+        "stake": 2600.0,
+        "return": 1790.4999999999998,
+        "profit": -809.5000000000002,
+        "roi": -0.31134615384615394,
+        "threshold": 0.2,
+        "beta": 0.75
+      },
+      {
+        "bets": 198,
+        "missing": 0,
+        "stake": 7920.0,
+        "return": 4776.400000000001,
+        "profit": -3143.5999999999995,
+        "roi": -0.39691919191919184,
+        "threshold": 0.0,
+        "beta": 1.0
+      },
+      {
+        "bets": 190,
+        "missing": 0,
+        "stake": 7600.0,
+        "return": 4429.400000000001,
+        "profit": -3170.5999999999995,
+        "roi": -0.4171842105263157,
+        "threshold": 0.01,
+        "beta": 1.0
+      },
+      {
+        "bets": 181,
+        "missing": 0,
+        "stake": 7240.0,
+        "return": 4276.900000000001,
+        "profit": -2963.0999999999995,
+        "roi": -0.4092679558011049,
+        "threshold": 0.02,
+        "beta": 1.0
+      },
+      {
+        "bets": 174,
+        "missing": 0,
+        "stake": 6960.0,
+        "return": 4061.6000000000004,
+        "profit": -2898.3999999999996,
+        "roi": -0.41643678160919534,
+        "threshold": 0.03,
+        "beta": 1.0
+      },
+      {
+        "bets": 171,
+        "missing": 0,
+        "stake": 6840.0,
+        "return": 3948.1000000000004,
+        "profit": -2891.8999999999996,
+        "roi": -0.42279239766081866,
+        "threshold": 0.04,
+        "beta": 1.0
+      },
+      {
+        "bets": 162,
+        "missing": 0,
+        "stake": 6480.0,
+        "return": 3611.1,
+        "profit": -2868.9,
+        "roi": -0.4427314814814815,
+        "threshold": 0.05,
+        "beta": 1.0
+      },
+      {
+        "bets": 160,
+        "missing": 0,
+        "stake": 6400.0,
+        "return": 3535.6,
+        "profit": -2864.4,
+        "roi": -0.44756250000000003,
+        "threshold": 0.06,
+        "beta": 1.0
+      },
+      {
+        "bets": 153,
+        "missing": 0,
+        "stake": 6120.0,
+        "return": 3346.1,
+        "profit": -2773.9,
+        "roi": -0.45325163398692814,
+        "threshold": 0.07,
+        "beta": 1.0
+      },
+      {
+        "bets": 149,
+        "missing": 0,
+        "stake": 5960.0,
+        "return": 3292.6,
+        "profit": -2667.4,
+        "roi": -0.4475503355704698,
+        "threshold": 0.08,
+        "beta": 1.0
+      },
+      {
+        "bets": 144,
+        "missing": 0,
+        "stake": 5760.0,
+        "return": 3247.3,
+        "profit": -2512.7,
+        "roi": -0.43623263888888886,
+        "threshold": 0.09,
+        "beta": 1.0
+      },
+      {
+        "bets": 138,
+        "missing": 0,
+        "stake": 5520.0,
+        "return": 3184.8,
+        "profit": -2335.2,
+        "roi": -0.4230434782608695,
+        "threshold": 0.1,
+        "beta": 1.0
+      },
+      {
+        "bets": 125,
+        "missing": 0,
+        "stake": 5000.0,
+        "return": 2876.5,
+        "profit": -2123.5,
+        "roi": -0.4247,
+        "threshold": 0.12,
+        "beta": 1.0
+      },
+      {
+        "bets": 107,
+        "missing": 0,
+        "stake": 4280.0,
+        "return": 2593.5,
+        "profit": -1686.5,
+        "roi": -0.39404205607476633,
+        "threshold": 0.15,
+        "beta": 1.0
+      },
+      {
+        "bets": 79,
+        "missing": 0,
+        "stake": 3160.0,
+        "return": 2075.0,
+        "profit": -1085.0,
+        "roi": -0.34335443037974683,
+        "threshold": 0.2,
+        "beta": 1.0
+      }
+    ]
+  },
+  "test": {
+    "bets": 58,
+    "missing": 0,
+    "stake": 2320.0,
+    "return": 1828.1,
+    "profit": -491.9000000000001,
+    "roi": -0.21202586206896556
+  }
+}
