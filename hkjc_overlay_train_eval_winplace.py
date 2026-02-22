@@ -420,6 +420,28 @@ def main():
     with open(cache_path,'w',encoding='utf-8') as f:
         json.dump(cache,f,ensure_ascii=False)
 
+    # Build a detailed test ledger for downstream strategy variants (win-only, place-only, etc.)
+    test_ledger=[]
+    for (rd,venue,rn), hn, ov, score in picks_test:
+        url, win, place, miss = get_div(rd,venue,rn)
+        def get_hdiv(mapobj, hn):
+            if not isinstance(mapobj, dict):
+                return None
+            if hn in mapobj:
+                return mapobj.get(hn)
+            return mapobj.get(str(hn))
+        wdiv=get_hdiv(win, hn)
+        pdiv=get_hdiv(place, hn)
+        test_ledger.append({
+            'racedate': rd, 'venue': venue, 'race_no': int(rn),
+            'horse_no': int(hn),
+            'overlay': float(ov),
+            'score_win': float(score),
+            'win_div': wdiv,
+            'place_div': pdiv,
+            'url': url,
+        })
+
     out={
         'generatedAt': datetime.datetime.now().isoformat(timespec='seconds'),
         'model':'OVERLAY_RESIDUAL_LGBM_v1',
@@ -432,9 +454,10 @@ def main():
             'note':'odds used only in market baseline; residual models exclude odds/jockey/trainer',
         },
         'baseline':{'p_mkt_win':'normalized 1/odds', 'p_mkt_place':'logistic baseline from logit(p_mkt_win)+log(field_size)'},
-        'overlay':{'alpha':args.alpha,'beta':args.beta,'signal':'alpha*res_hat_win + beta*res_hat_place'},
+        'overlay':{'alpha':args.alpha,'signal':'alpha*res_hat_win + beta*res_hat_place'},
         'tuning':{'thresholdGrid':thresholds,'betaGrid':betas,'best':best,'sweep':sweep},
         'test':summary_test,
+        'test_ledger': sorted(test_ledger, key=lambda r:(r['racedate'], r['venue'], r['race_no']))
     }
 
     out_path=os.path.join(args.outDir,'overlay_win10_place30_top1_threshold.json')
