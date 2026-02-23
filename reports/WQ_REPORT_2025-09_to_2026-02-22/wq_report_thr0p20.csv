@@ -1,0 +1,15 @@
+racedate,venue,race_no,url,overlay,anchor_horse_no,win_div,q_partner2,q_partner3,q_div_12,q_div_13,stake_win,stake_q_total,stake_total,return_win,return_q_total,return_total,profit_total,q_hit_any
+2025/10/12,ST,1,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/12&Racecourse=ST&RaceNo=1,0.2608158794106495,7,,3,5,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2025/10/15,HV,9,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/15&Racecourse=HV&RaceNo=9,0.34160001182381555,8,54.5,6,2,139.0,,10.0,20.0,30.0,54.5,139.0,193.5,163.5,True
+2025/10/26,ST,1,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/10/26&Racecourse=ST&RaceNo=1,0.23690040765034773,1,,13,11,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2025/11/30,ST,7,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/11/30&Racecourse=ST&RaceNo=7,0.20993683033035918,3,,12,2,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2025/12/07,ST,9,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/07&Racecourse=ST&RaceNo=9,0.3004086123573442,13,,3,1,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2025/12/14,ST,8,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/14&Racecourse=ST&RaceNo=8,0.42402023713890225,1,11.0,2,5,23.5,,10.0,20.0,30.0,11.0,23.5,34.5,4.5,True
+2025/12/17,HV,6,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/17&Racecourse=HV&RaceNo=6,0.20640077500737605,8,,10,12,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2025/12/20,ST,9,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2025/12/20&Racecourse=ST&RaceNo=9,0.34438564107439423,7,,9,4,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/01/07,HV,6,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/07&Racecourse=HV&RaceNo=6,0.2269108788290617,5,,2,1,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/01/21,ST,9,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/21&Racecourse=ST&RaceNo=9,0.2244815782694062,13,,4,5,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/01/25,ST,8,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/01/25&Racecourse=ST&RaceNo=8,0.311653054799063,1,,2,5,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/02/01,ST,6,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/01&Racecourse=ST&RaceNo=6,0.2528944393256533,7,,5,10,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/02/04,HV,3,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/04&Racecourse=HV&RaceNo=3,0.2146755290428472,8,,3,6,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
+2026/02/19,ST,3,https://racing.hkjc.com/zh-hk/local/information/localresults?racedate=2026/02/19&Racecourse=ST&RaceNo=3,0.2038918856421579,9,,14,1,,,10.0,20.0,30.0,0.0,0.0,0.0,-30.0,False
