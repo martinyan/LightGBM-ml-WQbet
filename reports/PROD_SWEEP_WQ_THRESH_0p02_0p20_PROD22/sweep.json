@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-02-24T07:48:32",
+  "ranges": {
+    "test": {
+      "start": "2025/09/01",
+      "end": "2026/02/22"
+    }
+  },
+  "models": {
+    "W": {
+      "bundle": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl"
+    },
+    "Q": {
+      "bundle": "models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json",
+      "modelTxt": "models/Q_RANKER_v7_PROD_FEB22_111ROI/ranker.txt"
+    }
+  },
+  "params": {
+    "stakeW": 10.0,
+    "stakeQ": 10.0,
+    "thrStart": 0.02,
+    "thrEnd": 0.2,
+    "thrStep": 0.02
+  },
+  "sweep": [
+    {
+      "threshold": 0.02,
+      "w_bets": 195,
+      "w_wins": 61,
+      "w_hit_rate": 0.3128205128205128,
+      "w_roi": -0.04487179487179487,
+      "q_races": 195,
+      "q_bets": 390,
+      "q_hits_any": 41,
+      "q_hit_rate_any": 0.21025641025641026,
+      "q_roi": 0.10987179487179487,
+      "total_roi": 0.05829059829059829,
+      "total_profit": 341.0
+    },
+    {
+      "threshold": 0.04,
+      "w_bets": 152,
+      "w_wins": 52,
+      "w_hit_rate": 0.34210526315789475,
+      "w_roi": 0.07401315789473684,
+      "q_races": 152,
+      "q_bets": 304,
+      "q_hits_any": 36,
+      "q_hit_rate_any": 0.23684210526315788,
+      "q_roi": 0.3327302631578947,
+      "total_roi": 0.24649122807017543,
+      "total_profit": 1124.0
+    },
+    {
+      "threshold": 0.06,
+      "w_bets": 126,
+      "w_wins": 42,
+      "w_hit_rate": 0.3333333333333333,
+      "w_roi": 0.03888888888888889,
+      "q_races": 126,
+      "q_bets": 252,
+      "q_hits_any": 28,
+      "q_hit_rate_any": 0.2222222222222222,
+      "q_roi": 0.35892857142857143,
+      "total_roi": 0.2522486772486772,
+      "total_profit": 953.5
+    },
+    {
+      "threshold": 0.08,
+      "w_bets": 102,
+      "w_wins": 35,
+      "w_hit_rate": 0.3431372549019608,
+      "w_roi": 0.0642156862745098,
+      "q_races": 102,
+      "q_bets": 204,
+      "q_hits_any": 23,
+      "q_hit_rate_any": 0.22549019607843138,
+      "q_roi": 0.43970588235294117,
+      "total_roi": 0.3145424836601307,
+      "total_profit": 962.5
+    },
+    {
+      "threshold": 0.1,
+      "w_bets": 87,
+      "w_wins": 28,
+      "w_hit_rate": 0.3218390804597701,
+      "w_roi": 0.022413793103448276,
+      "q_races": 87,
+      "q_bets": 174,
+      "q_hits_any": 20,
+      "q_hit_rate_any": 0.22988505747126436,
+      "q_roi": 0.514367816091954,
+      "total_roi": 0.3503831417624521,
+      "total_profit": 914.5
+    },
+    {
+      "threshold": 0.12,
+      "w_bets": 69,
+      "w_wins": 22,
+      "w_hit_rate": 0.3188405797101449,
+      "w_roi": -0.005797101449275362,
+      "q_races": 69,
+      "q_bets": 138,
+      "q_hits_any": 17,
+      "q_hit_rate_any": 0.2463768115942029,
+      "q_roi": 0.3333333333333333,
+      "total_roi": 0.22028985507246376,
+      "total_profit": 456.0
+    },
+    {
+      "threshold": 0.14,
+      "w_bets": 53,
+      "w_wins": 19,
+      "w_hit_rate": 0.3584905660377358,
+      "w_roi": 0.15754716981132075,
+      "q_races": 53,
+      "q_bets": 106,
+      "q_hits_any": 15,
+      "q_hit_rate_any": 0.2830188679245283,
+      "q_roi": 0.6419811320754717,
+      "total_roi": 0.48050314465408805,
+      "total_profit": 764.0
+    },
+    {
+      "threshold": 0.16,
+      "w_bets": 37,
+      "w_wins": 12,
+      "w_hit_rate": 0.32432432432432434,
+      "w_roi": 0.13243243243243244,
+      "q_races": 37,
+      "q_bets": 74,
+      "q_hits_any": 11,
+      "q_hit_rate_any": 0.2972972972972973,
+      "q_roi": 0.9297297297297298,
+      "total_roi": 0.663963963963964,
+      "total_profit": 737.0
+    },
+    {
+      "threshold": 0.18,
+      "w_bets": 25,
+      "w_wins": 12,
+      "w_hit_rate": 0.48,
+      "w_roi": 0.676,
+      "q_races": 25,
+      "q_bets": 50,
+      "q_hits_any": 8,
+      "q_hit_rate_any": 0.32,
+      "q_roi": 1.092,
+      "total_roi": 0.9533333333333334,
+      "total_profit": 715.0
+    },
+    {
+      "threshold": 0.2,
+      "w_bets": 22,
+      "w_wins": 11,
+      "w_hit_rate": 0.5,
+      "w_roi": 0.8068181818181818,
+      "q_races": 22,
+      "q_bets": 44,
+      "q_hits_any": 7,
+      "q_hit_rate_any": 0.3181818181818182,
+      "q_roi": 1.1102272727272726,
+      "total_roi": 1.009090909090909,
+      "total_profit": 666.0
+    }
+  ]
+}
