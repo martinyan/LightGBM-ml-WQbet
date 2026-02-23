@@ -14,10 +14,10 @@
     "selection": "bet WIN on race if top1 overlay > threshold; choose top1 by score_win = logit(p_mkt_win) + alpha*res_hat_win"
   },
   "Q": {
-    "model": "LGBMRanker_lambdarank_top2rel",
-    "model_dir": "models/Q_RANKER_v7_NOODDS_top6",
-    "bundle_json": "models/Q_RANKER_v7_NOODDS_top6/bundle.json",
-    "model_txt": "models/Q_RANKER_v7_NOODDS_top6/ranker.txt",
+    "model": "LGBMRanker_lambdarank_winnerOnly",
+    "model_dir": "models/Q_RANKER_v7_PROD_FEB22_111ROI",
+    "bundle_json": "models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json",
+    "model_txt": "models/Q_RANKER_v7_PROD_FEB22_111ROI/ranker.txt",
     "strategy": "two-combo quinella: (anchor, partner2) and (anchor, partner3); anchor is W top1; partners are top ranker scores excluding anchor"
   }
 }

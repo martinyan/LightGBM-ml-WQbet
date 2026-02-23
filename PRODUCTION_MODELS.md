@@ -15,9 +15,9 @@ This repo has lots of research scripts. **Production predictions must use the pi
 
 ## Q (Quinella) — production
 
-- Model: `LGBMRanker_lambdarank_top2rel`
-- Bundle: `models/Q_RANKER_v7_NOODDS_top6/bundle.json`
-- Model file: `models/Q_RANKER_v7_NOODDS_top6/ranker.txt`
+- Model: `LGBMRanker_lambdarank_winnerOnly`
+- Bundle: `models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json`
+- Model file: `models/Q_RANKER_v7_PROD_FEB22_111ROI/ranker.txt`
 - Strategy: **2 combos** per selected race:
   - anchor = W top1
   - partners = top ranker horses excluding anchor (2 horses)
