@@ -1,0 +1,23 @@
+{
+  "name": "HKJC_PROD_WQ",
+  "asOf": "2026-02-24",
+  "window": {
+    "train": {"start": "2023/09/01", "end": "2025/07/31"},
+    "backtest": {"start": "2025/09/01", "end": "2026/02/22"}
+  },
+  "W": {
+    "model": "OVERLAY_RESIDUAL_LGBM_v1",
+    "model_bundle_pkl": "models/OVERLAY_TRAIN_20230901_20250731_v6b_prev3.pkl",
+    "alpha": 1.0,
+    "beta": 0.0,
+    "threshold": 0.2,
+    "selection": "bet WIN on race if top1 overlay > threshold; choose top1 by score_win = logit(p_mkt_win) + alpha*res_hat_win"
+  },
+  "Q": {
+    "model": "LGBMRanker_lambdarank_top2rel",
+    "model_dir": "models/Q_RANKER_v7_NOODDS_top6",
+    "bundle_json": "models/Q_RANKER_v7_NOODDS_top6/bundle.json",
+    "model_txt": "models/Q_RANKER_v7_NOODDS_top6/ranker.txt",
+    "strategy": "two-combo quinella: (anchor, partner2) and (anchor, partner3); anchor is W top1; partners are top ranker scores excluding anchor"
+  }
+}
