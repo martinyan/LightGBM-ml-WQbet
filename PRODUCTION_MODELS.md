@@ -9,7 +9,7 @@ This repo has lots of research scripts. **Production predictions must use the pi
 ## W (WIN) — production
 
 - Model: `OVERLAY_RESIDUAL_LGBM_v1`
-- Bundle: `models/OVERLAY_TRAIN_20230901_20250731_v6b_prev3.pkl`
+- Bundle: `models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl`
 - Params: `alpha=1.0`, `beta=0.0`, `threshold=0.2`
 - Decision rule: bet WIN if **top1 overlay > 0.2**
 

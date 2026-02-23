@@ -7,7 +7,7 @@
   },
   "W": {
     "model": "OVERLAY_RESIDUAL_LGBM_v1",
-    "model_bundle_pkl": "models/OVERLAY_TRAIN_20230901_20250731_v6b_prev3.pkl",
+    "model_bundle_pkl": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl",
     "alpha": 1.0,
     "beta": 0.0,
     "threshold": 0.2,
