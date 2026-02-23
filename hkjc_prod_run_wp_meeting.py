@@ -71,7 +71,10 @@ def main():
     if not scrape_files:
         raise SystemExit('no scrape files produced')
 
+    # Sheet 1: per-race summary
     rows_all = []
+    # Sheet 2: per-runner details (all runners, even if race not selected)
+    runner_rows = []
 
     # load prod cfg for thresholds
     prod_cfg = json.load(open(args.prod, 'r', encoding='utf-8'))
@@ -102,30 +105,64 @@ def main():
         pred = json.load(open(pred_path, 'r', encoding='utf-8'))
 
         wtop1 = pred['W']['top1']
-        pass_main = bool(wtop1['overlay'] > thr_main)
-        pass_alt = bool(wtop1['overlay'] > float(args.thrAlt))
+        anchor = int(pred['Q'].get('anchor_horse_no') or wtop1.get('horse_no'))
 
         p2 = pred['Q'].get('partner2') or {}
         p3 = pred['Q'].get('partner3') or {}
+
+        # collect all runner-level rows
+        # join overlay (W scored list) with ranker scores by horse_no
+        ranker_map = {int(x['horse_no']): x for x in (pred['Q'].get('ranker_scored_all') or [])}
+        for rr in (pred['W'].get('scored_all') or []):
+            hn = int(rr['horse_no'])
+            rk = ranker_map.get(hn) or {}
+            runner_rows.append({
+                'racedate': pred.get('racedate'),
+                'venue': pred.get('venue'),
+                'raceNo': int(pred.get('raceNo')),
+                'horse_no': hn,
+                'horse': rr.get('horse'),
+                'cur_win_odds': rr.get('cur_win_odds'),
+                'p_mkt_win': rr.get('p_mkt_win'),
+                'score_win': rr.get('score_win'),
+                'overlay': rr.get('overlay'),
+                'is_W_top1': hn == int(wtop1.get('horse_no')),
+                'is_Q_anchor': hn == anchor,
+                'ranker_score': rk.get('ranker_score'),
+            })
+
+        # Flatten ALL runners for this race (so you can inspect non-betting races too)
+        all_runners = pred['W'].get('scored_top5')  # only top5 is included in pred; rebuild full list via ranker_scored_top6 + top5 is insufficient
+        # Instead, use ranker_scored_top6 + top5 for quick view in the meeting sheet and keep full runner view in a separate sheet.
 
         rows_all.append({
             'racedate': pred.get('racedate'),
             'venue': pred.get('venue'),
             'raceNo': int(pred.get('raceNo')),
+
             'W_top1_no': wtop1.get('horse_no'),
             'W_top1_horse': wtop1.get('horse'),
             'W_top1_odds': wtop1.get('cur_win_odds'),
             'W_p_mkt_win': wtop1.get('p_mkt_win'),
             'W_score_win': wtop1.get('score_win'),
             'W_overlay': wtop1.get('overlay'),
-            f'W_pass_thr_{thr_main:.2f}': pass_main,
-            f'W_pass_thr_{float(args.thrAlt):.2f}': pass_alt,
+
+            # highlight thresholds (0.16 / 0.18 / 0.20)
+            'W_pass_thr_0.16': bool(wtop1['overlay'] > 0.16),
+            'W_pass_thr_0.18': bool(wtop1['overlay'] > 0.18),
+            'W_pass_thr_0.20': bool(wtop1['overlay'] > 0.20),
+
+            # Q picks (top 2 excluding anchor)
+            'Q_anchor_no': anchor,
             'Q_p2_no': p2.get('horse_no'),
             'Q_p2_horse': p2.get('horse'),
             'Q_p2_ranker_score': p2.get('ranker_score'),
             'Q_p3_no': p3.get('horse_no'),
             'Q_p3_horse': p3.get('horse'),
             'Q_p3_ranker_score': p3.get('ranker_score'),
+
+            # quick visibility into ranker top6
+            'Ranker_top6': json.dumps(pred['Q'].get('ranker_scored_top6', []), ensure_ascii=False),
         })
 
     # sort by race
@@ -136,16 +173,26 @@ def main():
     with open(out_json, 'w', encoding='utf-8') as f:
         json.dump({'generatedAt': datetime.now().isoformat(timespec='seconds'), 'prod': prod_cfg, 'rows': rows_all}, f, ensure_ascii=False, indent=2)
 
-    # 3) push to sheets
+    # 3) push to sheets (two tabs)
+    ensure_sheet(args.sheetId, sheet_name, maton_key)
+
+    # tab A: per-race summary
     headers = list(rows_all[0].keys()) if rows_all else []
     values = [headers]
     for r in rows_all:
         values.append([r.get(h) for h in headers])
-
-    ensure_sheet(args.sheetId, sheet_name, maton_key)
     clear_and_put(args.sheetId, sheet_name, values, maton_key)
 
-    print(json.dumps({'ok': True, 'sheetId': args.sheetId, 'sheetName': sheet_name, 'outJson': out_json, 'races': len(rows_all)}, ensure_ascii=False))
+    # tab B: all runners
+    sheet_runners = f"{sheet_name}_RUNNERS"
+    ensure_sheet(args.sheetId, sheet_runners, maton_key)
+    headers2 = list(runner_rows[0].keys()) if runner_rows else []
+    values2 = [headers2]
+    for r in runner_rows:
+        values2.append([r.get(h) for h in headers2])
+    clear_and_put(args.sheetId, sheet_runners, values2, maton_key)
+
+    print(json.dumps({'ok': True, 'sheetId': args.sheetId, 'sheetName': sheet_name, 'sheetRunners': sheet_runners, 'outJson': out_json, 'races': len(rows_all), 'runnerRows': len(runner_rows)}, ensure_ascii=False))
 
 
 if __name__ == '__main__':

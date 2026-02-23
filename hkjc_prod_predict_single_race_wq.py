@@ -127,13 +127,15 @@ def main():
             'threshold': wcfg['threshold'],
             'top1': top1,
             'passes_threshold': passes,
-            'scored_top5': scored_w[:5],
+            'scored_all': scored_w,
+            'scored_top5': scored_w[:5]
         },
         'Q': {
             'model': qcfg['model'],
             'anchor_horse_no': anchor,
             'partner2': partner2,
             'partner3': partner3,
+            'ranker_scored_all': scored_q,
             'ranker_scored_top6': scored_q[:6],
             'note': 'Place Q bets only if W passes_threshold (by convention); override at caller if desired.'
         }
