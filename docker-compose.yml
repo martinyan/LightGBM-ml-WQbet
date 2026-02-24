@@ -1,0 +1,12 @@
+services:
+  hkjc-prod:
+    build: .
+    container_name: hkjc-prod
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      # required for Google Sheets export
+      - MATON_API_KEY=${MATON_API_KEY}
+      - HKJC_SHEET_ID=${HKJC_SHEET_ID}
+    tty: true

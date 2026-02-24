@@ -1,0 +1,35 @@
+{
+  "name": "HKJC_PROD_ARTIFACTS_LOCK",
+  "asOf": "2026-02-24",
+  "artifacts": [
+    {
+      "path": "prod/HKJC_PROD_WQ.json",
+      "bytes": 974,
+      "sha256": "72fa300e96f87990abf634ca398af5465192ce01e55d1ce87accf80d7be76157"
+    },
+    {
+      "path": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl",
+      "bytes": 7021890,
+      "sha256": "c19545a8d8397da72899427c474e658845029540b7c5f30faafcb0fd08ee113a"
+    },
+    {
+      "path": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.bundle.json",
+      "bytes": 1380,
+      "sha256": "eafc2b6f01d4655b67ee545a90c860dbd156f7957a1d5eada2ef15a0a2786c3d"
+    },
+    {
+      "path": "models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json",
+      "bytes": 1598,
+      "sha256": "5c90420b03b852421e7136a196fc49426cf8a4b4ad7d9e4873b1bef70820fd16"
+    },
+    {
+      "path": "models/Q_RANKER_v7_PROD_FEB22_111ROI/ranker.txt",
+      "bytes": 5578569,
+      "sha256": "3635dd873d0050699201fbdafdf3d2f5c845507b4575ad447a2906b6fb0c1d4d"
+    }
+  ],
+  "notes": [
+    "GoldenWinBet and GoldenQbet production artifacts lockfile.",
+    "Use scripts/verify_artifacts.py to validate these checksums before running predictions."
+  ]
+}
