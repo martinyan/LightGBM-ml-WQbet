@@ -6,6 +6,7 @@
     "backtest": {"start": "2025/09/01", "end": "2026/02/22"}
   },
   "W": {
+    "name": "GoldenWinBet",
     "model": "OVERLAY_RESIDUAL_LGBM_v1",
     "model_bundle_pkl": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl",
     "alpha": 1.0,
@@ -14,6 +15,7 @@
     "selection": "bet WIN on race if top1 overlay > threshold; choose top1 by score_win = logit(p_mkt_win) + alpha*res_hat_win"
   },
   "Q": {
+    "name": "GoldenQbet",
     "model": "LGBMRanker_lambdarank_winnerOnly",
     "model_dir": "models/Q_RANKER_v7_PROD_FEB22_111ROI",
     "bundle_json": "models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json",

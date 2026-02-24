@@ -8,6 +8,7 @@ This repo has lots of research scripts. **Production predictions must use the pi
 
 ## W (WIN) — production
 
+- **Name:** `GoldenWinBet`
 - Model: `OVERLAY_RESIDUAL_LGBM_v1`
 - Bundle: `models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl`
 - Params: `alpha=1.0`, `beta=0.0`, `threshold=0.2`
@@ -15,6 +16,7 @@ This repo has lots of research scripts. **Production predictions must use the pi
 
 ## Q (Quinella) — production
 
+- **Name:** `GoldenQbet`
 - Model: `LGBMRanker_lambdarank_winnerOnly`
 - Bundle: `models/Q_RANKER_v7_PROD_FEB22_111ROI/bundle.json`
 - Model file: `models/Q_RANKER_v7_PROD_FEB22_111ROI/ranker.txt`

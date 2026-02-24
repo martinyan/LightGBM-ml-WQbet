@@ -123,6 +123,7 @@ def main():
         'venue': pack.get('venue'),
         'raceNo': pack.get('raceNo') or pack.get('race_no'),
         'W': {
+            'name': wcfg.get('name'),
             'model': wcfg['model'],
             'threshold': wcfg['threshold'],
             'top1': top1,
@@ -131,6 +132,7 @@ def main():
             'scored_top5': scored_w[:5]
         },
         'Q': {
+            'name': qcfg.get('name'),
             'model': qcfg['model'],
             'anchor_horse_no': anchor,
             'partner2': partner2,
