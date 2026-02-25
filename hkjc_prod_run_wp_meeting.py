@@ -53,7 +53,9 @@ def main():
     ap.add_argument('--sheetId', default=os.environ.get('HKJC_SHEET_ID', '109I84syg24sJCl9QxP0soUUx63BvmsS8dJCTEs8MrbI'))
     ap.add_argument('--sheetName', default=None)
     ap.add_argument('--thrAlt', type=float, default=0.16, help='also compute pass flag for this alternate overlay threshold')
+    ap.add_argument('--noScheduleIngest', action='store_true', help='do not auto-schedule results+sectionals ingestion (last race +8h)')
     args = ap.parse_args()
+    args.scheduleIngest = (not args.noScheduleIngest)
 
     os.makedirs(args.outDir, exist_ok=True)
     maton_key = os.environ.get('MATON_API_KEY')
@@ -66,6 +68,15 @@ def main():
     scrape_dir = os.path.join(args.outDir, f"scrape_{args.racedate}_{args.venue}")
     os.makedirs(scrape_dir, exist_ok=True)
     sh(['node', 'hkjc_scrape_wp_meeting.mjs', '--racedate', args.racedate, '--venue', args.venue, '--races', args.races, '--outDir', scrape_dir])
+
+    # Schedule ingestion automatically at (last race scheduledTime + 8h)
+    # Venue/racedate are inferred from the bet.hkjc URLs in the scrape files.
+    if getattr(args, 'scheduleIngest', True):
+        try:
+            sh(['python3', 'hkjc_schedule_ingest_after_meeting.py', '--scrapeDir', scrape_dir, '--offsetHours', '8'])
+        except Exception as e:
+            # Don't fail prediction run if scheduling fails
+            print(f"[warn] failed to schedule ingest job: {e}")
 
     scrape_files = sorted(glob.glob(os.path.join(scrape_dir, f"{args.venue.lower()}_{args.racedate}_race*_bet_scrape.json")))
     if not scrape_files:
