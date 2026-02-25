@@ -44,10 +44,13 @@ def load_prod_cfg(path: str):
 def load_overlay_bundle(pkl_path: str):
     with open(pkl_path, 'rb') as f:
         b = pickle.load(f)
-    # expected keys
-    for k in ['feat_keys', 'place_mdl', 'mdl_win', 'mdl_pl']:
+    # Minimum required keys for WIN-only overlay bundles
+    for k in ['feat_keys', 'mdl_win']:
         if k not in b:
             raise ValueError(f"overlay bundle missing key: {k}")
+    # Optional keys for place-aware bundles
+    b.setdefault('place_mdl', None)
+    b.setdefault('mdl_pl', None)
     return b
 
 
