@@ -12,6 +12,9 @@ Production predictions must only use:
   - `hkjc_prod_run_meeting_racecard_graphql.py` (racecard + GraphQL WIN odds)
   - `hkjc_prod_predict_single_race_wq.py`
 
+## Research schedulers (safe)
+- `research/experiments/schedule_research_meeting.py` (orchestrates research-only jobs)
+
 ## Research rules
 - Put new models under `research/models/`
 - Put outputs under `research/reports/`
