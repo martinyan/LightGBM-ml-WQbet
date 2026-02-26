@@ -95,26 +95,26 @@ def main():
             msg = f"Run: python3 /data/.openclaw/workspace/research/experiments/QOddChange/scripts/qoddchange_append_snapshot.py --date {racedate_dash} --venue {venue} --raceNo {rn} --out /data/.openclaw/workspace/{snap_path}"
             add_cron_at(jname, when, msg)
 
-        # phase 1: T-12h .. T-2h every 30m
+        # phase 1: T-12h .. T-2h every 2 hours
         t = start_dt - timedelta(hours=12)
         end1 = start_dt - timedelta(hours=2)
         while t <= end1:
             sched_snap(t)
-            t += timedelta(minutes=30)
+            t += timedelta(hours=2)
 
-        # phase 2: T-2h .. T-1h every 10m
+        # phase 2: T-2h .. T-1h every 15m
         t = start_dt - timedelta(hours=2)
         end2 = start_dt - timedelta(hours=1)
         while t <= end2:
             sched_snap(t)
-            t += timedelta(minutes=10)
+            t += timedelta(minutes=15)
 
-        # phase 3: T-1h .. start every 2m
+        # phase 3: T-1h .. start every 5m
         t = start_dt - timedelta(hours=1)
         end3 = start_dt
         while t <= end3:
             sched_snap(t)
-            t += timedelta(minutes=2)
+            t += timedelta(minutes=5)
 
         # report at T-5m
         rep_dt = start_dt - timedelta(minutes=5)

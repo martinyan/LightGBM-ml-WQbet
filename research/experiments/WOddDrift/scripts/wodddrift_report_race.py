@@ -175,7 +175,18 @@ def main():
     if args.mode=='T5M':
         best=(rep.get('drift_comparison') or [None])[0]
         if best:
-            lines.append(f"Drift-adjusted top1: #{best['horse_no']} score*={best['score_star']:.3f} (k={args.k}) drift={best['drift_combo']:.3f} odds_now={best['odds_now']}")
+            differs = (best['horse_no'] != wtop1.get('horse_no'))
+            rep['drift_adjusted_top1'] = {
+                'horse_no': best['horse_no'],
+                'score_star': best['score_star'],
+                'drift_combo': best['drift_combo'],
+                'odds_now': best.get('odds_now'),
+                'differs_from_prod_top1': bool(differs),
+            }
+            tag = 'DIFFERS' if differs else 'SAME'
+            lines.append(
+                f"Drift-adjusted top1 ({tag}): #{best['horse_no']} score*={best['score_star']:.3f} (k={args.k}) drift={best['drift_combo']:.3f} odds_now={best.get('odds_now')}"
+            )
     print("\n".join(lines))
 
 
