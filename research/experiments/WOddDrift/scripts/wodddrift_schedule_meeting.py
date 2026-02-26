@@ -100,6 +100,11 @@ def main():
             at_iso(t2),
             f"Run: python3 /data/.openclaw/workspace/research/experiments/WOddDrift/scripts/wodddrift_report_race.py --mode T2H --racedate {racedate_slash} --venue {venue} --raceNo {rn} --snapshots /data/.openclaw/workspace/{snap_path} --out /data/.openclaw/workspace/{rep_t2} --k {args.k}"
         )
+        add_job(
+            f'WOddDrift Sheets {racedate_dash} {venue} R{rn} T-2h',
+            at_iso(t2),
+            f"Run: python3 /data/.openclaw/workspace/research/experiments/WOddDrift/scripts/wodddrift_export_adjusted_wq_to_sheets.py --mode T2H --racedate {racedate_slash} --venue {venue} --raceNo {rn} --snapshots /data/.openclaw/workspace/{snap_path} --k {args.k}"
+        )
 
         # T-2h -> T-1h snapshots every 15m (exclude exact T-2h since already scheduled)
         t = t2 + timedelta(minutes=15)
@@ -123,12 +128,17 @@ def main():
             )
             t += timedelta(minutes=5)
 
-        # T-5m report
+        # T-5m report (stdout) + export adjusted report to Sheets
         t5 = start_dt - timedelta(minutes=5)
         add_job(
             f'WOddDrift report {racedate_dash} {venue} R{rn} T-5m',
             at_iso(t5),
             f"Run: python3 /data/.openclaw/workspace/research/experiments/WOddDrift/scripts/wodddrift_report_race.py --mode T5M --racedate {racedate_slash} --venue {venue} --raceNo {rn} --snapshots /data/.openclaw/workspace/{snap_path} --out /data/.openclaw/workspace/{rep_t5} --k {args.k}"
+        )
+        add_job(
+            f'WOddDrift Sheets {racedate_dash} {venue} R{rn} T-5m',
+            at_iso(t5),
+            f"Run: python3 /data/.openclaw/workspace/research/experiments/WOddDrift/scripts/wodddrift_export_adjusted_wq_to_sheets.py --mode T5M --racedate {racedate_slash} --venue {venue} --raceNo {rn} --snapshots /data/.openclaw/workspace/{snap_path} --k {args.k}"
         )
 
     print(json.dumps({'ok': True, 'races': races, 'venue': venue, 'racedate': racedate_slash, 'k': args.k}, ensure_ascii=False))
