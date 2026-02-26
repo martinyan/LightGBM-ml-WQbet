@@ -58,11 +58,11 @@ def main():
     rep = json.load(open(args.report, 'r', encoding='utf-8'))
 
     # Flatten top pairs/horses into compact strings
-    top_pairs = rep.get('top_pairs') or []
-    top_horses = rep.get('top_horses') or []
+    top_pairs = rep.get('lead_pairs') or []
+    top_horses = rep.get('lead_horses') or []
 
-    pairs_str = '; '.join([f"{x['pair']}({x['drop_ratio']:.3f})" for x in top_pairs[:8] if x.get('drop_ratio') is not None])
-    horses_str = '; '.join([f"{x['horse_no']}({x['drop_score']:.3f})" for x in top_horses[:8] if x.get('drop_score') is not None])
+    pairs_str = '; '.join([f"{x['pair']}({x['drop_ratio']:.3f})" for x in top_pairs[:10] if x.get('drop_ratio') is not None])
+    horses_str = '; '.join([f"{x['horse_no']}({x['drop_score']:.3f}|{x.get('pairs_dropping',0)})" for x in top_horses[:10] if x.get('drop_score') is not None])
 
     ts = datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
     row = {
