@@ -129,6 +129,14 @@ def main():
         )
         add_cron_at(rep_name, rep_when, rep_msg)
 
+        # Append to Google Sheet log (same raceday spreadsheet)
+        exp_name = f'QOddChange Sheets {racedate_dash} {venue} R{rn} T-5m'
+        exp_msg = (
+            f"Run: python3 /data/.openclaw/workspace/research/experiments/QOddChange/scripts/qoddchange_export_log_to_sheets.py "
+            f"--racedate {racedate_slash} --report /data/.openclaw/workspace/{rep_out}"
+        )
+        add_cron_at(exp_name, rep_when, exp_msg)
+
     print(json.dumps({'ok': True, 'races': races, 'venue': venue, 'racedate': racedate_slash}, ensure_ascii=False))
 
 
