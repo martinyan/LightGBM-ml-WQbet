@@ -11,6 +11,7 @@ This replaces the brittle bet.hkjc HTML scrape when the page is JS-rendered.
 """
 
 import os, json, argparse, subprocess
+from datetime import datetime
 
 
 def sh(cmd, cwd=None):
@@ -28,8 +29,10 @@ def main():
     ap.add_argument('--prod', default='prod/HKJC_PROD_WQ.json')
     ap.add_argument('--db', default='hkjc.sqlite')
     ap.add_argument('--outDir', default='reports/PROD_PRED')
-    ap.add_argument('--sheetId', default=os.environ.get('HKJC_SHEET_ID', '109I84syg24sJCl9QxP0soUUx63BvmsS8dJCTEs8MrbI'))
-    ap.add_argument('--sheetName', default=None)
+    ap.add_argument('--sheetId', default=None, help='Optional explicit spreadsheetId (overrides raceday sheet)')
+    ap.add_argument('--sheetName', default=None, help='Tab base name (if omitted, uses PROD_PRED_<date>_<venue>_<HHMM>)')
+    ap.add_argument('--racedaySheet', action='store_true', help='Write to a dedicated raceday spreadsheet (YYYYMMDD raceday bet pick)')
+    ap.add_argument('--noRacedaySheet', action='store_true', help='Disable raceday spreadsheet behavior')
     args = ap.parse_args()
 
     maton = os.environ.get('MATON_API_KEY')
@@ -39,7 +42,21 @@ def main():
     os.makedirs(args.outDir, exist_ok=True)
 
     racedate_dash = args.racedate.replace('/', '-')
-    sheet = args.sheetName or f"PROD_PRED_{racedate_dash}_{args.venue.upper()}"
+
+    # pick spreadsheet: one per raceday by default
+    use_raceday = (not args.noRacedaySheet)
+    if use_raceday and args.sheetId is None:
+        from scripts.gsheets_raceday import get_or_create_raceday_sheet
+        args.sheetId = get_or_create_raceday_sheet(racedate_dash)
+    if args.sheetId is None:
+        # fallback to env
+        args.sheetId = os.environ.get('HKJC_SHEET_ID')
+    if not args.sheetId:
+        raise SystemExit('No sheetId available (set HKJC_SHEET_ID or enable raceday sheet with MATON)')
+
+    # tab base name includes time for each production run
+    hhmm = datetime.now().strftime('%H%M')
+    sheet = args.sheetName or f"PROD_{racedate_dash}_{args.venue.upper()}_{hhmm}"
 
     # parse race list
     if '-' in args.races:

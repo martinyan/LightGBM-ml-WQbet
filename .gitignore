@@ -11,5 +11,8 @@ hkjc.sqlite
 research/scratch/
 research/notebooks/.ipynb_checkpoints/
 
+# --- Local sheet registry ---
+prod/sheets/raceday_sheets.json
+
 # Keep large raw data out of git
 raw_data/

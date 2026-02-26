@@ -179,43 +179,72 @@ def main():
     p3=partners[1] if len(partners)>1 else None
 
     # Tabs
-    tabA=f"{args.tabPrefix}_{racedate_dash}_{venue}_R{args.raceNo}_{args.mode}"
-    tabB=f"{tabA}_RUNNERS"
-    ensure_tab(args.sheetId, tabA, auth)
-    ensure_tab(args.sheetId, tabB, auth)
+    # Write to raceday spreadsheet by default
+    from scripts.gsheets_raceday import get_or_create_raceday_sheet
+    sheet_id = get_or_create_raceday_sheet(racedate_dash)
 
-    # Summary values
-    values=[['racedate',args.racedate],['venue',venue],['raceNo',args.raceNo],['mode',args.mode],['k',args.k],['W_model',pred['W'].get('name')],['Q_model',pred['Q'].get('name')]]
-    values.append([])
-    values.append(['Production top1', f"#{w_top1.get('horse_no')} {w_top1.get('horse')}", 'odds', w_top1.get('cur_win_odds'), 'overlay', w_top1.get('overlay')])
+    # Append into a single log tab (no new tab every update)
+    tabA = f"{args.tabPrefix}_LOG"
+    ensure_tab(sheet_id, tabA, auth)
 
+    # Append one row into log tab
+    ts = datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
+    differs = None
+    drift_combo = None
+    score_star = None
+    drift_top_no = None
     if args.mode=='T5M' and drift_top1:
-        tag='DIFFERS' if int(drift_top1['horse_no'])!=int(w_top1['horse_no']) else 'SAME'
-        values.append(['Drift-adjusted top1', f"#{drift_top1['horse_no']} {drift_top1.get('horse')}", 'tag', tag, 'score*', drift_top1.get('score_star')])
+        drift_top_no = drift_top1['horse_no']
+        drift_combo = drift_top1.get('drift_combo')
+        score_star = drift_top1.get('score_star')
+        differs = (int(drift_top_no) != int(w_top1.get('horse_no')))
 
-    values.append([])
-    values.append(['Adjusted W pick (used as Q anchor)', f"#{adj_anchor}"])
-    values.append(['Adjusted Q partner2', f"#{(p2 or {}).get('horse_no')} {(p2 or {}).get('horse')}", 'ranker_score', (p2 or {}).get('ranker_score')])
-    values.append(['Adjusted Q partner3', f"#{(p3 or {}).get('horse_no')} {(p3 or {}).get('horse')}", 'ranker_score', (p3 or {}).get('ranker_score')])
+    row = {
+        'ts': ts,
+        'racedate': args.racedate,
+        'venue': venue,
+        'raceNo': int(args.raceNo),
+        'mode': args.mode,
+        'k': float(args.k),
+        'prod_top1_no': w_top1.get('horse_no'),
+        'prod_top1_horse': w_top1.get('horse'),
+        'prod_top1_odds': w_top1.get('cur_win_odds'),
+        'prod_top1_overlay': w_top1.get('overlay'),
+        'drift_top1_no': drift_top_no,
+        'drift_top1_score_star': score_star,
+        'drift_top1_combo': drift_combo,
+        'drift_differs': differs,
+        'adj_anchor_no': adj_anchor,
+        'adj_q_p2_no': (p2 or {}).get('horse_no'),
+        'adj_q_p2_horse': (p2 or {}).get('horse'),
+        'adj_q_p3_no': (p3 or {}).get('horse_no'),
+        'adj_q_p3_horse': (p3 or {}).get('horse'),
+    }
 
-    clear_and_put(args.sheetId, tabA, values, auth)
+    # Ensure header exists; if empty, write header + row. Else append row.
+    # Read first row
+    rng_get = urllib.parse.quote(f'{tabA}!A1:Z1')
+    try:
+        head = req_json(f'https://gateway.maton.ai/google-sheets/v4/spreadsheets/{sheet_id}/values/{rng_get}', headers=auth)
+        has_header = bool((head.get('values') or []) and (head['values'][0] or []))
+    except Exception:
+        has_header = False
 
-    # Runner table
-    if args.mode=='T5M' and drift_rows:
-        cols=list(drift_rows[0].keys())
-        vals=[cols] + [[r.get(c) for c in cols] for r in drift_rows]
+    cols = list(row.keys())
+    if not has_header:
+        clear_and_put(sheet_id, tabA, [cols, [row.get(c) for c in cols]], auth)
     else:
-        # production runner table
-        cols=['horse_no','horse','cur_win_odds','p_mkt_win','score_win','overlay','ranker_score']
-        # map ranker
-        rmap={int(x['horse_no']): x.get('ranker_score') for x in q_scored}
-        vals=[cols]
-        for r in w_scored_sorted:
-            vals.append([r.get('horse_no'), r.get('horse'), r.get('cur_win_odds'), r.get('p_mkt_win'), r.get('score_win'), r.get('overlay'), rmap.get(int(r['horse_no']))])
+        # append
+        rng_app = urllib.parse.quote(f'{tabA}!A1')
+        body = json.dumps({'values': [[row.get(c) for c in cols]]}, ensure_ascii=False).encode('utf-8')
+        req_json(
+            f'https://gateway.maton.ai/google-sheets/v4/spreadsheets/{sheet_id}/values/{rng_app}:append?valueInputOption=USER_ENTERED',
+            method='POST',
+            data=body,
+            headers=auth,
+        )
 
-    clear_and_put(args.sheetId, tabB, vals, auth)
-
-    print(json.dumps({'ok': True, 'tabs': [tabA, tabB], 'adjusted_anchor': adj_anchor, 'raceNo': args.raceNo}, ensure_ascii=False))
+    print(json.dumps({'ok': True, 'sheetId': sheet_id, 'tab': tabA, 'raceNo': args.raceNo, 'mode': args.mode}, ensure_ascii=False))
 
 
 if __name__=='__main__':
