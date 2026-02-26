@@ -121,10 +121,11 @@ def main():
         rep_out = f'research/experiments/QOddChange/reports/{racedate_dash}_{venue}_R{rn}_Tminus5.json'
         rep_name = f'QOddChange report {racedate_dash} {venue} R{rn} T-5m'
         rep_msg = (
-            f"Run: python3 /data/.openclaw/workspace/research/experiments/QOddChange/scripts/qoddchange_report_race.py "
-            f"--date {racedate_dash} --venue {venue} --raceNo {rn} "
+            f"Run: python3 /data/.openclaw/workspace/research/experiments/QOddChange/scripts/qoddchange_report_race_with_golden_alert.py "
+            f"--racedate {racedate_slash} --venue {venue} --raceNo {rn} "
             f"--snapshots /data/.openclaw/workspace/{snap_path} "
-            f"--out /data/.openclaw/workspace/{rep_out}"
+            f"--out /data/.openclaw/workspace/{rep_out} "
+            f"--goldenThr 0.16"
         )
         add_cron_at(rep_name, rep_when, rep_msg)
 
