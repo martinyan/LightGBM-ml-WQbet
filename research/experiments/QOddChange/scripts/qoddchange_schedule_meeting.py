@@ -65,7 +65,7 @@ def main():
     ap.add_argument('--racedate', required=True, help='YYYY/MM/DD')
     ap.add_argument('--venue', required=True, help='HV|ST')
     ap.add_argument('--races', required=True, help='1-9 or comma list')
-    ap.add_argument('--outBase', default='research/experiments/QOddChange/data/snapshots', help='snapshot folder')
+    ap.add_argument('--outBase', default='research/experiments/QOddChange/data/snapshots', help='snapshot base folder (date subfolders will be created)')
     args = ap.parse_args()
 
     racedate_slash = args.racedate
@@ -86,7 +86,8 @@ def main():
         start_dt = datetime.fromisoformat(racedate_dash).replace(hour=hh, minute=mm, second=0, microsecond=0)
 
         # snapshot file (per race)
-        snap_path = os.path.join(args.outBase, f'{racedate_dash}_{venue}_R{rn}.jsonl')
+        snap_dir = os.path.join(args.outBase, racedate_dash)
+        snap_path = os.path.join(snap_dir, f'{venue}_R{rn}.jsonl')
 
         def sched_snap(dt_run: datetime):
             when = at_iso(dt_run)
