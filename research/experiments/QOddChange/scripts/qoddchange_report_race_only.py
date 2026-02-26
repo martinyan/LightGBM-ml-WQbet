@@ -83,14 +83,29 @@ def main():
     lead_horses = horses[:10]
     lead_pairs = top_pairs[:15]
 
+    # Dominant horse heuristic: if top horse contributes >=35% of total lead_horses score
+    total_score = sum(h.get('drop_score', 0.0) for h in lead_horses) or 0.0
+    dominant = None
+    if lead_horses and total_score > 0:
+        top = lead_horses[0]
+        share = float(top.get('drop_score', 0.0)) / float(total_score)
+        if share >= 0.35:
+            dominant = {
+                'horse_no': top.get('horse_no'),
+                'drop_score': top.get('drop_score'),
+                'pairs_dropping': top.get('pairs_dropping'),
+                'share_of_top10': share,
+            }
+
     rep = {
         'date': args.date,
         'venue': args.venue.upper(),
         'raceNo': int(args.raceNo),
         'total_pairs_seen': len(stats),
+        'dominant_horse': dominant,
         'lead_horses': lead_horses,
         'lead_pairs': lead_pairs,
-        'caps': {'max_horses': 10, 'max_pairs': 15, 'max_entries_total': 30}
+        'caps': {'max_horses': 10, 'max_pairs': 15, 'max_entries_total': 30, 'dominant_share_threshold': 0.35}
     }
 
     os.makedirs(os.path.dirname(args.out) or '.', exist_ok=True)
@@ -98,6 +113,10 @@ def main():
         json.dump(rep, f, ensure_ascii=False, indent=2)
 
     lines = [f"QOddChange T-5m R{args.raceNo} {args.date} {args.venue.upper()} — QIN drift leaders"]
+
+    if rep.get('dominant_horse'):
+        d = rep['dominant_horse']
+        lines.append(f"DOMINANT HORSE: #{d['horse_no']} share={d['share_of_top10']:.2%} score={d['drop_score']:.3f} pairs={d['pairs_dropping']}")
 
     # Horse-centric leaders
     lines.append('Lead horses (drop_score, pairs_dropping):')
