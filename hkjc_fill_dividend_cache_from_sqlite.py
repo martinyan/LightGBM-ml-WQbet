@@ -61,8 +61,16 @@ def parse_win_q(html: str):
         cells = [strip_tags(td) for td in tds]
         if not cells:
             continue
-        if cells[0] in ("獨贏", "連贏"):
-            cur = cells[0]
+
+        # Pool column is rowspanned. We treat any non-combination string in col0 as pool name.
+        # Example pools: 獨贏, 位置, 連贏, 位置Q, 二重彩, 三重彩, 單T, 四連環, 四重彩, etc.
+        # We only care about 獨贏 (WIN) and 連贏 (Quinella).
+        pool0 = cells[0]
+        looks_like_pair = bool(re.fullmatch(r"\d+\s*[,\-]\s*\d+", pool0))
+        looks_like_horse_no = bool(re.fullmatch(r"\d+", pool0))
+
+        if (not looks_like_pair) and (not looks_like_horse_no):
+            cur = pool0
             rest = cells[1:]
         else:
             rest = cells
