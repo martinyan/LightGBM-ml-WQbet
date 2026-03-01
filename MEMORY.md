@@ -2,7 +2,7 @@
 
 ## Model Preferences
 
-- **Default for main agent (persistent):** ChatGPT **5 Mini** (`openai/gpt-5-mini`). This preference should be used as the default LLM for the main agent across restarts.
+- **Default for main agent (persistent):** ChatGPT **5.2** (`openai/gpt-5.2`). This preference should be used as the default LLM for the main agent across restarts.
 - **HKJC Project (ML/DB/Pipeline):** Use **ChatGPT** (GPT-4 or higher) for anything related to ML model building, pipeline development, debugging, and SQLite operations.
 - **Lightweight Tasks:** Use **Gemini Flash** for simple reasoning and Google Sheets tab updates.
 
