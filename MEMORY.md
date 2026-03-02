@@ -14,9 +14,12 @@
 **Default model for HKJC predictions (as of 2026-02-21):** `HKJC-ML_XGB_NOODDS_REG_v2`
 
 **Pinned production W+Q models for betting (as of 2026-02-24):**
-- **W (WIN overlay residual):** `OVERLAY_RESIDUAL_LGBM_v1` bundle `models/OVERLAY_TRAIN_20230901_20250731_v6b_prev3.pkl` with `threshold=0.2` (alpha=1, beta=0)
-- **Q (Quinella partners ranker):** `models/Q_RANKER_v7_NOODDS_top6` (ranker.txt + bundle.json), strategy: 2-combo Q with anchor=W top1 and partners=ranker top2 excluding anchor
+- **W (WIN overlay residual, GoldenWinBet):** `OVERLAY_RESIDUAL_LGBM_v1` bundle `models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl` with `threshold=0.2` (alpha=1, beta=0)
+- **Q (GoldenQbet):** `models/Q_RANKER_v7_PROD_FEB22_111ROI` (ranker.txt + bundle.json), strategy: 2-combo Q with anchor=W top1 and partners=ranker top2 excluding anchor
 - Config: `prod/HKJC_PROD_WQ.json`
+- **Odds truth for datasets/backtests:** `cur_win_odds` uses **final odds from HKJC localresults** page (post-race).
+- **Raceday production protocol:** generate first prediction at **T-2h**, then track W/Q odds drift **every 30 min until T-30**, **every 5 min until T-5**, and **every 1 min until T-1 (FINAL)**; FINAL prediction uses **Model A (rule-based)** drift weighting that can flip bet/no-bet and change anchor.
+- **Publishing:** create a new Google Sheet per raceday named `YYYYMMDD Horse pick`; create tabs per race per prediction snapshot (plus drift logs).
 - Regularized XGBoost, **NO-ODDS** inference (`cur_win_odds=0`)
 - Saved/tagged in git: tag `HKJC-ML_XGB_NOODDS_REG_v2`
 - Signature file: `/data/.openclaw/workspace/models/HKJC-ML_XGB_NOODDS_REG_v2.signature.json`
