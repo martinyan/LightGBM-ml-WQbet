@@ -54,6 +54,7 @@ def main():
     ap.add_argument('--sheetName', default=None)
     ap.add_argument('--thrAlt', type=float, default=0.16, help='also compute pass flag for this alternate overlay threshold')
     ap.add_argument('--noScheduleIngest', action='store_true', help='do not auto-schedule results+sectionals ingestion (last race +8h)')
+    ap.add_argument('--truthSqlite', action='store_true', help='(recommended) build features from SQLite truth (race context + historical sectionals + jt60/prev3) instead of wrapper scrape object')
     args = ap.parse_args()
     args.scheduleIngest = (not args.noScheduleIngest)
 
@@ -109,7 +110,23 @@ def main():
             json.dump(wrapped, f, ensure_ascii=False, indent=2)
 
         feat_path = os.path.join(args.outDir, f"features_{args.racedate}_{args.venue}_R{race_no}.json")
-        sh(['node', 'hkjc_build_feature_rows_from_racecard_sqlite.mjs', '--db', args.db, '--in', wrapped_path, '--out', feat_path, '--lastN', '3'])
+
+        # (A) Truth-first feature build: use SQLite as source of truth for race context + historical sectionals.
+        # Requires that racecard runners have already been ingested into SQLite (draw/weight/jockey/trainer/odds).
+        if getattr(args, 'truthSqlite', False):
+            sh([
+                'node',
+                'hkjc_prod_build_features_from_sqlite.mjs',
+                '--db', args.db,
+                '--racedate', args.racedate.replace('-', '/'),
+                '--venue', args.venue,
+                '--raceNo', str(race_no),
+                '--out', feat_path,
+                '--prevRuns', '3',
+                '--jtDays', '60',
+            ])
+        else:
+            sh(['node', 'hkjc_build_feature_rows_from_racecard_sqlite.mjs', '--db', args.db, '--in', wrapped_path, '--out', feat_path, '--lastN', '3'])
 
         pred_path = os.path.join(args.outDir, f"pred_{args.racedate}_{args.venue}_R{race_no}.json")
         sh(['python3', 'hkjc_prod_predict_single_race_wq.py', '--prod', args.prod, '--in', feat_path, '--out', pred_path])
