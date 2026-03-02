@@ -54,8 +54,15 @@ def main():
     ap.add_argument('--sheetName', default=None)
     ap.add_argument('--thrAlt', type=float, default=0.16, help='also compute pass flag for this alternate overlay threshold')
     ap.add_argument('--noScheduleIngest', action='store_true', help='do not auto-schedule results+sectionals ingestion (last race +8h)')
-    ap.add_argument('--truthSqlite', action='store_true', help='(recommended) build features from SQLite truth (race context + historical sectionals + jt60/prev3) instead of wrapper scrape object')
+    ap.add_argument('--truthSqlite', action='store_true', help='build features from SQLite truth (race context + historical sectionals + jt60/prev3) instead of wrapper scrape object')
+    ap.add_argument('--legacyWrapperFeatures', action='store_true', help='use legacy wrapper-based feature builder (scrape object) instead of SQLite truth')
     args = ap.parse_args()
+
+    # Default to truthSqlite unless user explicitly requests legacy wrapper mode.
+    if args.legacyWrapperFeatures:
+        args.truthSqlite = False
+    else:
+        args.truthSqlite = True
     args.scheduleIngest = (not args.noScheduleIngest)
 
     os.makedirs(args.outDir, exist_ok=True)
