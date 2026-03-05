@@ -39,7 +39,9 @@ This pipeline uses `hkjc.sqlite` (built from HKJC `localresults` + sectional tim
 - `hkjc.sqlite` present in workspace (see `hkjc_build_sqlite_from_localresults.mjs` + `hkjc_backfill_sectional_splits.mjs`).
 
 ## 1) Build a training dataset (JSONL)
-Creates one row per runner-start, using **previous run** dynamic sectionals + previous result deltas, plus current draw/weight/odds and jockey/trainer rolling 365d win/place rates.
+Creates one row per runner-start, using **previous run dynamic sectional_splits (variable K splits)** + previous result deltas, plus current draw/weight/odds and jockey/trainer rolling 365d win/place rates.
+
+Note: The legacy `sectionals` table (fixed 3 segments) is deprecated for modeling; prefer `sectional_splits`.
 
 ```bash
 node hkjc_ml_build_dataset_sqlite.mjs \

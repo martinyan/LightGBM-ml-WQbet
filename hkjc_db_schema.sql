@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS results (
   time_delta_sec REAL
 );
 
+-- Legacy/compat: fixed 3-segment representation. Deprecated for modeling; use `sectional_splits`.
 CREATE TABLE IF NOT EXISTS sectionals (
   runner_id INTEGER PRIMARY KEY REFERENCES runners(runner_id) ON DELETE CASCADE,
   pos1 INTEGER,
