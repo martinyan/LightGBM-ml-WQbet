@@ -1,0 +1,300 @@
+#!/usr/bin/env python3
+"""Predict NO-ODDS top5 using ranker v2 (research only).
+
+Input JSON format (same wrapper as hkjc_scrape_racecard_and_win_odds.py):
+{
+  betPage: { url, distanceMeters, classNum, surfaceText },
+  picks: [{no, horse, code, draw, wt, jockey, trainer, win, place:null}]
+}
+
+Outputs:
+{
+  model: name,
+  racedate, venue, raceNo,
+  top5: [...],
+  scored_all: [...]
+}
+
+Usage:
+  python3 hkjc_noodds_rank_v2_predict.py --db hkjc.sqlite --in merged.json --model models/HKJC-ML_NOODDS_RANK_LGBM_v2.txt --meta models/HKJC-ML_NOODDS_RANK_LGBM_v2.infermeta.json --out pred.json
+"""
+
+import argparse, json, re, os, sqlite3
+from datetime import datetime
+from typing import Dict, Any, List, Tuple
+
+import numpy as np
+import lightgbm as lgb
+
+
+def parse_race_key(url: str) -> Dict[str, Any]:
+    # https://bet.hkjc.com/ch/racing/wp/2026-03-18/HV/1
+    m = re.search(r"/racing/wp/(\d{4}-\d{2}-\d{2})/(HV|ST)/(\d+)", url or "")
+    if not m:
+        return {"racedate": None, "venue": None, "raceNo": None}
+    return {"racedate": m.group(1).replace('-', '/'), "venue": m.group(2), "raceNo": int(m.group(3))}
+
+
+def connect(db_path: str) -> sqlite3.Connection:
+    con = sqlite3.connect(db_path)
+    con.row_factory = sqlite3.Row
+    return con
+
+
+def safe_div(a: float, b: float) -> float:
+    return a / b if b else 0.0
+
+
+class FeatureBuilder:
+    def __init__(self, con: sqlite3.Connection):
+        self.con = con
+        self._cache_role = {}
+        self._cache_horse = {}
+        self._cache_last = {}
+        self._draw_bias_cache = {}
+
+    def role_rates(self, role_field: str, name: str, asof_ymd: str, window_days: int) -> Dict[str, float]:
+        if not name or not asof_ymd:
+            return {"starts": 0, "top3_rate": 0.0, "win_rate": 0.0}
+        key = (role_field, name, asof_ymd, window_days)
+        if key in self._cache_role:
+            return self._cache_role[key]
+        q = f"""
+        SELECT
+          COUNT(1) AS starts,
+          SUM(CASE WHEN re.finish_pos = 1 THEN 1 ELSE 0 END) AS wins,
+          SUM(CASE WHEN re.finish_pos <= 3 THEN 1 ELSE 0 END) AS top3
+        FROM runners ru
+        JOIN races r ON r.race_id = ru.race_id
+        JOIN meetings m ON m.meeting_id = r.meeting_id
+        JOIN results re ON re.runner_id = ru.runner_id
+        WHERE ru.{role_field} = ?
+          AND m.racedate < ?
+          AND m.racedate >= strftime('%Y/%m/%d', date(replace(?, '/', '-') , ?))
+        """
+        row = self.con.execute(q, (name, asof_ymd, asof_ymd, f"-{int(window_days)} day")).fetchone()
+        starts = int(row["starts"] or 0)
+        wins = int(row["wins"] or 0)
+        top3 = int(row["top3"] or 0)
+        out = {"starts": starts, "win_rate": safe_div(wins, starts), "top3_rate": safe_div(top3, starts)}
+        self._cache_role[key] = out
+        return out
+
+    def horse_rates(self, horse_code: str, asof_ymd: str, window_days: int, venue: str = None, distance_m: int = None) -> Dict[str, float]:
+        if not horse_code or not asof_ymd:
+            return {"starts": 0, "top3_rate": 0.0, "win_rate": 0.0}
+        key = (horse_code, asof_ymd, window_days, venue or "", int(distance_m or 0))
+        if key in self._cache_horse:
+            return self._cache_horse[key]
+        wh = ["ru.horse_code = ?", "m.racedate < ?", "m.racedate >= strftime('%Y/%m/%d', date(replace(?, '/', '-') , ?))"]
+        params: List[Any] = [horse_code, asof_ymd, asof_ymd, f"-{int(window_days)} day"]
+        if venue:
+            wh.append("m.venue = ?")
+            params.append(venue)
+        if distance_m:
+            wh.append("ABS(r.distance_m - ?) <= 200")
+            params.append(int(distance_m))
+        q = """SELECT COUNT(1) AS starts,
+                      SUM(CASE WHEN re.finish_pos = 1 THEN 1 ELSE 0 END) AS wins,
+                      SUM(CASE WHEN re.finish_pos <= 3 THEN 1 ELSE 0 END) AS top3
+               FROM runners ru
+               JOIN races r ON r.race_id = ru.race_id
+               JOIN meetings m ON m.meeting_id = r.meeting_id
+               JOIN results re ON re.runner_id = ru.runner_id
+               WHERE """ + " AND ".join(wh)
+        row = self.con.execute(q, params).fetchone()
+        starts = int(row["starts"] or 0)
+        wins = int(row["wins"] or 0)
+        top3 = int(row["top3"] or 0)
+        out = {"starts": starts, "win_rate": safe_div(wins, starts), "top3_rate": safe_div(top3, starts)}
+        self._cache_horse[key] = out
+        return out
+
+    def last_run(self, horse_code: str, asof_ymd: str) -> Dict[str, Any]:
+        if not horse_code or not asof_ymd:
+            return {"days_since": None, "last_finish_pos": None, "last_distance_m": None, "last_venue": None, "last_weight": None}
+        key = (horse_code, asof_ymd)
+        if key in self._cache_last:
+            return self._cache_last[key]
+        q = """
+        SELECT m.racedate, m.venue, r.distance_m, ru.weight, re.finish_pos
+        FROM runners ru
+        JOIN races r ON r.race_id = ru.race_id
+        JOIN meetings m ON m.meeting_id = r.meeting_id
+        JOIN results re ON re.runner_id = ru.runner_id
+        WHERE ru.horse_code = ? AND m.racedate < ?
+        ORDER BY m.racedate DESC
+        LIMIT 1
+        """
+        row = self.con.execute(q, (horse_code, asof_ymd)).fetchone()
+        if not row:
+            out = {"days_since": None, "last_finish_pos": None, "last_distance_m": None, "last_venue": None, "last_weight": None}
+        else:
+            days = (datetime.strptime(asof_ymd, "%Y/%m/%d") - datetime.strptime(row["racedate"], "%Y/%m/%d")).days
+            out = {
+                "days_since": days,
+                "last_finish_pos": int(row["finish_pos"] or 99),
+                "last_distance_m": int(row["distance_m"] or 0),
+                "last_venue": row["venue"],
+                "last_weight": float(row["weight"] or 0.0),
+            }
+        self._cache_last[key] = out
+        return out
+
+    def draw_bias_top3(self, venue: str, distance_m: int, draw: int, asof_ymd: str, lookback_days: int = 365 * 3) -> float:
+        if not venue or not distance_m or not draw or not asof_ymd:
+            return 0.0
+        key = (venue, int(distance_m), int(draw))
+        if key in self._draw_bias_cache:
+            return self._draw_bias_cache[key]
+        q = """
+        SELECT COUNT(1) AS starts,
+               SUM(CASE WHEN re.finish_pos <= 3 THEN 1 ELSE 0 END) AS top3
+        FROM runners ru
+        JOIN races r ON r.race_id = ru.race_id
+        JOIN meetings m ON m.meeting_id = r.meeting_id
+        JOIN results re ON re.runner_id = ru.runner_id
+        WHERE m.venue = ?
+          AND m.racedate < ?
+          AND m.racedate >= strftime('%Y/%m/%d', date(replace(?, '/', '-') , ?))
+          AND ABS(r.distance_m - ?) <= 200
+          AND ru.draw = ?
+        """
+        row = self.con.execute(q, (venue, asof_ymd, asof_ymd, f"-{int(lookback_days)} day", int(distance_m), int(draw))).fetchone()
+        starts = int(row["starts"] or 0)
+        top3 = int(row["top3"] or 0)
+        rate = safe_div(top3, starts)
+        self._draw_bias_cache[key] = rate
+        return rate
+
+    def build(self, racedate: str, venue: str, distance_m: int, class_num: int, surface: str, pick: Dict[str, Any]) -> Dict[str, Any]:
+        horse_code = pick.get('code') or ''
+        jockey = pick.get('jockey') or ''
+        trainer = pick.get('trainer') or ''
+        draw = int(pick.get('draw') or 0)
+        weight = float(pick.get('wt') or 0.0)
+
+        h365 = self.horse_rates(horse_code, racedate, 365)
+        h60 = self.horse_rates(horse_code, racedate, 60)
+        h365_v = self.horse_rates(horse_code, racedate, 365, venue=venue)
+        h365_d = self.horse_rates(horse_code, racedate, 365, distance_m=distance_m)
+
+        j365 = self.role_rates('jockey', jockey, racedate, 365)
+        j60 = self.role_rates('jockey', jockey, racedate, 60)
+        t365 = self.role_rates('trainer', trainer, racedate, 365)
+        t60 = self.role_rates('trainer', trainer, racedate, 60)
+
+        last = self.last_run(horse_code, racedate)
+        dist_diff = None
+        if last.get('last_distance_m'):
+            dist_diff = int(distance_m) - int(last['last_distance_m'])
+        wt_diff = None
+        if last.get('last_weight') is not None:
+            wt_diff = float(weight) - float(last['last_weight'])
+
+        draw_bias = self.draw_bias_top3(venue, distance_m, draw, racedate)
+
+        return {
+            'distance_m': distance_m,
+            'class_num': class_num or 0,
+            'venue_HV': 1 if venue == 'HV' else 0,
+            'venue_ST': 1 if venue == 'ST' else 0,
+            'surface_turf': 1 if (surface or '').lower().startswith('t') else 0,
+            'surface_awt': 1 if (surface or '').lower().startswith('a') else 0,
+            'draw': draw,
+            'weight': weight,
+            'h_starts_365': h365['starts'],
+            'h_winrate_365': h365['win_rate'],
+            'h_top3rate_365': h365['top3_rate'],
+            'h_starts_60': h60['starts'],
+            'h_top3rate_60': h60['top3_rate'],
+            'h_top3rate_venue_365': h365_v['top3_rate'],
+            'h_top3rate_dist_365': h365_d['top3_rate'],
+            'j_starts_365': j365['starts'],
+            'j_top3rate_365': j365['top3_rate'],
+            'j_top3rate_60': j60['top3_rate'],
+            't_starts_365': t365['starts'],
+            't_top3rate_365': t365['top3_rate'],
+            't_top3rate_60': t60['top3_rate'],
+            'days_since_last': last.get('days_since'),
+            'last_finish_pos': last.get('last_finish_pos'),
+            'dist_diff_from_last': dist_diff,
+            'wt_diff_from_last': wt_diff,
+            'last_same_venue': 1 if (last.get('last_venue') == venue and last.get('last_venue')) else 0,
+            'draw_bias_top3': draw_bias,
+        }
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--db', default='hkjc.sqlite')
+    ap.add_argument('--in', dest='inPath', required=True)
+    ap.add_argument('--model', default='models/HKJC-ML_NOODDS_RANK_LGBM_v2.txt')
+    ap.add_argument('--meta', default='models/HKJC-ML_NOODDS_RANK_LGBM_v2.infermeta.json')
+    ap.add_argument('--out', dest='outPath', required=True)
+    ap.add_argument('--topK', type=int, default=5)
+    args = ap.parse_args()
+
+    meta = json.load(open(args.meta, 'r', encoding='utf-8'))
+    feat_keys = meta['featKeys']
+    impute = meta.get('imputeMeans') or {}
+
+    card = json.load(open(args.inPath, 'r', encoding='utf-8'))
+    key = parse_race_key(((card.get('betPage') or {}).get('url')))
+    racedate = key.get('racedate')
+    venue = key.get('venue')
+    raceNo = key.get('raceNo')
+
+    distance_m = int(((card.get('betPage') or {}).get('distanceMeters')) or 0)
+    class_num = int(((card.get('betPage') or {}).get('classNum')) or 0)
+    surface = ((card.get('betPage') or {}).get('surfaceText')) or ''
+
+    con = connect(args.db)
+    fb = FeatureBuilder(con)
+
+    picks = card.get('picks') or []
+    feat_rows = []
+    for p in picks:
+        feat_rows.append(fb.build(racedate, venue, distance_m, class_num, surface, p))
+
+    X = np.array([[r.get(k) for k in feat_keys] for r in feat_rows], dtype=float)
+    # impute
+    for i, k in enumerate(feat_keys):
+        col = X[:, i]
+        m = float(impute.get(k, 0.0))
+        col[np.isnan(col)] = m
+        X[:, i] = col
+
+    booster = lgb.Booster(model_file=args.model)
+    scores = booster.predict(X)
+
+    scored_all = []
+    for p, s in zip(picks, scores):
+        scored_all.append({
+            'horse_no': int(p.get('no') or 0),
+            'horse': p.get('horse'),
+            'draw': int(p.get('draw') or 0),
+            'jockey': p.get('jockey'),
+            'trainer': p.get('trainer'),
+            'score': float(s),
+        })
+    scored_all.sort(key=lambda x: x['score'], reverse=True)
+
+    out = {
+        'model': meta.get('name') or 'HKJC-ML_NOODDS_RANK_LGBM_v2',
+        'racedate': racedate,
+        'venue': venue,
+        'raceNo': raceNo,
+        'top5': scored_all[: int(args.topK)],
+        'scored_all': scored_all,
+        'generatedAt': datetime.utcnow().isoformat() + 'Z',
+        'betPage': card.get('betPage'),
+    }
+
+    os.makedirs(os.path.dirname(args.outPath) or '.', exist_ok=True)
+    json.dump(out, open(args.outPath, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+    print(json.dumps({'ok': True, 'out': args.outPath, 'topK': args.topK}, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()
