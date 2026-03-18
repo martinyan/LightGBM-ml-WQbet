@@ -128,6 +128,63 @@ def main():
         })
     scored_all.sort(key=lambda x:x['score'], reverse=True)
 
+    # Optional v6 Top3-cover heuristic: adjust Top5 composition by pace
+    cover_cfg = meta.get('selection_top5_cover_v6')
+    if cover_cfg and cover_cfg.get('best'):
+        p = (cover_cfg['best'].get('params') or {})
+        pace_thr_fast = float(p.get('pace_thr_fast', 0.35))
+        pace_thr_slow = float(p.get('pace_thr_slow', 0.15))
+        min_closer_fast = int(p.get('min_closer_fast', 1))
+        min_front_slow = int(p.get('min_front_slow', 1))
+
+        # attach style flags to scored_all (same order as picks)
+        style_by_no = {}
+        for pick, a in zip(picks, auxs):
+            hn = int(pick.get('no') or 0)
+            style_by_no[hn] = {'front': int(a.get('style_front') or 0), 'closer': int(a.get('style_closer') or 0)}
+        for r in scored_all:
+            s = style_by_no.get(int(r['horse_no']), {})
+            r['style_front'] = s.get('front', 0)
+            r['style_closer'] = s.get('closer', 0)
+
+        def enforce(top, rest, key, need):
+            if need <= 0:
+                return top, rest
+            # candidates outside
+            cand = [x for x in rest if x.get(key)]
+            if not cand:
+                return top, rest
+            # worst in top (by score)
+            top_sorted = sorted(top, key=lambda x: x['score'])
+            for _ in range(need):
+                if not cand or not top_sorted:
+                    break
+                c = cand.pop(0)
+                w = top_sorted.pop(0)
+                top.remove(w)
+                top.append(c)
+                rest.remove(c)
+                rest.append(w)
+                rest.sort(key=lambda x:x['score'], reverse=True)
+                top_sorted = sorted(top, key=lambda x: x['score'])
+            return top, rest
+
+        base_top5 = scored_all[:5]
+        base_rest = scored_all[5:]
+
+        # apply rules
+        if pace >= pace_thr_fast:
+            have = sum(1 for x in base_top5 if x.get('style_closer'))
+            base_top5, base_rest = enforce(base_top5, base_rest, 'style_closer', max(0, min_closer_fast - have))
+        if pace <= pace_thr_slow:
+            have = sum(1 for x in base_top5 if x.get('style_front'))
+            base_top5, base_rest = enforce(base_top5, base_rest, 'style_front', max(0, min_front_slow - have))
+
+        base_top5.sort(key=lambda x:x['score'], reverse=True)
+        top5_out = base_top5
+    else:
+        top5_out = scored_all[: int(args.topK)]
+
     out={
         'model': meta.get('name'),
         'racedate': racedate,
@@ -140,7 +197,7 @@ def main():
             'select': {'kind': sel_kind, 'thr': pace_thr, 'tau': sel_tau, 'w_fast': float(w)},
             'used': 'FAST' if use_fast else 'SLOW'
         },
-        'top5': scored_all[: int(args.topK)],
+        'top5': top5_out,
         'scored_all': scored_all,
         'generatedAt': datetime.utcnow().isoformat()+'Z',
         'betPage': card.get('betPage'),

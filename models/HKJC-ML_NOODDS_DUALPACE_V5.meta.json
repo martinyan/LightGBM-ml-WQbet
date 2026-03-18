@@ -145,5 +145,21 @@
       ]
     },
     "tunedAt": "2026-03-18T18:59:01"
+  },
+  "selection_top5_cover_v6": {
+    "tunedAt": "2026-03-18T19:08:47",
+    "kpi": "top5_covers_top3",
+    "best": {
+      "score": 0.17525773195876287,
+      "rate": 0.17525773195876287,
+      "n": 485,
+      "params": {
+        "pace_thr_fast": 0.35,
+        "pace_thr_slow": 0.15,
+        "min_closer_fast": 1,
+        "min_front_slow": 1
+      }
+    },
+    "rule": "if pace>=pace_thr_fast ensure min_closer_fast closers; if pace<=pace_thr_slow ensure min_front_slow fronts; replace worst-in-top5 with best outside if not worse"
   }
 }
