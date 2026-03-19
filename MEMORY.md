@@ -20,6 +20,7 @@
 - **Odds truth for datasets/backtests:** `cur_win_odds` uses **final odds from HKJC localresults** page (post-race).
 - **Raceday production protocol:** generate first prediction at **T-2h**, then track W/Q odds drift **every 30 min until T-30**, **every 5 min until T-5**, and **every 1 min until T-1 (FINAL)**; FINAL prediction uses **Model A (rule-based)** drift weighting that can flip bet/no-bet and change anchor.
 - **Publishing:** create a new Google Sheet per raceday named `YYYYMMDD Horse pick`; create tabs per race per prediction snapshot (plus drift logs).
+- **Output requirement:** keep/include 「步速預測」 (pace prediction) in future prediction outputs for **both production and research models**.
 - Regularized XGBoost, **NO-ODDS** inference (`cur_win_odds=0`)
 - Saved/tagged in git: tag `HKJC-ML_XGB_NOODDS_REG_v2`
 - Signature file: `/data/.openclaw/workspace/models/HKJC-ML_XGB_NOODDS_REG_v2.signature.json`
