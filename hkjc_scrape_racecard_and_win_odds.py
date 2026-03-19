@@ -102,42 +102,92 @@ def parse_race_meta(text: str):
 def parse_racecard(html: str):
     """Parse the server-rendered racecard HTML.
 
-    We locate <tr> rows that contain a horseid link, then extract a few td fields.
-    Empirically, the important columns are:
-      td[0]=horse no
-      td[3]=horse name
-      td[4]=horse code (e.g., H436)
-      td[5]=carried weight
-      td[6]=jockey name
-      td[8]=draw
-      td[9]=trainer name
+    HKJC racecard table layout changes over time. We therefore:
+    - locate the table that contains both '馬匹編號' and horse profile links
+    - read the header row (2nd row typically) and map columns by header names
+
+    Fields extracted:
+      no, horse, code, draw, wt, jockey, trainer
     """
+
+    def clean(s: str) -> str:
+        s = re.sub(r'<br\s*/?>', ' ', s or '', flags=re.I)
+        s = re.sub(r'<[^>]+>', ' ', s)
+        s = s.replace('&nbsp;', ' ')
+        s = re.sub(r'\s+', ' ', s).strip()
+        return s
 
     # normalize text for meta parsing
     txt = re.sub(r'\s+', ' ', html.replace('\n', ' '))
     dist, class_num, surface = parse_race_meta(txt)
 
+    # find the runner table
+    runner_table = None
+    for t in re.findall(r'<table[\s\S]*?</table>', html, flags=re.I):
+        if 'horse?horseid=' not in t:
+            continue
+        if '馬匹編號' in t and '馬名' in t and '烙號' in t:
+            runner_table = t
+            break
+
+    if not runner_table:
+        return {
+            'distanceMeters': dist,
+            'classNum': class_num,
+            'surfaceText': surface,
+            'rows': [],
+            'rowsFound': 0,
+        }
+
+    tr_list = re.findall(r'<tr[^>]*>[\s\S]*?</tr>', runner_table, flags=re.I)
+
+    # header row is the first row that contains 馬匹編號 + 馬名
+    header_cells = None
+    for tr in tr_list:
+        cells = [clean(x) for x in re.findall(r'<t[dh][^>]*>([\s\S]*?)</t[dh]>', tr, flags=re.I)]
+        if '馬匹編號' in cells and '馬名' in cells:
+            header_cells = cells
+            break
+
+    if not header_cells:
+        return {
+            'distanceMeters': dist,
+            'classNum': class_num,
+            'surfaceText': surface,
+            'rows': [],
+            'rowsFound': 0,
+        }
+
+    def idx(name: str) -> int:
+        try:
+            return header_cells.index(name)
+        except ValueError:
+            return -1
+
+    i_no = idx('馬匹編號')
+    i_horse = idx('馬名')
+    i_code = idx('烙號')
+    i_wt = idx('負磅')
+    i_jockey = idx('騎師')
+    i_draw = idx('檔位')
+    i_trainer = idx('練馬師')
+
     rows = []
     seen_no = set()
 
-    for tr in re.findall(r'<tr[^>]*>[\s\S]*?</tr>', html, flags=re.I):
+    for tr in tr_list:
         if 'horse?horseid=' not in tr:
             continue
-        # skip standby/backup horses section
         if '後備馬匹' in tr or 'Standby' in tr:
             continue
-        tds = re.findall(r'<td[^>]*>([\s\S]*?)</td>', tr, flags=re.I)
-        if len(tds) < 10:
+        tds = [clean(x) for x in re.findall(r'<td[^>]*>([\s\S]*?)</td>', tr, flags=re.I)]
+        if not tds:
             continue
 
-        def clean(s):
-            s = re.sub(r'<br\s*/?>', ' ', s, flags=re.I)
-            s = re.sub(r'<[^>]+>', ' ', s)
-            s = s.replace('&nbsp;', ' ')
-            s = re.sub(r'\s+', ' ', s).strip()
-            return s
+        def get(i: int):
+            return tds[i] if i is not None and i >= 0 and i < len(tds) else ''
 
-        horse_no = clean(tds[0])
+        horse_no = get(i_no)
         if not horse_no.isdigit():
             continue
         horse_no = int(horse_no)
@@ -145,12 +195,12 @@ def parse_racecard(html: str):
             continue
         seen_no.add(horse_no)
 
-        horse = clean(tds[3])
-        code = clean(tds[4])
-        wt = clean(tds[5])
-        jockey = clean(tds[6])
-        draw = clean(tds[8])
-        trainer = clean(tds[9])
+        horse = get(i_horse) or None
+        code = get(i_code) or None
+        wt = get(i_wt) or None
+        jockey = get(i_jockey) or None
+        draw = get(i_draw) or None
+        trainer = get(i_trainer) or None
 
         try:
             wt = int(re.sub(r'[^0-9]', '', wt)) if wt else None
@@ -161,7 +211,6 @@ def parse_racecard(html: str):
         except Exception:
             draw = None
 
-        # if code didn't parse, try from horseid
         if not re.match(r'^[A-Z]\d{3}$', code or ''):
             m = re.search(r'horse\?horseid=HK_\d{4}_([A-Z]\d{3})', tr)
             code = m.group(1) if m else code
@@ -173,7 +222,7 @@ def parse_racecard(html: str):
         'classNum': class_num,
         'surfaceText': surface,
         'rows': rows,
-        'rowsFound': len(rows)
+        'rowsFound': len(rows),
     }
 
 
@@ -233,12 +282,11 @@ def main():
 
     win_odds = fetch_win_odds(date_dash, venue, int(args.raceNo))
 
-    # merge odds into rows; keep only declared runners that have WIN odds
+    # merge odds into rows; keep ALL declared runners.
+    # (For NO-ODDS research inference, WIN odds may not be published yet.)
     picks = []
     for r in rc['rows']:
         no = int(r['no'])
-        if no not in win_odds:
-            continue
         picks.append({
             **r,
             'win': win_odds.get(no),

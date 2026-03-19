@@ -81,7 +81,11 @@ function parseWp(html, url){
   const text = cleanCell(html);
   const scheduledTime = (text.match(/\b(\d{1,2}:\d{2})\b/)||[])[1] || null;
   const distanceMeters = Number((text.match(/(\d{3,4})\s*米/)||[])[1])||null;
-  return { url, scrapedAt: new Date().toISOString(), scheduledTime, distanceMeters, rows };
+  const classText = (text.match(/第([一二三四五六\d]+)班/)||[])[1] || null;
+  let surfaceText = null;
+  if (text.includes('草地')) surfaceText = 'turf';
+  if (text.includes('全天候') || text.includes('泥地')) surfaceText = 'awt';
+  return { url, scrapedAt: new Date().toISOString(), scheduledTime, distanceMeters, classText, surfaceText, rows };
 }
 
 const raceNos = parseRaceRange(racesArg);
