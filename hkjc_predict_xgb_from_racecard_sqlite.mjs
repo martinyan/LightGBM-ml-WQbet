@@ -37,6 +37,7 @@ const outPath = arg('--out', null);
 const xgbModelPath = arg('--xgbModel', 'models/HKJC-ML_XGB_NOODDS_REG_v2.bin');
 const xgbMetaPath = arg('--xgbMeta', 'models/HKJC-ML_XGB_NOODDS_REG_v2.infermeta.json');
 const lastN = Math.max(1, Number(arg('--lastN', '3')));
+const topK = Math.max(1, Number(arg('--topK', '6')));
 const noOdds = true;
 
 if (!inPath) {
@@ -162,7 +163,14 @@ function buildFeatureRow(pick) {
   const agg = aggPack?.agg ?? {};
 
   const lastRun = prevRuns?.[0] ?? null;
-  const prev_days_since = (racedate && lastRun?.racedate) ? daysBetween(racedate, lastRun.racedate) : null;
+
+  // IMPORTANT: for debutants, "days since last run" is missing/undefined.
+  // If we leave it null and the infermeta has no mean for this key, it will be imputed to 0,
+  // which incorrectly looks like "raced very recently" and can inflate debut runners.
+  // Use a conservative large value for debutants.
+  const prev_days_since = is_debut
+    ? 365
+    : ((racedate && lastRun?.racedate) ? daysBetween(racedate, lastRun.racedate) : null);
 
   let prevSplit = { split_count: null, split_last_time: null, split_penult_time: null, kick_delta: null, pos_early: null, pos_mid: null, pos_late: null, pos_change_early_to_late: null, pos_change_mid_to_late: null };
   if (lastRun?.runner_id != null) {
@@ -264,7 +272,9 @@ if (py.status !== 0) {
 
 const scored = JSON.parse(py.stdout);
 const runners = scored.rows.sort((a,b) => b.p_top3 - a.p_top3);
-const top5 = runners.slice(0,5);
+const top = runners.slice(0, topK);
+const top5 = top.slice(0, 5);
+const top6 = top.slice(0, 6);
 const p12 = (runners[0]?.p_top3 ?? 0) + (runners[1]?.p_top3 ?? 0);
 
 const out = {
@@ -273,7 +283,12 @@ const out = {
   venue,
   raceNo,
   p12,
+  topK,
+  // Backward-compatible fields
   top5: top5.map(r => ({ horse_no: r.horse_no, horse: r.horse, p_top3: r.p_top3, draw: r.draw, jockey: r.jockey, trainer: r.trainer })),
+  // Preferred going forward
+  top6: top6.map(r => ({ horse_no: r.horse_no, horse: r.horse, p_top3: r.p_top3, draw: r.draw, jockey: r.jockey, trainer: r.trainer })),
+  scored_all: runners.map(r => ({ horse_no: r.horse_no, horse: r.horse, p_top3: r.p_top3, draw: r.draw, jockey: r.jockey, trainer: r.trainer })),
   generatedAt: new Date().toISOString(),
   betPage: card?.betPage ?? null
 };

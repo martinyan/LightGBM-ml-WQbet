@@ -22,6 +22,7 @@
 - **Publishing:** create a new Google Sheet per raceday named `YYYYMMDD Horse pick`; create tabs per race per prediction snapshot (plus drift logs).
 - **Output requirement:** keep/include 「步速預測」 (pace prediction) in future prediction outputs for **both production and research models**.
 - **Preference:** Martin likes the pacing/步速預測 presentation style used in Google Sheet `1DArdVVacSerDseD-zCzkgfxp3Gy0OPvAfO9RpZZgTLU` (gid=1188616635) — keep that style going forward.
+- **Output preference:** provide **Top6** (not Top5) in predictions going forward.
 - Regularized XGBoost, **NO-ODDS** inference (`cur_win_odds=0`)
 - Saved/tagged in git: tag `HKJC-ML_XGB_NOODDS_REG_v2`
 - Signature file: `/data/.openclaw/workspace/models/HKJC-ML_XGB_NOODDS_REG_v2.signature.json`
