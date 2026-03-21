@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prediction/schema_research-result.v1.json",
+  "title": "research-result.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "racedate",
+    "venue",
+    "source",
+    "model",
+    "races",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": { "const": "research-result.v1" },
+    "generated_at": { "type": "string" },
+    "racedate": {
+      "type": "string",
+      "pattern": "^\\d{2}-\\d{2}-\\d{4}$",
+      "description": "dd-mm-yyyy"
+    },
+    "venue": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "required": ["pipeline"],
+      "properties": {
+        "pipeline": { "const": "research" },
+        "code_ref": {
+          "type": "object",
+          "properties": {
+            "git_commit": { "type": ["string", "null"] },
+            "script": { "type": ["string", "null"] }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "model": {
+      "type": "object",
+      "required": ["name", "type", "task"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "task": { "type": "string" },
+        "no_odds_inference": { "type": "boolean" },
+        "artifact_paths": {
+          "type": "object",
+          "properties": {
+            "model_bin": { "type": ["string", "null"] },
+            "infermeta_json": { "type": ["string", "null"] }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "races": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["race_no", "ranked_runners_top6"],
+        "properties": {
+          "race_no": { "type": "integer", "minimum": 1 },
+          "distance_m": { "type": ["integer", "null"] },
+          "surface": { "type": ["string", "null"] },
+          "racecard_url": { "type": ["string", "null"] },
+          "field_size": { "type": ["integer", "null"], "minimum": 1 },
+          "ranked_runners_top6": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["rank", "horse_no", "horse_name_zh"],
+              "properties": {
+                "rank": { "type": "integer", "minimum": 1 },
+                "horse_no": { "type": "integer", "minimum": 1 },
+                "horse_code": { "type": ["string", "null"] },
+                "horse_name_zh": { "type": "string" },
+                "p_top3": { "type": ["number", "null"] },
+                "draw": { "type": ["integer", "null"], "minimum": 0 },
+                "jockey": { "type": ["string", "null"] },
+                "trainer": { "type": ["string", "null"] },
+                "equipment": {
+                  "type": "object",
+                  "properties": {
+                    "cur_equip_raw": { "type": ["string", "null"] },
+                    "prev_equip_raw": { "type": ["string", "null"] },
+                    "gear_flags": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["races", "topk"],
+      "properties": {
+        "races": { "type": "integer", "minimum": 1 },
+        "topk": { "const": 6 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

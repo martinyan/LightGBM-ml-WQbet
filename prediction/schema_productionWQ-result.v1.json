@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prediction/schema_productionWQ-result.v1.json",
+  "title": "productionWQ-result.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "racedate",
+    "venue",
+    "source",
+    "models",
+    "races",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": { "const": "productionWQ-result.v1" },
+    "generated_at": { "type": "string" },
+    "racedate": {
+      "type": "string",
+      "pattern": "^\\d{2}-\\d{2}-\\d{4}$",
+      "description": "dd-mm-yyyy"
+    },
+    "venue": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "required": ["pipeline"],
+      "properties": {
+        "pipeline": { "const": "production" },
+        "config": { "type": ["string", "null"] },
+        "code_ref": {
+          "type": "object",
+          "properties": {
+            "git_commit": { "type": ["string", "null"] },
+            "script": { "type": ["string", "null"] }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "models": {
+      "type": "object",
+      "required": ["W", "Q"],
+      "properties": {
+        "W": {
+          "type": "object",
+          "required": ["name", "threshold", "alpha", "beta"],
+          "properties": {
+            "name": { "type": "string" },
+            "threshold": { "type": "number" },
+            "alpha": { "type": "number" },
+            "beta": { "type": "number" },
+            "artifact_paths": { "type": "object", "additionalProperties": true }
+          },
+          "additionalProperties": true
+        },
+        "Q": {
+          "type": "object",
+          "required": ["name", "strategy"],
+          "properties": {
+            "name": { "type": "string" },
+            "strategy": { "type": "string" },
+            "artifact_paths": { "type": "object", "additionalProperties": true }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "races": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["race_no", "W", "Q", "ranked_runners_top6"],
+        "properties": {
+          "race_no": { "type": "integer", "minimum": 1 },
+          "distance_m": { "type": ["integer", "null"] },
+          "surface": { "type": ["string", "null"] },
+          "field_size": { "type": ["integer", "null"], "minimum": 1 },
+
+          "W": {
+            "type": "object",
+            "required": ["top1"],
+            "properties": {
+              "top1": {
+                "type": "object",
+                "required": ["horse_no", "cur_win_odds", "p_mkt_win", "score_win", "overlay", "passes_threshold"],
+                "properties": {
+                  "horse_no": { "type": "integer", "minimum": 1 },
+                  "cur_win_odds": { "type": ["number", "null"] },
+                  "p_mkt_win": { "type": ["number", "null"] },
+                  "score_win": { "type": ["number", "null"] },
+                  "overlay": { "type": ["number", "null"] },
+                  "passes_threshold": { "type": "boolean" }
+                },
+                "additionalProperties": true
+              },
+              "top2": {
+                "type": ["object", "null"],
+                "properties": {
+                  "horse_no": { "type": "integer", "minimum": 1 },
+                  "cur_win_odds": { "type": ["number", "null"] },
+                  "p_mkt_win": { "type": ["number", "null"] },
+                  "score_win": { "type": ["number", "null"] },
+                  "overlay": { "type": ["number", "null"] },
+                  "passes_threshold": { "type": "boolean" }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          },
+
+          "Q": {
+            "type": "object",
+            "required": ["anchor_horse_no", "partners", "pairs"],
+            "properties": {
+              "anchor_horse_no": { "type": "integer", "minimum": 1 },
+              "partners": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "integer", "minimum": 1 }
+              },
+              "pairs": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": true
+          },
+
+          "ranked_runners_top6": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["rank", "horse_no", "horse_name_zh", "cur_win_odds", "p_mkt_win", "score_win", "overlay"],
+              "properties": {
+                "rank": { "type": "integer", "minimum": 1 },
+                "horse_no": { "type": "integer", "minimum": 1 },
+                "horse_code": { "type": ["string", "null"] },
+                "horse_name_zh": { "type": "string" },
+
+                "cur_win_odds": { "type": ["number", "null"] },
+                "p_mkt_win": { "type": ["number", "null"] },
+                "score_win": { "type": ["number", "null"] },
+                "overlay": { "type": ["number", "null"] },
+
+                "q_ranker_score": { "type": ["number", "null"] },
+                "q_rank_field": { "type": ["integer", "null"] }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["races", "topk"],
+      "properties": {
+        "races": { "type": "integer", "minimum": 1 },
+        "topk": { "const": 6 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
