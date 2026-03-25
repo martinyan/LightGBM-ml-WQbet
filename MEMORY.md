@@ -25,6 +25,7 @@
 - **Odds truth for datasets/backtests:** `cur_win_odds` uses **final odds from HKJC localresults** page (post-race).
 - **Raceday production protocol:** generate first prediction at **T-2h**, then track W/Q odds drift **every 30 min until T-30**, **every 5 min until T-5**, and **every 1 min until T-1 (FINAL)**; FINAL prediction uses **Model A (rule-based)** drift weighting that can flip bet/no-bet and change anchor.
 - **Publishing:** create a new Google Sheet per raceday named `YYYYMMDD Horse pick`; create tabs per race per prediction snapshot (plus drift logs).
+- **Production WQ JSON schema (current):** use **picks-only** schema `productionWQ-picks.v2` in `prediction/<dd-mm-yyyy>/productionWQ-result.json` (W pick + 2 Q partners, include overlay).
 - **Output requirement:** keep/include 「步速預測」 (pace prediction) in future prediction outputs for **both production and research models**.
 - **步速提示格式（Research model）：** 每場提供「步速提示 + 理由」（2點內），理由可**混合**賽前可解釋因素 + model 內部訊號。
 - **Preference:** Martin likes the pacing/步速預測 presentation style used in Google Sheet `1DArdVVacSerDseD-zCzkgfxp3Gy0OPvAfO9RpZZgTLU` (gid=1188616635) — keep that style going forward.
