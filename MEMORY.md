@@ -11,6 +11,11 @@
 
 ### HKJC-ML (default prediction model)
 
+**Gear-change research (配備轉變) (2026-03-20):**
+- Trained experimental model `HKJC-ML_XGB_NOODDS_REG_v2_GEARCHANGE_v1` with gear-change features from HKJC horse pages.
+- Eval logloss improved slightly vs baseline (0.51736 vs 0.51826).
+- Change-focused uplift analysis (not causal): first/rewear signals strongest for **B1/B2**; CP1/2 small positive; TT1/2 and H1/H2 positive in full 2023/09–2026/03 window but need more OOS samples.
+
 **Default model for HKJC predictions (as of 2026-02-21):** `HKJC-ML_XGB_NOODDS_REG_v2`
 
 **Pinned production W+Q models for betting (as of 2026-02-24):**
@@ -21,6 +26,7 @@
 - **Raceday production protocol:** generate first prediction at **T-2h**, then track W/Q odds drift **every 30 min until T-30**, **every 5 min until T-5**, and **every 1 min until T-1 (FINAL)**; FINAL prediction uses **Model A (rule-based)** drift weighting that can flip bet/no-bet and change anchor.
 - **Publishing:** create a new Google Sheet per raceday named `YYYYMMDD Horse pick`; create tabs per race per prediction snapshot (plus drift logs).
 - **Output requirement:** keep/include 「步速預測」 (pace prediction) in future prediction outputs for **both production and research models**.
+- **步速提示格式（Research model）：** 每場提供「步速提示 + 理由」（2點內），理由可**混合**賽前可解釋因素 + model 內部訊號。
 - **Preference:** Martin likes the pacing/步速預測 presentation style used in Google Sheet `1DArdVVacSerDseD-zCzkgfxp3Gy0OPvAfO9RpZZgTLU` (gid=1188616635) — keep that style going forward.
 - **Output preference:** provide **Top6** (not Top5) in predictions going forward.
 - Regularized XGBoost, **NO-ODDS** inference (`cur_win_odds=0`)
