@@ -1,0 +1,956 @@
+{
+  "schema_version": "productionWQ-result.v1",
+  "generated_at": "2026-03-24T19:51:11+08:00",
+  "racedate": "25-03-2026",
+  "venue": "HV",
+  "source": {
+    "pipeline": "production",
+    "config": "prod/HKJC_PROD_WQ.json",
+    "code_ref": {
+      "git_commit": "bb7f92e",
+      "script": "hkjc_prod_run_meeting_racecard_graphql.py"
+    }
+  },
+  "models": {
+    "W": {
+      "name": "GoldenWinBet",
+      "threshold": 0.2,
+      "alpha": 1.0,
+      "beta": 0.0,
+      "artifact_paths": {
+        "bundle": "models/OVERLAY_RESIDUAL_LGBM_v1_PROD_22bets_thr0p2.pkl"
+      }
+    },
+    "Q": {
+      "name": "GoldenQbet",
+      "strategy": "2-combo Q",
+      "artifact_paths": {
+        "bundle": "models/Q_RANKER_v7_PROD_FEB22_111ROI"
+      }
+    }
+  },
+  "races": [
+    {
+      "race_no": 1,
+      "distance_m": 2200,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 7,
+          "cur_win_odds": 4.1,
+          "p_mkt_win": 0.19818693090163186,
+          "score_win": -1.3501543033831318,
+          "overlay": 0.04751051561157586,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 7,
+        "partners": [
+          4,
+          6
+        ],
+        "pairs": [
+          "7-4",
+          "7-6"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 7,
+          "horse_code": "J331",
+          "horse_name_zh": "幸運同行",
+          "cur_win_odds": 4.1,
+          "p_mkt_win": 0.19818693090163186,
+          "score_win": -1.3501543033831318,
+          "overlay": 0.04751051561157586,
+          "q_ranker_score": -1.847583015812586,
+          "q_rank_field": 7
+        },
+        {
+          "rank": 2,
+          "horse_no": 4,
+          "horse_code": "H168",
+          "horse_name_zh": "夢照發",
+          "cur_win_odds": 5.8,
+          "p_mkt_win": 0.14009765805115357,
+          "score_win": -1.774886099669917,
+          "overlay": 0.03959299031885882,
+          "q_ranker_score": -0.23801418409457703,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 3,
+          "horse_no": 9,
+          "horse_code": "H293",
+          "horse_name_zh": "開心三多",
+          "cur_win_odds": 7.3,
+          "p_mkt_win": 0.11131046804064254,
+          "score_win": -2.0548551291136277,
+          "overlay": 0.02256950617724247,
+          "q_ranker_score": -1.3210576064320425,
+          "q_rank_field": 3
+        },
+        {
+          "rank": 4,
+          "horse_no": 2,
+          "horse_code": "E496",
+          "horse_name_zh": "管之友",
+          "cur_win_odds": 8.4,
+          "p_mkt_win": 0.0967340972257965,
+          "score_win": -2.158135990973927,
+          "overlay": 0.07591503642961707,
+          "q_ranker_score": -2.5598698102606376,
+          "q_rank_field": 9
+        },
+        {
+          "rank": 5,
+          "horse_no": 5,
+          "horse_code": "J541",
+          "horse_name_zh": "古惑大師",
+          "cur_win_odds": 10,
+          "p_mkt_win": 0.08125664166966906,
+          "score_win": -2.4406568039550827,
+          "overlay": -0.015262543978091753,
+          "q_ranker_score": -1.5219311969210694,
+          "q_rank_field": 6
+        },
+        {
+          "rank": 6,
+          "horse_no": 1,
+          "horse_code": "H213",
+          "horse_name_zh": "富喜來",
+          "cur_win_odds": 11,
+          "p_mkt_win": 0.07386967424515369,
+          "score_win": -2.5041650941197493,
+          "overlay": 0.024547489488007196,
+          "q_ranker_score": -1.5088027119098704,
+          "q_rank_field": 5
+        }
+      ]
+    },
+    {
+      "race_no": 2,
+      "distance_m": 1650,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 3,
+          "cur_win_odds": 4.6,
+          "p_mkt_win": 0.1768543774937818,
+          "score_win": -1.4269539860918536,
+          "overlay": 0.11085247208460519,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 3,
+        "partners": [
+          9,
+          1
+        ],
+        "pairs": [
+          "3-9",
+          "3-1"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 3,
+          "horse_code": "K406",
+          "horse_name_zh": "知道穩勝",
+          "cur_win_odds": 4.6,
+          "p_mkt_win": 0.1768543774937818,
+          "score_win": -1.4269539860918536,
+          "overlay": 0.11085247208460519,
+          "q_ranker_score": -1.3313158525521351,
+          "q_rank_field": 3
+        },
+        {
+          "rank": 2,
+          "horse_no": 9,
+          "horse_code": "J098",
+          "horse_name_zh": "先到先得",
+          "cur_win_odds": 5.6,
+          "p_mkt_win": 0.14527323865560646,
+          "score_win": -1.7314710846903616,
+          "overlay": 0.04069438211654405,
+          "q_ranker_score": 0.5702751315079168,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 3,
+          "horse_no": 1,
+          "horse_code": "K162",
+          "horse_name_zh": "佳登",
+          "cur_win_odds": 5.9,
+          "p_mkt_win": 0.13788646380871122,
+          "score_win": -1.808737570475775,
+          "overlay": 0.024218783524907556,
+          "q_ranker_score": -0.5053093761026703,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 4,
+          "horse_no": 12,
+          "horse_code": "G292",
+          "horse_name_zh": "多利神駒",
+          "cur_win_odds": 7.7,
+          "p_mkt_win": 0.10565326447680469,
+          "score_win": -2.1601452706527584,
+          "overlay": -0.024214365891811238,
+          "q_ranker_score": -1.8690830382735348,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 5,
+          "horse_no": 11,
+          "horse_code": "J395",
+          "horse_name_zh": "至高心得",
+          "cur_win_odds": 8,
+          "p_mkt_win": 0.10169126705892452,
+          "score_win": -2.199096528845244,
+          "overlay": -0.020524148766808026,
+          "q_ranker_score": -3.1650695755387015,
+          "q_rank_field": 9
+        },
+        {
+          "rank": 6,
+          "horse_no": 8,
+          "horse_code": "L047",
+          "horse_name_zh": "準希望",
+          "cur_win_odds": 10,
+          "p_mkt_win": 0.08135301364713962,
+          "score_win": -2.2780707526748407,
+          "overlay": 0.14603328944210417,
+          "q_ranker_score": -2.1388765753966115,
+          "q_rank_field": 6
+        }
+      ]
+    },
+    {
+      "race_no": 3,
+      "distance_m": 1200,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 6,
+          "cur_win_odds": 3.6,
+          "p_mkt_win": 0.22587798864804884,
+          "score_win": -1.0297482553652755,
+          "overlay": 0.2019862629570683,
+          "passes_threshold": true
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 6,
+        "partners": [
+          5,
+          7
+        ],
+        "pairs": [
+          "6-5",
+          "6-7"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 6,
+          "horse_code": "J362",
+          "horse_name_zh": "比特星",
+          "cur_win_odds": 3.6,
+          "p_mkt_win": 0.22587798864804884,
+          "score_win": -1.0297482553652755,
+          "overlay": 0.2019862629570683,
+          "q_ranker_score": -0.5824762528844365,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 2,
+          "horse_no": 2,
+          "horse_code": "E490",
+          "horse_name_zh": "金發盛世",
+          "cur_win_odds": 4.3,
+          "p_mkt_win": 0.18910715328673855,
+          "score_win": -1.3247384367259953,
+          "overlay": 0.13108368075690346,
+          "q_ranker_score": -1.2818976647044416,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 3,
+          "horse_no": 5,
+          "horse_code": "H459",
+          "horse_name_zh": "星運少爵",
+          "cur_win_odds": 5.3,
+          "p_mkt_win": 0.15342655832697658,
+          "score_win": -1.5979694020752733,
+          "overlay": 0.11000554979310828,
+          "q_ranker_score": -0.5683562133571266,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 4,
+          "horse_no": 7,
+          "horse_code": "K283",
+          "horse_name_zh": "可靠大師",
+          "cur_win_odds": 9,
+          "p_mkt_win": 0.09035119545921952,
+          "score_win": -2.1804525193834285,
+          "overlay": 0.12890182818623075,
+          "q_ranker_score": -0.7330829686180353,
+          "q_rank_field": 3
+        },
+        {
+          "rank": 5,
+          "horse_no": 8,
+          "horse_code": "K553",
+          "horse_name_zh": "驕陽雄心",
+          "cur_win_odds": 12,
+          "p_mkt_win": 0.06776339659441465,
+          "score_win": -2.480585399118959,
+          "overlay": 0.14097907373943905,
+          "q_ranker_score": -1.2391551159806924,
+          "q_rank_field": 4
+        },
+        {
+          "rank": 6,
+          "horse_no": 10,
+          "horse_code": "J223",
+          "horse_name_zh": "新力驕",
+          "cur_win_odds": 14,
+          "p_mkt_win": 0.05808291136664112,
+          "score_win": -2.680519973768388,
+          "overlay": 0.10552578452518933,
+          "q_ranker_score": -2.5835236197529023,
+          "q_rank_field": 11
+        }
+      ]
+    },
+    {
+      "race_no": 4,
+      "distance_m": 1650,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 6,
+          "cur_win_odds": 5.1,
+          "p_mkt_win": 0.1597794100718949,
+          "score_win": -1.4995227307060421,
+          "overlay": 0.16034755679363935,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 6,
+        "partners": [
+          4,
+          8
+        ],
+        "pairs": [
+          "6-4",
+          "6-8"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 6,
+          "horse_code": "K155",
+          "horse_name_zh": "爆出美麗",
+          "cur_win_odds": 5.1,
+          "p_mkt_win": 0.1597794100718949,
+          "score_win": -1.4995227307060421,
+          "overlay": 0.16034755679363935,
+          "q_ranker_score": -1.5779172823075693,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 2,
+          "horse_no": 4,
+          "horse_code": "K003",
+          "horse_name_zh": "康昌之星",
+          "cur_win_odds": 4.7,
+          "p_mkt_win": 0.17337765773758806,
+          "score_win": -1.5494388706934576,
+          "overlay": 0.012436852194983255,
+          "q_ranker_score": 0.7223000663470002,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 3,
+          "horse_no": 8,
+          "horse_code": "K536",
+          "horse_name_zh": "八心之星",
+          "cur_win_odds": 6.5,
+          "p_mkt_win": 0.12536538328717906,
+          "score_win": -1.9319572311795135,
+          "overlay": 0.010616447318848232,
+          "q_ranker_score": -0.9592667350175197,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 4,
+          "horse_no": 12,
+          "horse_code": "K306",
+          "horse_name_zh": "堅多福",
+          "cur_win_odds": 7.9,
+          "p_mkt_win": 0.10314873308438782,
+          "score_win": -2.167129424572923,
+          "overlay": -0.004411345127737464,
+          "q_ranker_score": -2.158085022008428,
+          "q_rank_field": 8
+        },
+        {
+          "rank": 5,
+          "horse_no": 1,
+          "horse_code": "J137",
+          "horse_name_zh": "本領非凡",
+          "cur_win_odds": 7.6,
+          "p_mkt_win": 0.10722039360087682,
+          "score_win": -2.1728281442778203,
+          "overlay": -0.05337486456429449,
+          "q_ranker_score": -2.223070862015913,
+          "q_rank_field": 9
+        },
+        {
+          "rank": 6,
+          "horse_no": 5,
+          "horse_code": "J266",
+          "horse_name_zh": "香港神駒",
+          "cur_win_odds": 9.8,
+          "p_mkt_win": 0.08315050932312897,
+          "score_win": -2.3711717667920746,
+          "overlay": 0.029119228715313902,
+          "q_ranker_score": -0.9808285062888586,
+          "q_rank_field": 3
+        }
+      ]
+    },
+    {
+      "race_no": 5,
+      "distance_m": 1000,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 2,
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.10985702734941505,
+          "score_win": -1.8179727804824788,
+          "overlay": 0.2742295437555322,
+          "passes_threshold": true
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 2,
+        "partners": [
+          12,
+          5
+        ],
+        "pairs": [
+          "2-12",
+          "2-5"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 2,
+          "horse_code": "J082",
+          "horse_name_zh": "年少多好",
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.10985702734941505,
+          "score_win": -1.8179727804824788,
+          "overlay": 0.2742295437555322,
+          "q_ranker_score": -1.018667914921267,
+          "q_rank_field": 6
+        },
+        {
+          "rank": 2,
+          "horse_no": 12,
+          "horse_code": "J465",
+          "horse_name_zh": "品德寶寶",
+          "cur_win_odds": 6.4,
+          "p_mkt_win": 0.12702218787276118,
+          "score_win": -1.8369009129359382,
+          "overlay": 0.09064744806034718,
+          "q_ranker_score": 0.6176014122026583,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 3,
+          "horse_no": 3,
+          "horse_code": "J468",
+          "horse_name_zh": "燭光晚餐",
+          "cur_win_odds": 6.8,
+          "p_mkt_win": 0.1195502944684811,
+          "score_win": -1.9242131769931765,
+          "overlay": 0.07248247191921983,
+          "q_ranker_score": -1.3289798886060484,
+          "q_rank_field": 11
+        },
+        {
+          "rank": 4,
+          "horse_no": 5,
+          "horse_code": "E061",
+          "horse_name_zh": "人和家興",
+          "cur_win_odds": 7.9,
+          "p_mkt_win": 0.10290405093489512,
+          "score_win": -1.9293818933814557,
+          "overlay": 0.23598391983341088,
+          "q_ranker_score": 0.0034696421320198835,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 5,
+          "horse_no": 8,
+          "horse_code": "K411",
+          "horse_name_zh": "飛龍在天",
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.10985702734941505,
+          "score_win": -2.06131390495206,
+          "overlay": 0.03088841928595101,
+          "q_ranker_score": -1.1826494575738904,
+          "q_rank_field": 8
+        },
+        {
+          "rank": 6,
+          "horse_no": 1,
+          "horse_code": "J431",
+          "horse_name_zh": "馬力",
+          "cur_win_odds": 9.3,
+          "p_mkt_win": 0.0874131185360937,
+          "score_win": -2.2982728312479335,
+          "overlay": 0.04736509317453155,
+          "q_ranker_score": -1.144503462353453,
+          "q_rank_field": 7
+        }
+      ]
+    },
+    {
+      "race_no": 6,
+      "distance_m": 1200,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 3,
+          "cur_win_odds": 3.9,
+          "p_mkt_win": 0.20941692306458107,
+          "score_win": -1.165825138486177,
+          "overlay": 0.1626184947055521,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 3,
+        "partners": [
+          6,
+          8
+        ],
+        "pairs": [
+          "3-6",
+          "3-8"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 3,
+          "horse_code": "J539",
+          "horse_name_zh": "皇者有利",
+          "cur_win_odds": 3.9,
+          "p_mkt_win": 0.20941692306458107,
+          "score_win": -1.165825138486177,
+          "overlay": 0.1626184947055521,
+          "q_ranker_score": -0.370965735506816,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 2,
+          "horse_no": 4,
+          "horse_code": "K132",
+          "horse_name_zh": "團結戰靈",
+          "cur_win_odds": 4.1,
+          "p_mkt_win": 0.19920146340289419,
+          "score_win": -1.2401861309364604,
+          "overlay": 0.1511065781131047,
+          "q_ranker_score": -1.845166905348439,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 3,
+          "horse_no": 1,
+          "horse_code": "H321",
+          "horse_name_zh": "千杯敬典",
+          "cur_win_odds": 7.2,
+          "p_mkt_win": 0.1134341666599814,
+          "score_win": -1.961288258147235,
+          "overlay": 0.0948444874847779,
+          "q_ranker_score": -2.0315346354694848,
+          "q_rank_field": 7
+        },
+        {
+          "rank": 4,
+          "horse_no": 6,
+          "horse_code": "J043",
+          "horse_name_zh": "銀刺勇士",
+          "cur_win_odds": 8.1,
+          "p_mkt_win": 0.10083037036442791,
+          "score_win": -2.0621233889554347,
+          "overlay": 0.1259087111866822,
+          "q_ranker_score": -1.1645145294394683,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 5,
+          "horse_no": 8,
+          "horse_code": "H317",
+          "horse_name_zh": "花好月盈",
+          "cur_win_odds": 8.4,
+          "p_mkt_win": 0.09722928570855548,
+          "score_win": -2.123899875447781,
+          "overlay": 0.10449677082927364,
+          "q_ranker_score": -1.3504308085774455,
+          "q_rank_field": 3
+        },
+        {
+          "rank": 6,
+          "horse_no": 5,
+          "horse_code": "K165",
+          "horse_name_zh": "馬達",
+          "cur_win_odds": 9.9,
+          "p_mkt_win": 0.08249757575271374,
+          "score_win": -2.2135104200063442,
+          "overlay": 0.1953758940569628,
+          "q_ranker_score": -2.0311269621697012,
+          "q_rank_field": 6
+        }
+      ]
+    },
+    {
+      "race_no": 7,
+      "distance_m": 1200,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 2,
+          "cur_win_odds": 4.5,
+          "p_mkt_win": 0.17959511072036793,
+          "score_win": -1.4401783030274697,
+          "overlay": 0.07891475044499044,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 2,
+        "partners": [
+          3,
+          6
+        ],
+        "pairs": [
+          "2-3",
+          "2-6"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 2,
+          "horse_code": "K451",
+          "horse_name_zh": "踏雪尋梅",
+          "cur_win_odds": 4.5,
+          "p_mkt_win": 0.17959511072036793,
+          "score_win": -1.4401783030274697,
+          "overlay": 0.07891475044499044,
+          "q_ranker_score": 0.8792317998007213,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 2,
+          "horse_no": 8,
+          "horse_code": "K325",
+          "horse_name_zh": "星辰千帥",
+          "cur_win_odds": 5.8,
+          "p_mkt_win": 0.13934103417959584,
+          "score_win": -1.6704223102764195,
+          "overlay": 0.15035161332479757,
+          "q_ranker_score": -1.4099878612187142,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 3,
+          "horse_no": 3,
+          "horse_code": "J143",
+          "horse_name_zh": "日馳千里",
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.10921324300562914,
+          "score_win": -1.932026335923365,
+          "overlay": 0.16677640402765112,
+          "q_ranker_score": -0.5572009391864718,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 4,
+          "horse_no": 10,
+          "horse_code": "G451",
+          "horse_name_zh": "加州得力",
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.10921324300562914,
+          "score_win": -1.9488564923075309,
+          "overlay": 0.1499462476434852,
+          "q_ranker_score": -1.817838444170601,
+          "q_rank_field": 7
+        },
+        {
+          "rank": 5,
+          "horse_no": 9,
+          "horse_code": "J359",
+          "horse_name_zh": "天下寵兒",
+          "cur_win_odds": 8.6,
+          "p_mkt_win": 0.093974185842053,
+          "score_win": -2.1434036874045828,
+          "overlay": 0.12264398482674002,
+          "q_ranker_score": -1.0206527195750672,
+          "q_rank_field": 4
+        },
+        {
+          "rank": 6,
+          "horse_no": 1,
+          "horse_code": "J393",
+          "horse_name_zh": "維港激流",
+          "cur_win_odds": 10,
+          "p_mkt_win": 0.08081779982416558,
+          "score_win": -2.378042986366231,
+          "overlay": 0.05324413938795005,
+          "q_ranker_score": -2.259139826217421,
+          "q_rank_field": 9
+        }
+      ]
+    },
+    {
+      "race_no": 8,
+      "distance_m": 1650,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 1,
+          "cur_win_odds": 4.5,
+          "p_mkt_win": 0.1802598387706921,
+          "score_win": -1.4600194416255288,
+          "overlay": 0.05456861316572738,
+          "passes_threshold": false
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 1,
+        "partners": [
+          2,
+          10
+        ],
+        "pairs": [
+          "1-2",
+          "1-10"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 1,
+          "horse_code": "J260",
+          "horse_name_zh": "一起美麗",
+          "cur_win_odds": 4.5,
+          "p_mkt_win": 0.1802598387706921,
+          "score_win": -1.4600194416255288,
+          "overlay": 0.05456861316572738,
+          "q_ranker_score": -1.6895231638404353,
+          "q_rank_field": 5
+        },
+        {
+          "rank": 2,
+          "horse_no": 2,
+          "horse_code": "J225",
+          "horse_name_zh": "一定掂",
+          "cur_win_odds": 6.4,
+          "p_mkt_win": 0.1267451991356429,
+          "score_win": -1.960864976870289,
+          "overlay": -0.03081636061302633,
+          "q_ranker_score": -0.2853966491757423,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 3,
+          "horse_no": 8,
+          "horse_code": "J131",
+          "horse_name_zh": "加州活力",
+          "cur_win_odds": 7.3,
+          "p_mkt_win": 0.11111907869426225,
+          "score_win": -2.0615342564934696,
+          "overlay": 0.01782661593770221,
+          "q_ranker_score": -2.412239086956633,
+          "q_rank_field": 10
+        },
+        {
+          "rank": 4,
+          "horse_no": 10,
+          "horse_code": "J396",
+          "horse_name_zh": "富國兄弟",
+          "cur_win_odds": 10,
+          "p_mkt_win": 0.08111692744681145,
+          "score_win": -2.3033111465758265,
+          "overlay": 0.12395607185334798,
+          "q_ranker_score": -0.8685243214227701,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 5,
+          "horse_no": 7,
+          "horse_code": "L151",
+          "horse_name_zh": "凌登",
+          "cur_win_odds": 9.6,
+          "p_mkt_win": 0.08449679942376194,
+          "score_win": -2.3230691710969,
+          "overlay": 0.05969103199478705,
+          "q_ranker_score": -1.3426064407521856,
+          "q_rank_field": 3
+        },
+        {
+          "rank": 6,
+          "horse_no": 5,
+          "horse_code": "G306",
+          "horse_name_zh": "瑪瑙",
+          "cur_win_odds": 9.2,
+          "p_mkt_win": 0.08817057331175158,
+          "score_win": -2.338661155356122,
+          "overlay": -0.00248148633727611,
+          "q_ranker_score": -1.8042801953303684,
+          "q_rank_field": 6
+        }
+      ]
+    },
+    {
+      "race_no": 9,
+      "distance_m": 1200,
+      "surface": "turf",
+      "field_size": 12,
+      "W": {
+        "top1": {
+          "horse_no": 5,
+          "cur_win_odds": 4.8,
+          "p_mkt_win": 0.16978048362505632,
+          "score_win": -1.2543618834038526,
+          "overlay": 0.3328219301335571,
+          "passes_threshold": true
+        },
+        "top2": null
+      },
+      "Q": {
+        "anchor_horse_no": 5,
+        "partners": [
+          2,
+          8
+        ],
+        "pairs": [
+          "5-2",
+          "5-8"
+        ]
+      },
+      "ranked_runners_top6": [
+        {
+          "rank": 1,
+          "horse_no": 5,
+          "horse_code": "K434",
+          "horse_name_zh": "福星小子",
+          "cur_win_odds": 4.8,
+          "p_mkt_win": 0.16978048362505632,
+          "score_win": -1.2543618834038526,
+          "overlay": 0.3328219301335571,
+          "q_ranker_score": 0.9059713207050979,
+          "q_rank_field": 1
+        },
+        {
+          "rank": 2,
+          "horse_no": 2,
+          "horse_code": "L033",
+          "horse_name_zh": "粵港資駒",
+          "cur_win_odds": 3.8,
+          "p_mkt_win": 0.21445955826322902,
+          "score_win": -1.352726565106801,
+          "overlay": -0.05447580442053539,
+          "q_ranker_score": 0.43493038803536777,
+          "q_rank_field": 2
+        },
+        {
+          "rank": 3,
+          "horse_no": 1,
+          "horse_code": "K352",
+          "horse_name_zh": "乘數表",
+          "cur_win_odds": 7.4,
+          "p_mkt_win": 0.11012788127030679,
+          "score_win": -1.986743671558472,
+          "overlay": 0.1026918464741003,
+          "q_ranker_score": -0.8237666435543948,
+          "q_rank_field": 4
+        },
+        {
+          "rank": 4,
+          "horse_no": 4,
+          "horse_code": "L075",
+          "horse_name_zh": "飛馬座",
+          "cur_win_odds": 8.5,
+          "p_mkt_win": 0.0958760378117965,
+          "score_win": -2.149972606271657,
+          "overlay": 0.09393778677099378,
+          "q_ranker_score": -2.172654957273033,
+          "q_rank_field": 9
+        },
+        {
+          "rank": 5,
+          "horse_no": 7,
+          "horse_code": "G016",
+          "horse_name_zh": "鈁糖武士",
+          "cur_win_odds": 13,
+          "p_mkt_win": 0.06268817856925156,
+          "score_win": -2.4892841127587744,
+          "overlay": 0.2155590108331794,
+          "q_ranker_score": -2.2878426006021866,
+          "q_rank_field": 10
+        },
+        {
+          "rank": 6,
+          "horse_no": 8,
+          "horse_code": "J370",
+          "horse_name_zh": "加州本事",
+          "cur_win_odds": 13,
+          "p_mkt_win": 0.06268817856925156,
+          "score_win": -2.5689507249973738,
+          "overlay": 0.13589239859458002,
+          "q_ranker_score": -0.10910480978848107,
+          "q_rank_field": 3
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "races": 9,
+    "topk": 6
+  }
+}
