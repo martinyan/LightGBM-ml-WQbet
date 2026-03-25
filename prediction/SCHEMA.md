@@ -1,9 +1,16 @@
-# Prediction JSON Output Schemas (Locked v1)
+# Prediction JSON Output Schemas
 
-All prediction runs (production + research) MUST write JSON outputs in:
+## Production (WQ)
+
+**Current (v2 picks-only):**
+- `prediction/<dd-mm-yyyy>/productionWQ-result.json` (schema_version: `productionWQ-picks.v2`)
+
+**Legacy (v1 full):**
+- `prediction/<dd-mm-yyyy>/productionWQ-result.full.v1.json` (schema_version: `productionWQ-result.v1`)
+
+## Research
 
 - `prediction/<dd-mm-yyyy>/research-result.json`
-- `prediction/<dd-mm-yyyy>/productionWQ-result.json`
 
 Where `<dd-mm-yyyy>` matches the same date string used inside the JSON (`racedate`).
 

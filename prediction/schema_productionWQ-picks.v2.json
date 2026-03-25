@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prediction/schema_productionWQ-picks.v2.json",
+  "title": "productionWQ-picks.v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "racedate",
+    "venue",
+    "source",
+    "races",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": { "const": "productionWQ-picks.v2" },
+    "generated_at": { "type": "string" },
+    "racedate": {
+      "type": "string",
+      "pattern": "^\\d{2}-\\d{2}-\\d{4}$",
+      "description": "dd-mm-yyyy"
+    },
+    "venue": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "required": ["pipeline"],
+      "properties": {
+        "pipeline": { "const": "production" },
+        "config": { "type": ["string", "null"] },
+        "code_ref": {
+          "type": "object",
+          "properties": {
+            "git_commit": { "type": ["string", "null"] },
+            "script": { "type": ["string", "null"] }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "races": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["race_no", "W_pick", "Q_partners"],
+        "properties": {
+          "race_no": { "type": "integer", "minimum": 1 },
+          "W_pick": {
+            "type": "object",
+            "required": ["horse_no", "horse_name_zh", "overlay"],
+            "properties": {
+              "horse_no": { "type": "integer", "minimum": 1 },
+              "horse_code": { "type": ["string", "null"] },
+              "horse_name_zh": { "type": "string" },
+              "overlay": { "type": ["number", "null"] },
+              "cur_win_odds": { "type": ["number", "null"] }
+            },
+            "additionalProperties": true
+          },
+          "Q_partners": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["horse_no", "horse_name_zh", "overlay"],
+              "properties": {
+                "horse_no": { "type": "integer", "minimum": 1 },
+                "horse_code": { "type": ["string", "null"] },
+                "horse_name_zh": { "type": "string" },
+                "overlay": { "type": ["number", "null"] },
+                "cur_win_odds": { "type": ["number", "null"] }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["races"],
+      "properties": {
+        "races": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
