@@ -3,6 +3,16 @@
 .clawhub/
 __pycache__/
 
+# --- Node / JS ---
+node_modules/
+
+# --- Model training scratch ---
+catboost_info/
+
+# --- Local state flags ---
+.hkjc_db_build_done
+.hkjc_db_build_finished_sent
+
 # --- Data / DB ---
 hkjc.sqlite
 *.sqlite
@@ -13,6 +23,18 @@ research/notebooks/.ipynb_checkpoints/
 
 # --- Local sheet registry ---
 prod/sheets/raceday_sheets.json
+
+# --- Generated outputs (keep repo clean) ---
+artifacts/
+tmp/
+
+# --- Large datasets / logs (generated) ---
+hkjc_dataset_*.jsonl
+hkjc_dataset_*.log
+hkjc_*backfill*.log
+hkjc_*sectionals*.log
+hkjc_db_build.*
+audio_*_transcript.txt
 
 # Keep large raw data out of git
 raw_data/
